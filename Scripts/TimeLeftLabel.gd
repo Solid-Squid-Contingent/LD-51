@@ -2,13 +2,20 @@ extends Label
 
 signal timeUp
 
-var timeLeft = 25
+var timeLeft: int
+var minLength: int
 
 func _ready():
-	updateText()
+	setTime(16)
 
 func updateText():
-	text = Base.toBinaryString(timeLeft, 5) +"s left"
+	text = Base.toBinaryString(timeLeft, minLength) +"s left"
+	
+func setTime(time):
+	timeLeft = time
+	minLength = Base.toBinaryString(timeLeft, 0).length()
+	$Timer.start()
+	updateText()
 
 func _on_Timer_timeout():
 	timeLeft -= 1

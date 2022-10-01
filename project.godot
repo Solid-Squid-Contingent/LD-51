@@ -9,13 +9,19 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Node",
+"base": "Object",
 "class": "Base",
 "language": "GDScript",
-"path": "res://Scripts/base.gd"
+"path": "res://Scripts/Base.gd"
+}, {
+"base": "Object",
+"class": "DataTypes",
+"language": "GDScript",
+"path": "res://Scripts/DataTypes.gd"
 } ]
 _global_script_class_icons={
-"Base": ""
+"Base": "",
+"DataTypes": ""
 }
 
 [application]

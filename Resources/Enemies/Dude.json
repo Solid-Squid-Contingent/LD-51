@@ -1,0 +1,10 @@
+{
+	"speed" : 10,
+	"spreadAngle" : 20,
+	"spreadNumber" : 3,
+	"burstNumber" : 1,
+	"burstDistance" : 1,
+	"aimAtPlayer" : true,
+	"rotationPerSecond" : 0,
+	"bulletType" : "Basic"
+}

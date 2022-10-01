@@ -1,0 +1,9 @@
+{
+	"speed" : 80,
+	"sinAmplitude" : 0,
+	"sinFrequency" : 0,
+	"curve" : 10,
+	"totalLifeTime" : 10,
+	"homing" : false,
+	"sprite" : "straight",
+}

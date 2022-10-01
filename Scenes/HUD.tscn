@@ -22,7 +22,6 @@ text = "10010000"
 script = ExtResource( 1 )
 
 [node name="Timer" type="Timer" parent="TimeLeftLabel"]
-autostart = true
 
 [connection signal="timeUp" from="TimeLeftLabel" to="." method="_on_TimeLeftLabel_timeUp"]
 [connection signal="timeout" from="TimeLeftLabel/Timer" to="TimeLeftLabel" method="_on_Timer_timeout"]

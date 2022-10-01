@@ -7,10 +7,27 @@ const enemyScene = preload("res://Scenes/Enemy.tscn")
 
 onready var textbox = $"HUD/TextBox"
 
+const playerScenes = {
+	'teleport' : preload("res://Scenes/Player.tscn"),
+	'move' : preload("res://Scenes/PlayerMoving.tscn"),
+	'attack' : preload("res://Scenes/PlayerAttacking.tscn")
+}
+
+onready var playerPositions = {
+	'teleport' : $PlayerTeleport,
+	'move' : $PlayerMove,
+	'attack' : $PlayerAttack
+}
+
+onready var playerParent = $Players
+
 var dialogProgress = 0
 var tutorialProgress = 0
 var dialog = []
 var inMenu = true
+
+func _ready():
+	loadLevel() #TODO
 
 func _input(event):
 	if !inMenu and event.is_action_pressed("advance"):
@@ -22,8 +39,6 @@ func _input(event):
 		textbox.show_all_text()
 		dialogProgress = dialog.size()
 		hideDialog()
-	elif event.is_action_pressed("move_down"):
-		spawn_enemy()
 	
 func setTutorialProgress(newTutorialProgress):
 	tutorialProgress = newTutorialProgress
@@ -40,7 +55,7 @@ func progressInTutorial():
 
 
 func loadTutorialSpecificNodes():
-	pass
+	loadLevel()
 
 func loadDialog():
 	dialog = []
@@ -75,8 +90,25 @@ func showDialog(line):
 	textbox.visible = true
 	get_tree().paused = true
 
-func spawn_enemy():
+func spawn_enemy(type):
 	var pos = $SpawnPath.curve.interpolate_baked(randf() * $SpawnPath.curve.get_baked_length(), false)
 	var enemy = enemyScene.instance()
 	enemy.position = pos
+	enemy.type = type
 	.add_child(enemy)
+
+func loadLevel():
+	var level = DataTypes.LevelType.fromJSON("Level1")
+	$HUD.setTime(level.duration)
+	for child in playerParent.get_children():
+		child.queue_free()
+	for playerName in level.players:
+		var player = playerScenes[playerName].instance()
+		player.position = playerPositions[playerName].position
+		playerParent.add_child(player)
+	for spawnType in level.spawn:
+		for i in range(spawnType.number):
+			var delay = spawnType.delay * i + spawnType.startDelay
+			# warning-ignore:return_value_discarded
+			get_tree().create_timer(delay).connect("timeout", self, "spawn_enemy", [spawnType.enemyType])
+		

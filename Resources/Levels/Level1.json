@@ -1,0 +1,14 @@
+{
+	"spawn" : [
+		{
+			"enemyType" : "Dude",
+			"number" : 3,
+			"delay" : 2,
+			"startDelay" : 0,
+		},
+	],
+	"players" : ["teleport", "move", "attack"],
+	"duration" : 16
+}
+
+

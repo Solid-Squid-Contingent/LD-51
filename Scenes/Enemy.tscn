@@ -18,7 +18,7 @@ texture = ExtResource( 2 )
 shape = SubResource( 1 )
 
 [node name="BulletTimer" type="Timer" parent="."]
-wait_time = 4.0
+wait_time = 0.2
 autostart = true
 
 [connection signal="area_entered" from="." to="." method="_on_Enemy_area_entered"]

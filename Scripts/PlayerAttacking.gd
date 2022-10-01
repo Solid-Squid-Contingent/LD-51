@@ -10,8 +10,8 @@ func shoot():
 		var bullet = bulletScene.instance()
 		bullet.position = self.position
 		bullet.velocity = (direction * bulletSpeed)
+		bullet.type.sprite = 'player'
 		get_parent().add_child(bullet)
-		bullet.setSprite('player')
 	
 func move():
 	.move()

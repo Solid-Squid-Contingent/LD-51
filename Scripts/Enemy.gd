@@ -1,11 +1,6 @@
 extends Area2D
 
-const speed = 5
-const bulletSpeed = 80
-const spreadAngle = 90
-const spreadNumber = 5
-const burstNumber = 10
-const burstDistance = 0.2
+var type = DataTypes.EnemyType.new()
 
 const bulletScene = preload("res://Scenes/Bullet.tscn")
 
@@ -13,33 +8,36 @@ func _ready():
 	call_deferred('shoot')
 
 func _process(delta):
-	position += Base.directionToClosest(self, 'player') * speed * delta
+	position += Base.directionToClosest(self, 'player') * type.speed * delta
+	rotation += deg2rad(type.rotationPerSecond) * delta
 
 
 func _on_BulletTimer_timeout():
 	shoot()
 
 func shoot():
-	var direction = Base.directionToClosest(self, 'player')
-	if direction.length() > 0:
-		for burst in range(burstNumber - 1):
-			# warning-ignore:return_value_discarded
-			get_tree().create_timer(burstDistance * burst).connect("timeout", self, "shoot_burst", [direction])
-		shoot_burst(direction)
+	for burst in range(1, type.burstNumber):
+		# warning-ignore:return_value_discarded
+		get_tree().create_timer(type.burstDistance * burst).connect("timeout", self, "shoot_burst")
+	shoot_burst()
 
-func shoot_burst(direction):
-	for i in range(spreadNumber):
-		var bullet = bulletScene.instance()
-		bullet.position = self.position
-		bullet.homing = true
-		
-		var angle = 0
-		if spreadNumber > 1:
-			angle = -spreadAngle/2.0 + i * spreadAngle / float(spreadNumber - 1)
-		bullet.velocity = (direction * bulletSpeed).rotated(deg2rad(angle))
-		
-		get_parent().add_child(bullet)
-		bullet.setSprite('homing')
+func shoot_burst():
+	var direction = Vector2(0,-1).rotated(rotation)
+	if type.aimAtPlayer:
+		direction = Base.directionToClosest(self, 'player')
+	if direction.length() > 0:
+		for i in range(type.spreadNumber):
+			var bullet = bulletScene.instance()
+			bullet.position = self.position
+			#bullet.homing = true
+			
+			var angle = 0
+			if type.spreadNumber > 1:
+				angle = -type.spreadAngle/2.0 + i * type.spreadAngle / float(type.spreadNumber - 1)
+			bullet.direction = direction.rotated(deg2rad(angle))
+			bullet.type = type.bulletType
+			
+			get_parent().add_child(bullet)
 
 
 func _on_Enemy_area_entered(area):

@@ -1,9 +1,16 @@
-extends Node
+extends Object
 
 class_name Base
 
 const deathParticleScene = preload("res://Scenes/DeathParticles.tscn")
 const corpseSpriteScene = preload("res://Scenes/CorpseSprite.tscn")
+
+static func parseJSONFile(path):
+	var file = File.new()
+	file.open(path, File.READ)
+	var content = file.get_as_text()
+	file.close()
+	return parse_json(content)
 
 static func spawnDeathParticles(caller):
 	var particles = deathParticleScene.instance()
