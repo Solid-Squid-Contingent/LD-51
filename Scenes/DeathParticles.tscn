@@ -7,7 +7,7 @@
 [sub_resource type="ShaderMaterial" id=2]
 shader = ExtResource( 3 )
 shader_param/disintegrationProgress = 0.0
-shader_param/pixelSize = 4.0
+shader_param/pixelSize = 1.0
 
 [sub_resource type="ParticlesMaterial" id=1]
 flag_disable_z = true

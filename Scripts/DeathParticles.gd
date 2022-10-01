@@ -2,7 +2,6 @@ extends Particles2D
 
 func _ready():
 	emitting = true
-	material.set_shader_param("pixelSize", 1.0)
 
 func _process(_delta):
 	var timeLeft = $Timer.time_left / $Timer.wait_time

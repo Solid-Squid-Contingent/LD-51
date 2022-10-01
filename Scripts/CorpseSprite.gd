@@ -2,6 +2,9 @@ extends Sprite
 
 onready var velocity = Vector2(0, 100).rotated(randf() * PI)
 
+func _ready():
+	material.set_shader_param("pixelSize", 4.0)
+
 func _process(delta):
 	position += velocity * delta
 	velocity *= 0.99

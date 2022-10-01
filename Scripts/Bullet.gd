@@ -3,7 +3,7 @@ extends Area2D
 var sinAmplitude = 0#50
 var sinFrequency = 0#2
 var curve = 0
-var totalLifeTime = 20
+var totalLifeTime = 10
 
 var homing = false
 
@@ -18,6 +18,9 @@ onready var sprites = {
 }
 
 onready var birthTime = Time.get_ticks_usec()
+
+func _ready():
+	material.set_shader_param("pixelSize", 2.0)
 
 func lifeTime(): #in seconds
 	return (Time.get_ticks_usec() - birthTime) / 1000000.0

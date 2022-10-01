@@ -8,9 +8,10 @@
 [ext_resource path="res://Resources/Shaders/Disintegrate.tres" type="Shader" id=6]
 
 [sub_resource type="ShaderMaterial" id=2]
+resource_local_to_scene = true
 shader = ExtResource( 6 )
 shader_param/disintegrationProgress = 0.0
-shader_param/pixelSize = 4.0
+shader_param/pixelSize = 1.0
 
 [sub_resource type="CircleShape2D" id=1]
 
@@ -28,12 +29,15 @@ texture = ExtResource( 2 )
 
 [node name="SpritePlayer" type="Sprite" parent="."]
 visible = false
+use_parent_material = true
 texture = ExtResource( 3 )
 
 [node name="SpriteHoming" type="Sprite" parent="."]
 visible = false
+use_parent_material = true
 texture = ExtResource( 5 )
 
 [node name="SpriteStraight" type="Sprite" parent="."]
 visible = false
+use_parent_material = true
 texture = ExtResource( 4 )

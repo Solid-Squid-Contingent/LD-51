@@ -3,6 +3,8 @@ extends Node2D
 # warning-ignore:unused_signal
 signal restartGame()
 
+const enemyScene = preload("res://Scenes/Enemy.tscn")
+
 onready var textbox = $"HUD/TextBox"
 
 var dialogProgress = 0
@@ -20,6 +22,8 @@ func _input(event):
 		textbox.show_all_text()
 		dialogProgress = dialog.size()
 		hideDialog()
+	elif event.is_action_pressed("move_down"):
+		spawn_enemy()
 	
 func setTutorialProgress(newTutorialProgress):
 	tutorialProgress = newTutorialProgress
@@ -70,3 +74,9 @@ func showDialog(line):
 	textbox.set_name("Mysterious Voice")
 	textbox.visible = true
 	get_tree().paused = true
+
+func spawn_enemy():
+	var pos = $SpawnPath.curve.interpolate_baked(randf() * $SpawnPath.curve.get_baked_length(), false)
+	var enemy = enemyScene.instance()
+	enemy.position = pos
+	.add_child(enemy)

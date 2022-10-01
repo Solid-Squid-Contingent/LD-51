@@ -7,7 +7,7 @@
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 3 )
 shader_param/disintegrationProgress = 0.0
-shader_param/pixelSize = 4.0
+shader_param/pixelSize = 1.0
 
 [node name="CorpseSprite" type="Sprite"]
 material = SubResource( 1 )
