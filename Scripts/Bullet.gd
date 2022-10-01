@@ -7,6 +7,7 @@ onready var realPosition = position
 
 onready var sprites = {
 	'energy' : $SpriteEnergy,
+	'energyBig' : $SpriteEnergyBig,
 	'player' : $SpritePlayer,
 	'homing' : $SpriteHoming,
 	'straight' : $SpriteStraight,
@@ -16,7 +17,16 @@ onready var birthTime = Time.get_ticks_usec()
 
 func _ready():
 	material.set_shader_param("pixelSize", 2.0)
+	setSprite()
+
+func setSprite():
 	sprites[type.sprite].visible = true
+	if type.sprite == 'energyBig':
+		$CollisionShape.disabled = true
+		$CollisionShapeBig.disabled = false
+	else:
+		$CollisionShape.disabled = false
+		$CollisionShapeBig.disabled = true
 
 func lifeTime(): #in seconds
 	return (Time.get_ticks_usec() - birthTime) / 1000000.0

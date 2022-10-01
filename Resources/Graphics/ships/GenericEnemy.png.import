@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Background.png-e28da85e101cd44947d1d79e48199578.stex"
+path="res://.import/GenericEnemy.png-fd52d19ddb58e59b668b973ad6a34b28.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/Graphics/Background.png"
-dest_files=[ "res://.import/Background.png-e28da85e101cd44947d1d79e48199578.stex" ]
+source_file="res://Resources/Graphics/ships/GenericEnemy.png"
+dest_files=[ "res://.import/GenericEnemy.png-fd52d19ddb58e59b668b973ad6a34b28.stex" ]
 
 [params]
 

@@ -79,6 +79,7 @@ func _on_Player_area_entered(area):
 func _on_GrazeArea_area_entered(area):
 	var graze = grazeScene.instance()
 	area.add_child(graze)
+	# warning-ignore:return_value_discarded
 	connect('stopGraze', graze, 'stopGraze')
 
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Background.png-e28da85e101cd44947d1d79e48199578.stex"
+path="res://.import/SkullPhase1.png-2f76a49d2c7d044a6c5940dfacd20193.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/Graphics/Background.png"
-dest_files=[ "res://.import/Background.png-e28da85e101cd44947d1d79e48199578.stex" ]
+source_file="res://Resources/Graphics/ships/SkullPhase1.png"
+dest_files=[ "res://.import/SkullPhase1.png-2f76a49d2c7d044a6c5940dfacd20193.stex" ]
 
 [params]
 
