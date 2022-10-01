@@ -16,7 +16,7 @@ const grazeScene = preload("res://Scenes/GrazeParticles.tscn")
 const movementRange = 200
 
 func _ready():
-	moveRadiusSprite.modulate = Color.from_hsv(randf(), 1.0, 1.0, 0.5) #TODO
+	moveRadiusSprite.material.set_shader_param("movementRange", movementRange)
 	self.get_tree().call_group('player', 'playerMoved')
 
 func _input(event):

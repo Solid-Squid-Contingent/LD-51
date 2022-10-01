@@ -1,21 +1,23 @@
 [gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
-[ext_resource path="res://Resources/Graphics/Player.png" type="Texture" id=2]
+[ext_resource path="res://Resources/Graphics/ships/JunkShip2.png" type="Texture" id=2]
 [ext_resource path="res://Resources/Graphics/Target.png" type="Texture" id=3]
-[ext_resource path="res://Resources/Graphics/PlayerRadius.png" type="Texture" id=4]
 [ext_resource path="res://Resources/Graphics/Charge.png" type="Texture" id=5]
 [ext_resource path="res://Resources/Shaders/Radius.tres" type="Shader" id=6]
 [ext_resource path="res://Resources/Graphics/PlayerHalf1.png" type="Texture" id=7]
 [ext_resource path="res://Resources/Graphics/PlayerHalf2.png" type="Texture" id=8]
 
-[sub_resource type="ShaderMaterial" id=2]
-resource_local_to_scene = true
+[sub_resource type="ShaderMaterial" id=4]
 shader = ExtResource( 6 )
 shader_param/otherPlayerCenter1 = null
 shader_param/otherPlayerAlive1 = null
 shader_param/otherPlayerCenter2 = null
 shader_param/otherPlayerAlive2 = null
+shader_param/movementRange = null
+
+[sub_resource type="QuadMesh" id=5]
+size = Vector2( 500, 500 )
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 18.2483
@@ -31,11 +33,12 @@ script = ExtResource( 1 )
 halfSprite1 = ExtResource( 7 )
 halfSprite2 = ExtResource( 8 )
 
-[node name="Radius" type="Sprite" parent="."]
-material = SubResource( 2 )
-texture = ExtResource( 4 )
+[node name="Radius" type="MeshInstance2D" parent="."]
+material = SubResource( 4 )
+mesh = SubResource( 5 )
 
 [node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 2, 2 )
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

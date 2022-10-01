@@ -27,6 +27,14 @@ func setSprite():
 	else:
 		$CollisionShape.disabled = false
 		$CollisionShapeBig.disabled = true
+	
+	if type.sprite == 'player':
+		collision_layer = 2
+		collision_mask = 4
+	else:
+		collision_layer = 8
+		collision_mask = 1
+		
 
 func lifeTime(): #in seconds
 	return (Time.get_ticks_usec() - birthTime) / 1000000.0

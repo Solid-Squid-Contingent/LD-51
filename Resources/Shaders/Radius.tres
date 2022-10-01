@@ -9,16 +9,31 @@ uniform bool otherPlayerAlive1;
 uniform vec2 otherPlayerCenter2;
 uniform bool otherPlayerAlive2;
 
+uniform float movementRange;
+
 varying smooth vec2 local_position;
+
+const float lineThickness = 2.0;
 
 void vertex(){
     local_position = VERTEX;
 }
 
 void fragment(){
-	if ((otherPlayerAlive1 && abs(length(local_position)) >= abs(length(local_position - otherPlayerCenter1))) ||
-		(otherPlayerAlive2 && abs(length(local_position)) >= abs(length(local_position - otherPlayerCenter2))) )
-	 {
+	float l = length(local_position);
+	float p1 = l - length(local_position - otherPlayerCenter1);
+	float p2 = l - length(local_position - otherPlayerCenter2);
+	float li = l - movementRange;
+	
+	if (
+		(p1 < 0.0 && p2 < 0.0 && abs(li) < lineThickness) ||
+		(p1 < 0.0 && li < 0.0 && abs(p2) < 2.0 * lineThickness) ||
+		(p2 < 0.0 && li < 0.0 && abs(p1) < 2.0 * lineThickness)
+	)
+	{
+		COLOR = vec4(1.0, 1.0, 1.0, 1.0)
+	}
+	else {
 		discard;
 	}
 }"

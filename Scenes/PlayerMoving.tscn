@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Resources/Graphics/PlayerMoving.png" type="Texture" id=2]
+[ext_resource path="res://Resources/Graphics/ships/JunkShip1.png" type="Texture" id=2]
 [ext_resource path="res://Scripts/PlayerMoving.gd" type="Script" id=3]
 [ext_resource path="res://Resources/Shaders/Radius.tres" type="Shader" id=4]
 
@@ -12,6 +12,7 @@ shader_param/otherPlayerCenter1 = null
 shader_param/otherPlayerAlive1 = null
 shader_param/otherPlayerCenter2 = null
 shader_param/otherPlayerAlive2 = null
+shader_param/movementRange = null
 
 [node name="Player" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
