@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/menu_button_pressed.png-8170bb4135ed9fc37fbf5da56e51548b.stex"
+path="res://.import/Dialogue.png-97a52e66e975c8016652b176454ed3a6.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/Graphics/menu_button_pressed.png"
-dest_files=[ "res://.import/menu_button_pressed.png-8170bb4135ed9fc37fbf5da56e51548b.stex" ]
+source_file="res://Resources/Graphics/UI/Dialogue.png"
+dest_files=[ "res://.import/Dialogue.png-97a52e66e975c8016652b176454ed3a6.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

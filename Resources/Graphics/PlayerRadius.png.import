@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/toggle_off.png-41543275340b659b45f00582b6123c82.stex"
+path="res://.import/PlayerRadius.png-a4fd3bcab24a67e4a04bba8af0bf0b33.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/Graphics/toggle_off.png"
-dest_files=[ "res://.import/toggle_off.png-41543275340b659b45f00582b6123c82.stex" ]
+source_file="res://Resources/Graphics/PlayerRadius.png"
+dest_files=[ "res://.import/PlayerRadius.png-a4fd3bcab24a67e4a04bba8af0bf0b33.stex" ]
 
 [params]
 
