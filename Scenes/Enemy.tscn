@@ -18,7 +18,7 @@ texture = ExtResource( 2 )
 shape = SubResource( 1 )
 
 [node name="BulletTimer" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 4.0
 autostart = true
 
 [connection signal="timeout" from="BulletTimer" to="." method="_on_BulletTimer_timeout"]
