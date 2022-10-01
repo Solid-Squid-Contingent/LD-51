@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scenes/Bullet.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Resources/Graphics/BulletPlayer.png" type="Texture" id=2]
+
+[node name="Bullet" instance=ExtResource( 1 )]
+collision_layer = 2
+collision_mask = 4
+
+[node name="Sprite" parent="." index="1"]
+texture = ExtResource( 2 )

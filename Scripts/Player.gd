@@ -21,23 +21,24 @@ func _process(_delta):
 	chargeProgressBar.value = 1 - moveTimer.time_left / moveTimer.wait_time
 
 func moveTargetTo(targetPos):
-	var dist = (targetPos - position).length()
+	var dist = (targetPos - moveRadiusSprite.global_position).length()
 	if dist < movementRange:
 		for player in self.get_tree().get_nodes_in_group('player'):
-			var d = (targetPos - player.position).length()
+			var d = (targetPos - player.moveRadiusSprite.global_position).length()
 			if d < dist:
 				return
 		target.visible = true
-		target.position = targetPos - position
+		target.position = to_local(targetPos)
 
 func playerMoved():
 	var index = 1
 	for player in self.get_tree().get_nodes_in_group('player'):
 		if player != self and not player.is_queued_for_deletion():
 			moveRadiusSprite.material.set_shader_param("otherPlayerAlive" + String(index), true)
-			moveRadiusSprite.material.set_shader_param("otherPlayerCenter" + String(index), to_local(player.global_position))
+			var playerPos = moveRadiusSprite.to_local(player.moveRadiusSprite.global_position)
+			moveRadiusSprite.material.set_shader_param("otherPlayerCenter" + String(index), playerPos)
 			index += 1
-	for i in range(index, 2):
+	for i in range(index, 3):
 		moveRadiusSprite.material.set_shader_param("otherPlayerAlive" + String(i), false)
 
 func spawnRift():
@@ -45,16 +46,22 @@ func spawnRift():
 	rift.position = position
 	get_parent().add_child(rift)
 
-func _on_MoveTimer_timeout():
+func updateRadii():
+	self.get_tree().call_group('player', 'playerMoved')
+
+func move():
 	if target.visible:
 		spawnRift()
 		position += target.position
 		target.visible = false
 		spawnRift()
-		self.get_tree().call_group('player', 'playerMoved')
+		updateRadii()
+
+func _on_MoveTimer_timeout():
+	move()
 
 
 func _on_Player_area_entered(area):
 	area.queue_free()
 	queue_free()
-	self.get_tree().call_group('player', 'playerMoved')
+	updateRadii()

@@ -12,6 +12,8 @@ resource_local_to_scene = true
 shader = ExtResource( 6 )
 shader_param/otherPlayerCenter1 = null
 shader_param/otherPlayerAlive1 = null
+shader_param/otherPlayerCenter2 = null
+shader_param/otherPlayerAlive2 = null
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 35.0

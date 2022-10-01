@@ -26,7 +26,7 @@ func getClosestPlayer():
 func directionToClosestPlayer():
 	var player = getClosestPlayer()
 	if player != null:
-		return (getClosestPlayer().position - position).normalized()
+		return (player.position - position).normalized()
 	return Vector2(0,0)
 
 func _process(delta):
