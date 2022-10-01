@@ -1,5 +1,7 @@
 extends Area2D
 
+signal stopGraze
+
 onready var target = $Target
 onready var moveTimer = $MoveTimer
 onready var chargeProgressBar = $ChargeProgress
@@ -9,6 +11,7 @@ export var halfSprite1: Texture
 export var halfSprite2: Texture
 
 const riftScene = preload("res://Scenes/Rift.tscn")
+const grazeScene = preload("res://Scenes/GrazeParticles.tscn")
 
 const movementRange = 200
 
@@ -71,3 +74,13 @@ func _on_Player_area_entered(area):
 		updateRadii()
 		Base.spawnDeathParticles(self)
 		Base.spawnHalfSprites(self, halfSprite1, halfSprite2)
+
+
+func _on_GrazeArea_area_entered(area):
+	var graze = grazeScene.instance()
+	area.add_child(graze)
+	connect('stopGraze', graze, 'stopGraze')
+
+
+func _on_GrazeArea_area_exited(area):
+	emit_signal('stopGraze', area)

@@ -1,0 +1,9 @@
+{
+	"speed" : 120,
+	"sinAmplitude" : 0,
+	"sinFrequency" : 0,
+	"curve" : 0,
+	"totalLifeTime" : 30,
+	"homing" : false,
+	"sprite" : "player",
+}

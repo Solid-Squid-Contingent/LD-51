@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Graphics/Player.png" type="Texture" id=2]
@@ -18,7 +18,10 @@ shader_param/otherPlayerCenter2 = null
 shader_param/otherPlayerAlive2 = null
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 35.0
+radius = 18.2483
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 54.5894
 
 [node name="Player" type="Area2D" groups=["player"]]
 position = Vector2( 500, 500 )
@@ -59,5 +62,13 @@ step = 0.0
 texture_progress = ExtResource( 5 )
 fill_mode = 4
 
+[node name="GrazeArea" type="Area2D" parent="."]
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GrazeArea"]
+shape = SubResource( 3 )
+
 [connection signal="area_entered" from="." to="." method="_on_Player_area_entered"]
 [connection signal="timeout" from="MoveTimer" to="." method="_on_MoveTimer_timeout"]
+[connection signal="area_entered" from="GrazeArea" to="." method="_on_GrazeArea_area_entered"]
+[connection signal="area_exited" from="GrazeArea" to="." method="_on_GrazeArea_area_exited"]
