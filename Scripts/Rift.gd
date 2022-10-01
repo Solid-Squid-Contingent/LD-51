@@ -11,4 +11,4 @@ func _process(_delta):
 	var timeLeft = $LifeTimer.time_left / $LifeTimer.wait_time
 	
 	if timeLeft <  0.5:
-		self.modulate.a = timeLeft * 2
+		self.modulate.a = timeLeft * 2 #TODO

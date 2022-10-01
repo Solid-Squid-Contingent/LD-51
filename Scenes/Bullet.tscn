@@ -1,14 +1,21 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scripts/Bullet.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Graphics/BulletEnergy.png" type="Texture" id=2]
 [ext_resource path="res://Resources/Graphics/BulletPlayer.png" type="Texture" id=3]
 [ext_resource path="res://Resources/Graphics/BulletStraight.png" type="Texture" id=4]
 [ext_resource path="res://Resources/Graphics/BulletHoming.png" type="Texture" id=5]
+[ext_resource path="res://Resources/Shaders/Disintegrate.tres" type="Shader" id=6]
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 6 )
+shader_param/disintegrationProgress = 0.0
+shader_param/pixelSize = 4.0
 
 [sub_resource type="CircleShape2D" id=1]
 
 [node name="Bullet" type="Area2D"]
+material = SubResource( 2 )
 collision_layer = 8
 script = ExtResource( 1 )
 

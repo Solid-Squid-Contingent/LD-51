@@ -38,7 +38,7 @@ func _process(delta):
 	if totalLifeTime < lifeTime():
 		queue_free()
 	elif totalLifeTime - lifeTime() < 1:
-		self.modulate.a = totalLifeTime - lifeTime()
+		material.set_shader_param("disintegrationProgress", 1 - (totalLifeTime - lifeTime()))
 		if totalLifeTime - lifeTime() < 0.5:
 			self.monitorable = false
 			self.monitoring = false

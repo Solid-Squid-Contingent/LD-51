@@ -26,6 +26,8 @@ position = Vector2( 414, 810 )
 
 [node name="Player3" parent="." instance=ExtResource( 7 )]
 position = Vector2( 1062, 846 )
+halfSprite1 = null
+halfSprite2 = null
 
 [node name="Enemy" parent="." instance=ExtResource( 2 )]
 position = Vector2( 1166, 145 )

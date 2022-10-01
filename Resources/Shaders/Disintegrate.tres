@@ -1,0 +1,24 @@
+[gd_resource type="Shader" format=2]
+
+[resource]
+code = "shader_type canvas_item;
+
+uniform float disintegrationProgress = 0;
+uniform float pixelSize = 4.0;
+
+float random(vec2 co)
+{
+    float a = 12.9898;
+    float b = 78.233;
+    float c = 43758.5453;
+    float dt= dot(co.xy ,vec2(a,b));
+    float sn= mod(dt,3.14);
+    return fract(sin(sn) * c);
+}
+
+void fragment(){
+	if (random(floor(UV / TEXTURE_PIXEL_SIZE / pixelSize)) < disintegrationProgress)
+	 {
+		discard;
+	}
+}"

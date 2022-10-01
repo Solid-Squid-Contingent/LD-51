@@ -5,12 +5,15 @@ onready var moveTimer = $MoveTimer
 onready var chargeProgressBar = $ChargeProgress
 onready var moveRadiusSprite = $Radius
 
+export var halfSprite1: Texture
+export var halfSprite2: Texture
+
 const riftScene = preload("res://Scenes/Rift.tscn")
 
 const movementRange = 200
 
 func _ready():
-	moveRadiusSprite.modulate = Color.from_hsv(randf(), 1.0, 1.0, 0.5)
+	moveRadiusSprite.modulate = Color.from_hsv(randf(), 1.0, 1.0, 0.5) #TODO
 	self.get_tree().call_group('player', 'playerMoved')
 
 func _input(event):
@@ -67,3 +70,4 @@ func _on_Player_area_entered(area):
 		queue_free()
 		updateRadii()
 		Base.spawnDeathParticles(self)
+		Base.spawnHalfSprites(self, halfSprite1, halfSprite2)
