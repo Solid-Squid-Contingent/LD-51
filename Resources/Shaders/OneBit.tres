@@ -4,9 +4,5 @@
 code = "shader_type canvas_item;
 
 void fragment(){
-	COLOR = texture(TEXTURE, UV);
-	if (COLOR.a < 0.3) {
-		discard;
-	}
-	COLOR = vec4(1.0, 1.0, 1.0, 1.0);
+	COLOR = vec4(1.0, 1.0, 1.0, texture(TEXTURE, UV).a < 0.3 ? 0.0 : 1.0);
 }"
