@@ -1,7 +1,7 @@
 extends Area2D
 
 const speed = 5
-const bulletSpeed = 150
+const bulletSpeed = 80
 const spreadAngle = 90
 const spreadNumber = 5
 const burstNumber = 10
@@ -12,42 +12,36 @@ const bulletScene = preload("res://Scenes/Bullet.tscn")
 func _ready():
 	call_deferred('shoot')
 
-func getClosestPlayer():
-	var closestPlayer = null
-	var closestDistance = INF
-	for player in self.get_tree().get_nodes_in_group('player'):
-		var d = (player.position - position).length()
-		if d < closestDistance:
-			closestPlayer = player
-			closestDistance = d
-			
-	return closestPlayer
-
-func directionToClosestPlayer():
-	var player = getClosestPlayer()
-	if player != null:
-		return (player.position - position).normalized()
-	return Vector2(0,0)
-
 func _process(delta):
-	position += directionToClosestPlayer() * speed * delta
+	position += Base.directionToClosest(self, 'player') * speed * delta
 
 
 func _on_BulletTimer_timeout():
 	shoot()
 
 func shoot():
-	var direction = directionToClosestPlayer()
+	var direction = Base.directionToClosest(self, 'player')
 	if direction.length() > 0:
-		for _burst in range(burstNumber):
-			for i in range(spreadNumber):
-				var bullet = bulletScene.instance()
-				bullet.position = self.position
-				
-				var angle = 0
-				if spreadNumber > 1:
-					angle = -spreadAngle/2.0 + i * spreadAngle / float(spreadNumber - 1)
-				bullet.velocity = (direction * bulletSpeed).rotated(deg2rad(angle))
-				
-				get_parent().add_child(bullet)
-			yield(get_tree().create_timer(burstDistance), "timeout")
+		for burst in range(burstNumber - 1):
+			# warning-ignore:return_value_discarded
+			get_tree().create_timer(burstDistance * burst).connect("timeout", self, "shoot_burst", [direction])
+		shoot_burst(direction)
+
+func shoot_burst(direction):
+	for i in range(spreadNumber):
+		var bullet = bulletScene.instance()
+		bullet.position = self.position
+		bullet.homing = true
+		
+		var angle = 0
+		if spreadNumber > 1:
+			angle = -spreadAngle/2.0 + i * spreadAngle / float(spreadNumber - 1)
+		bullet.velocity = (direction * bulletSpeed).rotated(deg2rad(angle))
+		
+		get_parent().add_child(bullet)
+		bullet.setSprite('homing')
+
+
+func _on_Enemy_area_entered(area):
+	area.queue_free()
+	queue_free()

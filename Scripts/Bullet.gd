@@ -1,19 +1,36 @@
 extends Area2D
 
-const sinAmplitude = 50
-const sinFrequency = 2
-const curve = 0
-const totalLifeTime = 20
+var sinAmplitude = 0#50
+var sinFrequency = 0#2
+var curve = 0
+var totalLifeTime = 20
+
+var homing = false
 
 var velocity: Vector2
 onready var realPosition = position
+
+onready var sprites = {
+	'energy' : $SpriteEnergy,
+	'player' : $SpritePlayer,
+	'homing' : $SpriteHoming,
+	'straight' : $SpriteStraight,
+}
 
 onready var birthTime = Time.get_ticks_usec()
 
 func lifeTime(): #in seconds
 	return (Time.get_ticks_usec() - birthTime) / 1000000.0
 
+func setSprite(name):
+	sprites[name].visible = true
+
 func _process(delta):
+	if homing:
+		velocity = Base.directionToClosest(self, 'player') * velocity.length()
+	
+	rotation = velocity.angle() + PI/2
+	
 	velocity = velocity.rotated(deg2rad(curve) * delta)
 	realPosition += velocity * delta
 	position = realPosition + sinAmplitude * sin(lifeTime() * sinFrequency) * velocity.normalized().rotated(PI/2)
