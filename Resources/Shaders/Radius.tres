@@ -1,0 +1,19 @@
+[gd_resource type="Shader" format=2]
+
+[resource]
+code = "shader_type canvas_item;
+
+uniform vec2 otherPlayerCenter1;
+uniform bool otherPlayerAlive1;
+
+varying smooth vec2 local_position;
+
+void vertex(){
+    local_position = VERTEX;
+}
+
+void fragment(){
+	if (otherPlayerAlive1 && abs(length(local_position)) >= abs(length(local_position - otherPlayerCenter1))) {
+		discard;
+	}
+}"
