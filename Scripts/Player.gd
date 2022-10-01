@@ -62,6 +62,8 @@ func _on_MoveTimer_timeout():
 
 
 func _on_Player_area_entered(area):
-	area.queue_free()
-	queue_free()
-	updateRadii()
+	if not is_queued_for_deletion():
+		area.queue_free()
+		queue_free()
+		updateRadii()
+		Base.spawnDeathParticles(self)

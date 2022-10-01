@@ -45,3 +45,4 @@ func shoot_burst(direction):
 func _on_Enemy_area_entered(area):
 	area.queue_free()
 	queue_free()
+	Base.spawnDeathParticles(self)
