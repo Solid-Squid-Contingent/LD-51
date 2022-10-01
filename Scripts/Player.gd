@@ -4,6 +4,8 @@ onready var target = $Target
 onready var moveTimer = $MoveTimer
 onready var chargeProgressBar = $ChargeProgress
 
+const riftScene = preload("res://Scenes/Rift.tscn")
+
 const movementRange = 150
 
 func _input(event):
@@ -18,11 +20,17 @@ func moveTo(targetPos):
 		target.visible = true
 		target.position = targetPos - position
 
+func spawnRift():
+	var rift = riftScene.instance()
+	rift.position = position
+	get_parent().add_child(rift)
 
 func _on_MoveTimer_timeout():
 	if target.visible:
+		spawnRift()
 		position += target.position
 		target.visible = false
+		spawnRift()
 
 
 func _on_Player_area_entered(area):

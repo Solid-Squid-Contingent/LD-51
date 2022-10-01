@@ -4,7 +4,7 @@ const speed = 5
 const bulletSpeed = 150
 const spreadAngle = 90
 const spreadNumber = 5
-const burstNumber = 3
+const burstNumber = 10
 const burstDistance = 0.2
 
 const bulletScene = preload("res://Scenes/Bullet.tscn")
@@ -42,11 +42,12 @@ func shoot():
 		for _burst in range(burstNumber):
 			for i in range(spreadNumber):
 				var bullet = bulletScene.instance()
-				get_parent().add_child(bullet)
 				bullet.position = self.position
 				
 				var angle = 0
 				if spreadNumber > 1:
 					angle = -spreadAngle/2.0 + i * spreadAngle / float(spreadNumber - 1)
 				bullet.velocity = (direction * bulletSpeed).rotated(deg2rad(angle))
+				
+				get_parent().add_child(bullet)
 			yield(get_tree().create_timer(burstDistance), "timeout")
