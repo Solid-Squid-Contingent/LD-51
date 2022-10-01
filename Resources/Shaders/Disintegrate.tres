@@ -18,7 +18,7 @@ float random(vec2 co)
 
 void fragment(){
 	if (random(floor(UV / TEXTURE_PIXEL_SIZE / pixelSize)) < disintegrationProgress)
-	 {
+	{
 		discard;
 	}
 }"

@@ -1,9 +1,13 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/TimeLeftLabel.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Fonts/dialog.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Scripts/HUD.gd" type="Script" id=3]
+[ext_resource path="res://Resources/Shaders/OneBit.tres" type="Shader" id=4]
 [ext_resource path="res://Scenes/TextBox.tscn" type="PackedScene" id=9]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 4 )
 
 [node name="HUD" type="CanvasLayer"]
 pause_mode = 2
@@ -15,6 +19,7 @@ position = Vector2( 116.736, 300 )
 scale = Vector2( 10, 10 )
 
 [node name="TimeLeftLabel" type="Label" parent="."]
+material = SubResource( 1 )
 margin_right = 40.0
 margin_bottom = 14.0
 custom_fonts/font = ExtResource( 2 )
