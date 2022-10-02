@@ -3,7 +3,7 @@
 [ext_resource path="res://Scripts/TimeLeftLabel.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Fonts/dialog.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Scripts/HUD.gd" type="Script" id=3]
-[ext_resource path="res://Resources/Shaders/OneBit.tres" type="Shader" id=4]
+[ext_resource path="res://Resources/Shaders/OneBitWhite.tres" type="Shader" id=4]
 [ext_resource path="res://Scenes/TextBox.tscn" type="PackedScene" id=9]
 
 [sub_resource type="ShaderMaterial" id=1]
@@ -15,10 +15,11 @@ script = ExtResource( 3 )
 
 [node name="TextBox" parent="." instance=ExtResource( 9 )]
 visible = false
-position = Vector2( 116.736, 300 )
+position = Vector2( 260, 165 )
 scale = Vector2( 10, 10 )
 
 [node name="TimeLeftLabel" type="Label" parent="."]
+pause_mode = 1
 material = SubResource( 1 )
 margin_right = 40.0
 margin_bottom = 14.0

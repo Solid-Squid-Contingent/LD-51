@@ -45,7 +45,6 @@ func show_all_text():
 
 func _on_ShowTextTimer_timeout():
 	label.set_visible_characters(label.get_visible_characters() + 1)
-	if not all_text_appeared():
-		timer.start()
-	else:
+	if all_text_appeared():
+		timer.stop()
 		emit_signal("all_text_appeared")

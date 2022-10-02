@@ -3,7 +3,6 @@ extends Node2D
 # warning-ignore:unused_signal
 signal restartGame()
 
-const enemyScene = preload("res://Scenes/Enemy.tscn")
 const swipeScene = preload("res://Scenes/ClearSwipe.tscn")
 
 onready var textbox = $"HUD/TextBox"
@@ -15,9 +14,9 @@ const playerScenes = {
 }
 
 onready var playerPositions = {
-	'teleport' : $PlayerTeleport,
-	'move' : $PlayerMove,
-	'attack' : $PlayerAttack
+	'teleport' : 	$Positions/PlayerTeleport,
+	'move' : 		$Positions/PlayerMove,
+	'attack' : 		$Positions/PlayerAttack
 }
 
 onready var playerParent = $Players
@@ -27,17 +26,17 @@ onready var screenShaker = $Camera/ScreenShaker
 var dialogProgress = 0
 var tutorialProgress = 0
 var dialog = []
-var inMenu = true
+var inMenu = false #TODO
 
 func _ready():
-	loadLevel() #TODO
+	call_deferred("loadLevel") #TODO
 
 func _input(event):
 	if !inMenu and event.is_action_pressed("advance"):
 		if not textbox.all_text_appeared():
 			textbox.show_all_text()
 		else:
-			print_next_dialog_line()
+			printNextDialogLine()
 	elif !inMenu and event.is_action_pressed("skip_dialog"):
 		textbox.show_all_text()
 		dialogProgress = dialog.size()
@@ -48,34 +47,34 @@ func setTutorialProgress(newTutorialProgress):
 	dialogProgress = 0
 	get_parent().tutorialProgress = newTutorialProgress
 	get_parent().saveProgress()
-		
-	loadDialog()
+	
+	loadLevel()
 	loadTutorialSpecificNodes()
 
 func progressInTutorial():
 	setTutorialProgress(tutorialProgress + 1)
-	print_next_dialog_line()
 
 
 func loadTutorialSpecificNodes():
-	loadLevel()
+	pass
 
-func loadDialog():
+func loadDialog(filename):
 	dialog = []
 	
 	var dialogFile = File.new()
-	var filename = "res://Resources/Dialog/"+str(tutorialProgress)+".txt"
+	var fullFilename = "res://Resources/Dialog/"+filename+".txt"
 		
-	if not dialogFile.file_exists(filename):
+	if not dialogFile.file_exists(fullFilename):
+		push_warning("Dialog file "+fullFilename+" not found")
 		return
 	
-	dialogFile.open(filename, File.READ)
+	dialogFile.open(fullFilename, File.READ)
 	while !dialogFile.eof_reached():
 		var line = dialogFile.get_line()
 		dialog.append(line)
 	dialogFile.close()
 
-func print_next_dialog_line():
+func printNextDialogLine():
 	if dialogProgress >= dialog.size():
 		hideDialog()
 	else:
@@ -96,14 +95,6 @@ func showDialog(line):
 func enemyDied(_enemy):
 	screenShaker.start()
 
-func spawn_enemy(type):
-	var pos = $SpawnPath.curve.interpolate_baked(randf() * $SpawnPath.curve.get_baked_length(), false)
-	var enemy = enemyScene.instance()
-	enemy.position = pos
-	enemy.type = type
-	enemyParent.add_child(enemy)
-	enemy.connect("died", self, "enemyDied")
-
 func loadLevel():
 	var level = DataTypes.LevelType.fromJSON("Level1")
 	$HUD.setTime(level.duration)
@@ -119,12 +110,13 @@ func loadLevel():
 		player.position = playerPositions[playerName].position
 		playerParent.add_child(player)
 		player.connect("died", self, "playerDied")
-	for spawnType in level.spawn:
-		for i in range(spawnType.number):
-			var delay = spawnType.delay * i + spawnType.startDelay
-			# warning-ignore:return_value_discarded
-			get_tree().create_timer(delay).connect("timeout", self, "spawn_enemy", [spawnType.enemyType])
 		
+	$SpawnPath.loadSpawns(level)
+	
+	if not level.introDialog.empty():
+		loadDialog(level.introDialog)
+		printNextDialogLine()
+	
 func swipeDone():
 	loadLevel()
 

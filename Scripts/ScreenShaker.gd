@@ -17,6 +17,11 @@ func start(duration = 0.3, frequency = 20, newAmplitude = 25):
 	new_shake()
 
 func new_shake():
+	if camera.zoom.length() <= 0.99:
+		$Duration.stop()
+		$Frequency.stop()
+		return
+		
 	var randomOffset = Vector2(rand_range(amplitude, -amplitude),
 								 rand_range(amplitude, -amplitude))
 	$ShakeTween.interpolate_property(camera, "offset", camera.offset, randomOffset, $Frequency.wait_time, TRANS, EASE)
@@ -25,6 +30,8 @@ func new_shake():
 func reset():
 	$ShakeTween.interpolate_property(camera, "offset", camera.offset, Vector2(), $Frequency.wait_time, TRANS, EASE)
 	$ShakeTween.start()
+	amplitude = 0
+	$Frequency.wait_time = 1
 
 func _on_Frequency_timeout():
 	new_shake()

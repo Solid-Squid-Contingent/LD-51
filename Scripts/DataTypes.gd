@@ -71,12 +71,14 @@ class LevelType extends Reference:
 	var players = ["teleporting"]
 	var duration = 16
 	var background : Texture
+	var introDialog = ""
 	
 	static func fromDict(dict):
 		var type = LevelType.new()
 		type.players = dict['players']
 		type.duration = dict['duration']
 		type.background = load("res://Resources/Graphics/Backgrounds/" + dict['background'] + ".png")
+		type.introDialog = dict['introDialog']
 		for s in dict['spawn']:
 			type.spawn.append(SpawnType.fromDict(s))
 		return type
