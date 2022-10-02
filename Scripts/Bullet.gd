@@ -36,6 +36,7 @@ func lifeTime(): #in seconds
 
 func impact():
 	queue_free()
+	return false
 
 func _process(delta):
 	if type.homing:

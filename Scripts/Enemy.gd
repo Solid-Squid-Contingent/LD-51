@@ -56,7 +56,9 @@ func impact(object):
 	if is_queued_for_deletion() or object.is_queued_for_deletion():
 		return
 		
-	object.impact()
+	var instantKill = object.impact()
+	if instantKill:
+		livesLeft = 1
 	livesLeft -= 1
 	if livesLeft > 0:
 		$Health.reduce()
@@ -64,11 +66,12 @@ func impact(object):
 		Base.spawnDeathParticles(self)
 	else:
 		if not type.nextForm.empty():
-			var enemy = enemyScene.instance()
-			enemy.position = position
-			enemy.type = DataTypes.EnemyType.fromJSON(type.nextForm)
-			get_parent().call_deferred("add_child", enemy)
-			game.connectEnemy(enemy)
+			if not instantKill:
+				var enemy = enemyScene.instance()
+				enemy.position = position
+				enemy.type = DataTypes.EnemyType.fromJSON(type.nextForm)
+				get_parent().call_deferred("add_child", enemy)
+				game.connectEnemy(enemy)
 		else:
 			Base.spawnHalfSprites(self, type.spriteName, type.halfSpriteDirection, type.spriteScale)
 			

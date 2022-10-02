@@ -26,7 +26,11 @@ const localClearScene = preload("res://Scenes/LocalClear.tscn")
 
 const movementRange = 200
 
-const spriteOffset = Vector2(0, -20)
+const spriteOffsets = {
+	"Default" : Vector2(-2, -20),
+	"UFO" : Vector2(-4, -10),
+	"Spider" : Vector2(0, -20)
+}
 
 const TRANS = Tween.TRANS_SINE
 const EASE = Tween.EASE_IN_OUT
@@ -38,9 +42,10 @@ func _ready():
 	sprite.scale = Vector2(spriteScale, spriteScale)
 	target.texture = load("res://Resources/Graphics/Ships/" + spriteName + "/outline.png")
 	target.scale = Vector2(spriteScale, spriteScale)
-	self.get_tree().call_group('player', 'playerMoved')
+	sprite.position = spriteOffsets[spriteName]
 	upTween()
 	showHearts()
+	updateRadii()
 
 func upTween():
 	$UpTween.interpolate_property(collisionShape, "position",
@@ -78,7 +83,7 @@ func moveTargetTo(targetPos):
 			if player != self && d < dist + 50:
 				return
 		target.visible = true
-		target.position = to_local(targetPos) + spriteOffset
+		target.position = to_local(targetPos) + spriteOffsets[spriteName]
 
 func playerMoved():
 	var index = 1
@@ -102,7 +107,7 @@ func updateRadii():
 func move():
 	if target.visible:
 		spawnRift()
-		position += target.position - spriteOffset
+		position += target.position - spriteOffsets[spriteName]
 		target.visible = false
 		spawnRift()
 		updateRadii()
@@ -113,16 +118,21 @@ func showHearts():
 
 func _on_MoveTimer_timeout():
 	move()
+
+func spawnLocalClear():
+	var clear = localClearScene.instance()
+	clear.position = position
+	get_parent().call_deferred("add_child", clear)
+	
 	
 func loseLife():
 	lives -= 1
 	showHearts()
 	hearts[lives].disappear(lives > 0)
+	
 	if lives > 0:
 		emit_signal("hit", self)
-		var clear = localClearScene.instance()
-		clear.position = position
-		get_parent().call_deferred("add_child", clear)
+		spawnLocalClear()
 		$IFrameTimer.start()
 	else:
 		sprite.visible = false
@@ -139,6 +149,7 @@ func loseLife():
 func impact():
 	for _i in range(lives):
 		loseLife()
+	return true
 
 func _on_Player_area_entered(area):
 	if lives <= 0 or area.is_queued_for_deletion() or not $IFrameTimer.is_stopped():

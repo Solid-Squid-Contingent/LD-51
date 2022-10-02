@@ -16,6 +16,7 @@ func shoot():
 	
 func move():
 	.move()
-	shoot()
+	if lives > 0:
+		shoot()
 	
 	

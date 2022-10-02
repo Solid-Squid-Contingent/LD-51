@@ -1,13 +1,12 @@
-[gd_resource type="Theme" load_steps=34 format=2]
+[gd_resource type="Theme" load_steps=35 format=2]
 
 [ext_resource path="res://Resources/Graphics/UI/toggle_off.png" type="Texture" id=1]
 [ext_resource path="res://Resources/Graphics/UI/slider.png" type="Texture" id=2]
 [ext_resource path="res://Resources/Graphics/UI/knob.png" type="Texture" id=3]
-[ext_resource path="res://Resources/Graphics/UI/drop_down.png" type="Texture" id=4]
 [ext_resource path="res://Resources/Graphics/UI/menu_button_disabled.png" type="Texture" id=5]
 [ext_resource path="res://Resources/Graphics/UI/toggle_on.png" type="Texture" id=6]
-[ext_resource path="res://Resources/Graphics/UI/button_normal.tres" type="StyleBox" id=7]
-[ext_resource path="res://Resources/Graphics/UI/button_pressed.tres" type="StyleBox" id=8]
+[ext_resource path="res://Resources/Graphics/UI/menu_button.png" type="Texture" id=7]
+[ext_resource path="res://Resources/Graphics/UI/menu_button_pressed.png" type="Texture" id=8]
 [ext_resource path="res://Resources/Fonts/menu.tres" type="DynamicFont" id=10]
 [ext_resource path="res://Resources/Fonts/Jacmax.ttf" type="DynamicFontData" id=11]
 
@@ -21,6 +20,10 @@ region_rect = Rect2( 0, 0, 168, 25 )
 
 [sub_resource type="StyleBoxEmpty" id=2]
 
+[sub_resource type="StyleBoxTexture" id=25]
+texture = ExtResource( 8 )
+region_rect = Rect2( 0, 0, 164, 34 )
+
 [sub_resource type="StyleBoxEmpty" id=3]
 
 [sub_resource type="StyleBoxEmpty" id=4]
@@ -33,31 +36,26 @@ region_rect = Rect2( 0, 0, 168, 25 )
 
 [sub_resource type="StyleBoxEmpty" id=8]
 
+[sub_resource type="StyleBoxEmpty" id=30]
+
+[sub_resource type="StyleBoxEmpty" id=31]
+
 [sub_resource type="StyleBoxTexture" id=10]
 texture = ExtResource( 2 )
-region_rect = Rect2( 0, 0, 224, 9 )
-
-[sub_resource type="StyleBoxTexture" id=11]
-content_margin_left = 10.0
-content_margin_right = 10.0
-content_margin_top = 10.0
-content_margin_bottom = 10.0
-texture = ExtResource( 4 )
-region_rect = Rect2( 0, 0, 162, 82 )
-
-[sub_resource type="StyleBoxTexture" id=12]
-content_margin_left = 10.0
-content_margin_right = 10.0
-content_margin_top = 10.0
-content_margin_bottom = 10.0
-texture = ExtResource( 4 )
-region_rect = Rect2( 0, 0, 162, 82 )
-
-[sub_resource type="StyleBoxTexture" id=13]
-texture = ExtResource( 4 )
-region_rect = Rect2( 0, 0, 162, 82 )
 
 [sub_resource type="ImageTexture" id=14]
+
+[sub_resource type="StyleBoxTexture" id=26]
+texture = ExtResource( 5 )
+region_rect = Rect2( 0, 0, 164, 34 )
+
+[sub_resource type="StyleBoxTexture" id=27]
+texture = ExtResource( 7 )
+region_rect = Rect2( 0, 0, 164, 34 )
+
+[sub_resource type="StyleBoxTexture" id=28]
+texture = ExtResource( 8 )
+region_rect = Rect2( 0, 0, 164, 34 )
 
 [sub_resource type="ImageTexture" id=15]
 
@@ -69,21 +67,8 @@ region_rect = Rect2( 0, 0, 162, 82 )
 
 [sub_resource type="ImageTexture" id=19]
 
-[sub_resource type="StyleBoxTexture" id=20]
-content_margin_left = 5.0
-content_margin_right = 5.0
-content_margin_top = 5.0
-content_margin_bottom = 5.0
-texture = ExtResource( 4 )
-region_rect = Rect2( 0, 0, 162, 82 )
-
-[sub_resource type="StyleBoxTexture" id=21]
-content_margin_left = 5.0
-content_margin_right = 5.0
-content_margin_top = 5.0
-content_margin_bottom = 5.0
-texture = ExtResource( 4 )
-region_rect = Rect2( 0, 0, 162, 82 )
+[sub_resource type="StyleBoxFlat" id=29]
+bg_color = Color( 1, 1, 1, 1 )
 
 [sub_resource type="DynamicFont" id=22]
 size = 80
@@ -99,17 +84,18 @@ font_data = ExtResource( 11 )
 
 [resource]
 default_font = ExtResource( 10 )
-Button/colors/font_color = Color( 1, 1, 1, 1 )
-Button/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
-Button/colors/font_color_hover = Color( 0.784314, 0.784314, 0.784314, 1 )
-Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
+Button/colors/font_color = Color( 0, 0, 0, 1 )
+Button/colors/font_color_disabled = Color( 1, 1, 1, 1 )
+Button/colors/font_color_focus = Color( 0, 0, 0, 1 )
+Button/colors/font_color_hover = Color( 0, 0, 0, 1 )
+Button/colors/font_color_pressed = Color( 0, 0, 0, 1 )
 Button/constants/hseparation = 0
 Button/fonts/font = ExtResource( 10 )
 Button/styles/disabled = SubResource( 1 )
 Button/styles/focus = SubResource( 2 )
-Button/styles/hover = ExtResource( 7 )
-Button/styles/normal = ExtResource( 7 )
-Button/styles/pressed = ExtResource( 8 )
+Button/styles/hover = SubResource( 25 )
+Button/styles/normal = SubResource( 25 )
+Button/styles/pressed = SubResource( 25 )
 CheckButton/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
 CheckButton/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
 CheckButton/colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
@@ -128,64 +114,30 @@ CheckButton/styles/hover = SubResource( 5 )
 CheckButton/styles/hover_pressed = SubResource( 6 )
 CheckButton/styles/normal = SubResource( 7 )
 CheckButton/styles/pressed = SubResource( 8 )
-HScrollBar/icons/decrement = null
-HScrollBar/icons/decrement_highlight = null
-HScrollBar/icons/increment = null
-HScrollBar/icons/increment_highlight = null
-HScrollBar/styles/grabber = null
-HScrollBar/styles/grabber_highlight = null
-HScrollBar/styles/grabber_pressed = null
-HScrollBar/styles/scroll = null
-HScrollBar/styles/scroll_focus = null
 HSlider/icons/grabber = ExtResource( 3 )
 HSlider/icons/grabber_disabled = ExtResource( 3 )
 HSlider/icons/grabber_highlight = ExtResource( 3 )
 HSlider/icons/tick = null
+HSlider/styles/grabber_area = SubResource( 30 )
+HSlider/styles/grabber_area_highlight = SubResource( 31 )
 HSlider/styles/slider = SubResource( 10 )
-ItemList/colors/font_color = Color( 1, 1, 1, 1 )
-ItemList/colors/font_color_selected = Color( 0.784314, 0.784314, 0.784314, 1 )
-ItemList/colors/guide_color = Color( 0, 0, 0, 0.1 )
-ItemList/constants/hseparation = 4
-ItemList/constants/icon_margin = 4
-ItemList/constants/line_separation = 2
-ItemList/constants/vseparation = 2
-ItemList/fonts/font = ExtResource( 10 )
-ItemList/styles/bg = SubResource( 11 )
-ItemList/styles/bg_focus = null
-ItemList/styles/cursor = null
-ItemList/styles/cursor_unfocused = null
-ItemList/styles/selected = null
-ItemList/styles/selected_focus = null
-LineEdit/colors/clear_button_color = Color( 0.88, 0.88, 0.88, 1 )
-LineEdit/colors/clear_button_color_pressed = Color( 1, 1, 1, 1 )
-LineEdit/colors/cursor_color = Color( 0.94, 0.94, 0.94, 1 )
-LineEdit/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
-LineEdit/colors/font_color_selected = Color( 0, 0, 0, 1 )
-LineEdit/colors/font_color_uneditable = Color( 0.88, 0.88, 0.88, 0.5 )
-LineEdit/colors/selection_color = Color( 0.49, 0.49, 0.49, 1 )
-LineEdit/constants/minimum_spaces = 12
-LineEdit/fonts/font = ExtResource( 10 )
-LineEdit/icons/clear = null
-LineEdit/styles/focus = null
-LineEdit/styles/normal = SubResource( 12 )
-LineEdit/styles/read_only = SubResource( 13 )
-OptionButton/colors/font_color = Color( 1, 1, 1, 1 )
-OptionButton/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
-OptionButton/colors/font_color_hover = Color( 0.784314, 0.784314, 0.784314, 1 )
-OptionButton/colors/font_color_pressed = Color( 1, 1, 1, 1 )
+OptionButton/colors/font_color = Color( 0, 0, 0, 1 )
+OptionButton/colors/font_color_disabled = Color( 1, 1, 1, 1 )
+OptionButton/colors/font_color_hover = Color( 0, 0, 0, 1 )
+OptionButton/colors/font_color_pressed = Color( 0, 0, 0, 1 )
 OptionButton/constants/arrow_margin = 2
 OptionButton/constants/hseparation = 2
 OptionButton/fonts/font = ExtResource( 10 )
 OptionButton/icons/arrow = SubResource( 14 )
-OptionButton/styles/disabled = null
-OptionButton/styles/focus = null
-OptionButton/styles/hover = null
-OptionButton/styles/normal = null
-OptionButton/styles/pressed = null
-PopupMenu/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
-PopupMenu/colors/font_color_accel = Color( 0.7, 0.7, 0.7, 0.8 )
-PopupMenu/colors/font_color_disabled = Color( 0.4, 0.4, 0.4, 0.8 )
-PopupMenu/colors/font_color_hover = Color( 0.88, 0.88, 0.88, 1 )
+OptionButton/styles/disabled = SubResource( 26 )
+OptionButton/styles/focus = SubResource( 27 )
+OptionButton/styles/hover = SubResource( 27 )
+OptionButton/styles/normal = SubResource( 27 )
+OptionButton/styles/pressed = SubResource( 28 )
+PopupMenu/colors/font_color = Color( 0, 0, 0, 1 )
+PopupMenu/colors/font_color_accel = Color( 0, 0, 0, 1 )
+PopupMenu/colors/font_color_disabled = Color( 0, 0, 0, 1 )
+PopupMenu/colors/font_color_hover = Color( 0, 0, 0, 1 )
 PopupMenu/constants/hseparation = 4
 PopupMenu/constants/vseparation = 4
 PopupMenu/fonts/font = ExtResource( 10 )
@@ -197,10 +149,9 @@ PopupMenu/icons/unchecked = SubResource( 19 )
 PopupMenu/styles/hover = null
 PopupMenu/styles/labeled_separator_left = null
 PopupMenu/styles/labeled_separator_right = null
-PopupMenu/styles/panel = SubResource( 20 )
+PopupMenu/styles/panel = SubResource( 29 )
 PopupMenu/styles/panel_disabled = null
 PopupMenu/styles/separator = null
-PopupPanel/styles/panel = SubResource( 21 )
 RichTextLabel/colors/default_color = Color( 1, 1, 1, 1 )
 RichTextLabel/colors/font_color_selected = Color( 0.49, 0.49, 0.49, 1 )
 RichTextLabel/colors/font_color_shadow = Color( 0, 0, 0, 0 )

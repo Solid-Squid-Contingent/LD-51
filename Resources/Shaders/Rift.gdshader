@@ -16,7 +16,10 @@ float random(vec2 co)
 }
 
 void vertex(){
-	VERTEX += vec2(sin(offsets.x * TIME * 10.0 + offsets.y * VERTEX.x * 300.0 + offsets.z * VERTEX.y * 200.0)*20.0, 0);
+	VERTEX += vec2(
+		  sin(-offsets.w * TIME * 7.0 + offsets.y * VERTEX.x * 170.0 + offsets.z * VERTEX.y * 80.0)*5.0
+		+ sin(offsets.x * TIME * 10.0 + offsets.y * VERTEX.x * 300.0 + offsets.z * VERTEX.y * 200.0)*5.0
+		, 0);
 }
 
 void fragment(){

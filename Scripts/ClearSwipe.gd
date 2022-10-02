@@ -3,7 +3,7 @@ extends KinematicBody2D
 signal done
 
 func impact():
-	pass
+	return true
 
 func _physics_process(delta):
 	# warning-ignore:return_value_discarded

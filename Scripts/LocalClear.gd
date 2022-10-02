@@ -11,7 +11,7 @@ func _on_Timer_timeout():
 	queue_free()
 
 func impact():
-	pass
+	return true
 
 
 func _on_LocalClear_area_entered(area):
