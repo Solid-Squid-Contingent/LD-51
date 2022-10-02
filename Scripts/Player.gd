@@ -1,6 +1,7 @@
 extends Area2D
 
 signal stopGraze
+signal hit
 signal died
 
 onready var target = $Target
@@ -8,13 +9,18 @@ onready var moveTimer = $MoveTimer
 onready var chargeProgressBar = $ChargeProgress
 onready var moveRadiusSprite = $Radius
 onready var sprite = $Sprite
+onready var hearts = [$Heart1, $Heart2, $Heart3]
 
 export var spriteName: String
 export var spriteScale: float
 export var halfSpriteDirection: Vector2
+export var maxLives: int
+
+onready var lives = maxLives
 
 const riftScene = preload("res://Scenes/Rift.tscn")
 const grazeScene = preload("res://Scenes/GrazeParticles.tscn")
+const localClearScene = preload("res://Scenes/LocalClear.tscn")
 
 const movementRange = 200
 
@@ -28,6 +34,7 @@ func _ready():
 	$Sprite.scale = Vector2(spriteScale, spriteScale)
 	self.get_tree().call_group('player', 'playerMoved')
 	upTween()
+	showHearts()
 
 func upTween():
 	$UpTween.interpolate_property(sprite, "position", Vector2(0,3), Vector2(0,-3), rand_range(1, 2), TRANS, EASE)
@@ -38,6 +45,9 @@ func downTween():
 	$DownTween.start()
 
 func _input(event):
+	if lives <= 0:
+		return
+		
 	if event.is_action_pressed('move') or (event is InputEventMouseMotion and Input.is_action_pressed('move')):
 		moveTargetTo(event.position)
 
@@ -81,18 +91,36 @@ func move():
 		spawnRift()
 		updateRadii()
 
+func showHearts():
+	for i in range(maxLives):
+		hearts[i].show()
+
 func _on_MoveTimer_timeout():
 	move()
 
 
 func _on_Player_area_entered(area):
-	if not is_queued_for_deletion():
+	if lives > 0 and not area.is_queued_for_deletion() and $IFrameTimer.is_stopped():
+		lives -= 1
+		showHearts()
+		hearts[lives].disappear(lives > 0)
+		if lives > 0:
+			emit_signal("hit", self)
+			var clear = localClearScene.instance()
+			clear.position = position
+			get_parent().call_deferred("add_child", clear)
+			$IFrameTimer.start()
+		else:
+			sprite.visible = false
+			chargeProgressBar.visible = false
+			target.visible = false
+			remove_from_group('player')
+			updateRadii()
+			Base.spawnHalfSprites(self, spriteName, halfSpriteDirection, spriteScale)
+			emit_signal("died", self)
+		
 		area.queue_free()
-		queue_free()
-		emit_signal("died", self)
-		updateRadii()
 		Base.spawnDeathParticles(self)
-		Base.spawnHalfSprites(self, spriteName, halfSpriteDirection, spriteScale)
 
 
 func _on_GrazeArea_area_entered(area):

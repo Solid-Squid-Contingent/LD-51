@@ -1,0 +1,41 @@
+[gd_resource type="Shader" format=2]
+
+[resource]
+code = "shader_type canvas_item;
+
+uniform float disintegrationProgress = 0;
+uniform float pixelSize = 1.0;
+
+uniform int steps = 2;
+
+varying smooth vec2 localPosition;
+
+const float PI = 3.14159265358979323846;
+
+float random(vec2 co)
+{
+    float a = 12.9898;
+    float b = 78.233;
+    float c = 43758.5453;
+    float dt= dot(co.xy ,vec2(a,b));
+    float sn= mod(dt,3.14);
+    return fract(sin(sn) * c);
+}
+
+void vertex(){
+    localPosition = VERTEX - vec2(150, 150);
+}
+
+const float seperatorThickness = 0.05;
+
+void fragment(){
+	float segmentAngle = 2.0*PI/float(steps);
+	//float angle = atan(localPosition.y, localPosition.x);
+	float angle = mod(atan(localPosition.y, localPosition.x) + PI/2.0, segmentAngle);
+	if (random(floor(UV / TEXTURE_PIXEL_SIZE / pixelSize)) < disintegrationProgress ||
+		angle < seperatorThickness || angle > segmentAngle - seperatorThickness)
+		//angle < -PI || angle > 2.0*PI)
+	{
+		discard;
+	}
+}"

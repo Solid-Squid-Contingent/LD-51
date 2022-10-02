@@ -110,12 +110,18 @@ func loadLevel():
 		player.position = playerPositions[playerName].position
 		playerParent.add_child(player)
 		player.connect("died", self, "playerDied")
+		player.connect("hit", self, "playerHit")
 		
 	$SpawnPath.loadSpawns(level)
 	
 	if not level.introDialog.empty():
 		loadDialog(level.introDialog)
 		printNextDialogLine()
+
+func connectEnemy(enemy):
+	enemy.game = self
+	enemy.connect("died", self, "enemyDied")
+	enemy.connect("hit", self, "enemyHit")
 	
 func swipeDone():
 	loadLevel()
@@ -139,3 +145,6 @@ func playerDied(player):
 	$Camera.reset(0.1)
 	yield(get_tree().create_timer(0.1), "timeout")
 	loadLevel()
+	
+func playerHit(_player):
+	screenShaker.start(1)

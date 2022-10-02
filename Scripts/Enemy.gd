@@ -17,10 +17,8 @@ func _ready():
 	$Sprite.scale = Vector2(type.spriteScale, type.spriteScale)
 	$BulletTimer.wait_time = type.bulletWaveTime
 	$BulletTimer.start()
-	
+	$Health.setLives(type.lives)
 	livesLeft = type.lives
-	if type.lives > 1:
-		$Health.visible = true
 
 func _process(delta):
 	position += Base.directionToClosest(self, 'player') * type.speed * delta
@@ -60,8 +58,8 @@ func impact(object):
 		
 	object.impact()
 	livesLeft -= 1
-	if livesLeft >= 1:
-		$Health.value = float(livesLeft) / type.lives
+	if livesLeft > 0:
+		$Health.reduce()
 		emit_signal("hit", self)
 		Base.spawnDeathParticles(self)
 	else:
@@ -69,10 +67,8 @@ func impact(object):
 			var enemy = enemyScene.instance()
 			enemy.position = position
 			enemy.type = DataTypes.EnemyType.fromJSON(type.nextForm)
-			enemy.game = game
 			get_parent().call_deferred("add_child", enemy)
-			enemy.connect("died", game, "enemyDied")
-			enemy.connect("hit", game, "enemyHit")
+			game.connectEnemy(enemy)
 		else:
 			Base.spawnHalfSprites(self, type.spriteName, type.halfSpriteDirection, type.spriteScale)
 			

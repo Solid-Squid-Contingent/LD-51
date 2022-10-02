@@ -28,7 +28,7 @@ func setSprite():
 		collision_mask = 4
 	else:
 		collision_layer = 8
-		collision_mask = 1
+		collision_mask = 1+16+32
 		
 
 func lifeTime(): #in seconds

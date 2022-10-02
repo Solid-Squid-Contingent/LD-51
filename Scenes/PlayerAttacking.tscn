@@ -24,9 +24,10 @@ shader_param/pixelSize = 1.0
 [node name="Player" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 spriteName = "UFO"
+maxLives = 1
 
 [node name="Radius" parent="." index="0"]
 material = SubResource( 1 )
 
-[node name="ChargeProgress" parent="." index="5"]
+[node name="ChargeProgress" parent="." index="7"]
 material = SubResource( 2 )
