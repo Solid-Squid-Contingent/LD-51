@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ship.png-2bf19b3fc260f48265b018a7c2d30330.stex"
+path="res://.import/idle.png-888cef67852a7807311c0844e519a160.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/Graphics/Ships/Junk1/ship.png"
-dest_files=[ "res://.import/ship.png-2bf19b3fc260f48265b018a7c2d30330.stex" ]
+source_file="res://Resources/Graphics/Ships/Spider/idle.png"
+dest_files=[ "res://.import/idle.png-888cef67852a7807311c0844e519a160.stex" ]
 
 [params]
 

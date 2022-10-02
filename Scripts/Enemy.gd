@@ -13,7 +13,7 @@ var enemyScene = load("res://Scenes/Enemy.tscn")
 
 func _ready():
 	call_deferred('shoot')
-	$Sprite.texture = load("res://Resources/Graphics/Ships/" + type.spriteName + "/ship.png")
+	$Sprite.frames = load("res://Resources/Graphics/Ships/" + type.spriteName + "/anim.tres")
 	$Sprite.scale = Vector2(type.spriteScale, type.spriteScale)
 	$BulletTimer.wait_time = type.bulletWaveTime
 	$BulletTimer.start()
