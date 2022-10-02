@@ -2,13 +2,13 @@
 	"spawn" : [
 		{
 			"enemyType" : "Dude",
-			"number" : 4,
-			"delay" : 2,
+			"number" : 6,
+			"delay" : 2.5,
 			"startDelay" : 0,
 		},
 	],
 	"players" : ["teleport", "move", "attack"],
-	"duration" : 7,
+	"duration" : 15,
 	"background" : "Planets"
 }
 
