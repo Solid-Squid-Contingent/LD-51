@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Space.png-1e1bec90500767421dc4367f7bc9d3f9.stex"
+path="res://.import/Belt8.png-222c41c02fa0d51be65b7c36097e048d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/Graphics/Backgrounds/Space.png"
-dest_files=[ "res://.import/Space.png-1e1bec90500767421dc4367f7bc9d3f9.stex" ]
+source_file="res://Resources/Graphics/Backgrounds/Belt/Belt8.png"
+dest_files=[ "res://.import/Belt8.png-222c41c02fa0d51be65b7c36097e048d.stex" ]
 
 [params]
 

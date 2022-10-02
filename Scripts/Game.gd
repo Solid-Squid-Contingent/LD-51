@@ -19,6 +19,12 @@ onready var playerPositions = {
 	'attack' : 		$Positions/PlayerAttack
 }
 
+onready var backgrounds = {
+	'Belt' : 	$Backgrounds/Belt,
+	'Planets' : $Backgrounds/Planets,
+	'Space' : 	$Backgrounds/Space
+}
+
 onready var playerParent = $Players
 onready var enemyParent = $Enemies
 onready var screenShaker = $Camera/ScreenShaker
@@ -98,7 +104,8 @@ func enemyHit(_enemy):
 func loadLevel():
 	var level = DataTypes.LevelType.fromJSON("Level1")
 	$HUD.setTime(level.duration)
-	$Background.texture = level.background
+	for bg in backgrounds:
+		backgrounds[bg].visible = (bg == level.background)
 	
 	for child in playerParent.get_children():
 		child.queue_free()

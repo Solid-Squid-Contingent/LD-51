@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Belt.png-8749e1a67f79a1adceb1b452ea2997ef.stex"
+path="res://.import/Planets_bg.png-d9e281c9dec709a727c2b0fe498848f0.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/Graphics/Backgrounds/Belt.png"
-dest_files=[ "res://.import/Belt.png-8749e1a67f79a1adceb1b452ea2997ef.stex" ]
+source_file="res://Resources/Graphics/Backgrounds/Planets/Planets_bg.png"
+dest_files=[ "res://.import/Planets_bg.png-d9e281c9dec709a727c2b0fe498848f0.stex" ]
 
 [params]
 

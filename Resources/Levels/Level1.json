@@ -9,7 +9,7 @@
 	],
 	"players" : ["teleport", "move", "attack"],
 	"duration" : 30,
-	"background" : "Planets",
+	"background" : "Belt",
 	"introDialog" : ""
 }
 

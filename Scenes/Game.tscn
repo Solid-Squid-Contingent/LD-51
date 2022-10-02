@@ -1,10 +1,16 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scenes/Camera.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Resources/Graphics/Backgrounds/Belt.png" type="Texture" id=2]
+[ext_resource path="res://Resources/Graphics/Backgrounds/Space/Space.png" type="Texture" id=2]
 [ext_resource path="res://Scripts/Game.gd" type="Script" id=3]
+[ext_resource path="res://Resources/Graphics/Backgrounds/Planets/Planets_bg.png" type="Texture" id=4]
 [ext_resource path="res://Scripts/SpawnPath.gd" type="Script" id=5]
 [ext_resource path="res://Scenes/HUD.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Resources/Graphics/Backgrounds/Planets/Planets2.png" type="Texture" id=7]
+[ext_resource path="res://Resources/Graphics/Backgrounds/Planets/Planets1.png" type="Texture" id=8]
+[ext_resource path="res://Resources/Graphics/Backgrounds/Planets/Planets3.png" type="Texture" id=9]
+[ext_resource path="res://Scripts/Belt.gd" type="Script" id=10]
+[ext_resource path="res://Resources/Graphics/Backgrounds/Belt/Belt_bg.png" type="Texture" id=11]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -17,7 +23,68 @@ script = ExtResource( 3 )
 
 [node name="HUD" parent="." instance=ExtResource( 6 )]
 
-[node name="Background" type="Sprite" parent="."]
+[node name="Backgrounds" type="Node2D" parent="."]
+
+[node name="Planets" type="ParallaxBackground" parent="Backgrounds"]
+visible = false
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Backgrounds/Planets"]
+motion_scale = Vector2( 0.1, 0.1 )
+motion_offset = Vector2( -864, -486 )
+
+[node name="Sprite" type="Sprite" parent="Backgrounds/Planets/ParallaxLayer"]
+position = Vector2( 960, 540 )
+scale = Vector2( 2.667, 2.667 )
+texture = ExtResource( 4 )
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="Backgrounds/Planets"]
+motion_scale = Vector2( 0.8, 0.8 )
+motion_offset = Vector2( -192, -108 )
+
+[node name="Sprite" type="Sprite" parent="Backgrounds/Planets/ParallaxLayer2"]
+position = Vector2( 960, 540 )
+scale = Vector2( 2.667, 2.667 )
+texture = ExtResource( 8 )
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="Backgrounds/Planets"]
+motion_scale = Vector2( 0.5, 0.5 )
+motion_offset = Vector2( -480, -270 )
+
+[node name="Sprite" type="Sprite" parent="Backgrounds/Planets/ParallaxLayer3"]
+position = Vector2( 960, 540 )
+scale = Vector2( 2.667, 2.667 )
+texture = ExtResource( 7 )
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="Backgrounds/Planets"]
+motion_scale = Vector2( 0.6, 0.6 )
+motion_offset = Vector2( -384, -216 )
+
+[node name="Sprite" type="Sprite" parent="Backgrounds/Planets/ParallaxLayer4"]
+position = Vector2( 960, 540 )
+scale = Vector2( 2.667, 2.667 )
+texture = ExtResource( 9 )
+
+[node name="Belt" type="ParallaxBackground" parent="Backgrounds"]
+visible = false
+script = ExtResource( 10 )
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Backgrounds/Belt"]
+motion_scale = Vector2( 0.1, 0.1 )
+motion_offset = Vector2( -864, -486 )
+
+[node name="Sprite" type="Sprite" parent="Backgrounds/Belt/ParallaxLayer"]
+position = Vector2( 960, 540 )
+scale = Vector2( 2.667, 2.667 )
+texture = ExtResource( 11 )
+
+[node name="Space" type="ParallaxBackground" parent="Backgrounds"]
+visible = false
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Backgrounds/Space"]
+motion_scale = Vector2( 0.1, 0.1 )
+motion_offset = Vector2( -864, -486 )
+
+[node name="Sprite" type="Sprite" parent="Backgrounds/Space/ParallaxLayer"]
 position = Vector2( 960, 540 )
 scale = Vector2( 2.667, 2.667 )
 texture = ExtResource( 2 )
