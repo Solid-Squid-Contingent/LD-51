@@ -93,7 +93,7 @@ func showDialog(line):
 	textbox.visible = true
 	get_tree().paused = true
 
-func enemyDied():
+func enemyDied(_enemy):
 	screenShaker.start()
 
 func spawn_enemy(type):
@@ -118,6 +118,7 @@ func loadLevel():
 		var player = playerScenes[playerName].instance()
 		player.position = playerPositions[playerName].position
 		playerParent.add_child(player)
+		player.connect("died", self, "playerDied")
 	for spawnType in level.spawn:
 		for i in range(spawnType.number):
 			var delay = spawnType.delay * i + spawnType.startDelay
@@ -131,3 +132,18 @@ func _on_HUD_timeUp():
 	var swipe = swipeScene.instance()
 	add_child(swipe)
 	swipe.connect("done", self, "swipeDone")
+	screenShaker.start(2, 40)
+
+func playerDied(player):
+	Engine.time_scale = 0.5
+	var time = 2 * Engine.time_scale
+	$Camera.zoomOnto(player, 0.2, time)
+	for _i in range(80):
+		Engine.time_scale *= 0.9
+		yield(get_tree().create_timer(time * 0.3), "timeout")
+		time *= 0.7
+	yield(get_tree().create_timer(time), "timeout")
+	Engine.time_scale = 1
+	$Camera.reset(0.1)
+	yield(get_tree().create_timer(0.1), "timeout")
+	loadLevel()

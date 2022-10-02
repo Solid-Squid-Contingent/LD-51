@@ -1,6 +1,7 @@
 extends Area2D
 
 signal stopGraze
+signal died
 
 onready var target = $Target
 onready var moveTimer = $MoveTimer
@@ -72,6 +73,7 @@ func _on_Player_area_entered(area):
 	if not is_queued_for_deletion():
 		area.queue_free()
 		queue_free()
+		emit_signal("died", self)
 		updateRadii()
 		Base.spawnDeathParticles(self)
 		Base.spawnHalfSprites(self, halfSprite1, halfSprite2)

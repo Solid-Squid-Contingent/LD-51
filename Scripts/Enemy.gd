@@ -44,8 +44,8 @@ func shoot_burst():
 func impact(object):
 	object.impact()
 	queue_free()
-	emit_signal("died")
-	Base.spawnDeathParticles(self)	
+	emit_signal("died", self)
+	Base.spawnDeathParticles(self)
 
 
 func _on_Enemy_area_entered(area):

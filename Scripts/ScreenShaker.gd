@@ -8,9 +8,9 @@ var amplitude = 0
 onready var camera = get_parent()
 
 func start(duration = 0.3, frequency = 20, newAmplitude = 25):
-	amplitude = newAmplitude
-	$Duration.wait_time = duration
-	$Frequency.wait_time = 1 / float(frequency)
+	amplitude = max(amplitude, newAmplitude)
+	$Duration.wait_time = max($Duration.time_left, duration)
+	$Frequency.wait_time = min($Frequency.wait_time, 1 / float(frequency))
 	$Duration.start()
 	$Frequency.start()
 	
