@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/toggle_off.png-90d0d5c07f2ae91bff50361e0338e3d0.stex"
+path="res://.import/title.png-9da3e971ee7156d579ff456075adbee9.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/Graphics/UI/toggle_off.png"
-dest_files=[ "res://.import/toggle_off.png-90d0d5c07f2ae91bff50361e0338e3d0.stex" ]
+source_file="res://Resources/Graphics/Menu/title.png"
+dest_files=[ "res://.import/title.png-9da3e971ee7156d579ff456075adbee9.stex" ]
 
 [params]
 

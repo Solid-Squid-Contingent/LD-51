@@ -79,7 +79,6 @@ shape = SubResource( 1 )
 position = Vector2( -2, -20 )
 scale = Vector2( 2, 2 )
 frames = ExtResource( 2 )
-frame = 1
 playing = true
 
 [node name="GrazeArea" type="Area2D" parent="CollisionShape"]
@@ -94,7 +93,7 @@ visible = false
 position = Vector2( -4, 0 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 10 )
-frame = 2
+frame = 1
 playing = true
 
 [node name="Target" type="Sprite" parent="."]

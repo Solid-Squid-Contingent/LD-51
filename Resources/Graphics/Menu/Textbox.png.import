@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/slider.png-63798743a4eed58018e317f76822adea.stex"
+path="res://.import/Textbox.png-e9f2dffcb76f749b313248e94e695c7c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/Graphics/UI/slider.png"
-dest_files=[ "res://.import/slider.png-63798743a4eed58018e317f76822adea.stex" ]
+source_file="res://Resources/Graphics/Menu/Textbox.png"
+dest_files=[ "res://.import/Textbox.png-e9f2dffcb76f749b313248e94e695c7c.stex" ]
 
 [params]
 

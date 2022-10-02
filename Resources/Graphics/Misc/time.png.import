@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Menu_Background.png-ba6bea3c358809996c2202aee2abd607.stex"
+path="res://.import/time.png-2309f9fdc2b572903c55b3c5f41f3f11.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/Graphics/UI/Menu_Background.png"
-dest_files=[ "res://.import/Menu_Background.png-ba6bea3c358809996c2202aee2abd607.stex" ]
+source_file="res://Resources/Graphics/Misc/time.png"
+dest_files=[ "res://.import/time.png-2309f9fdc2b572903c55b3c5f41f3f11.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

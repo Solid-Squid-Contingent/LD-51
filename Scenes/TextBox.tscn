@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/TextBox.gd" type="Script" id=1]
-[ext_resource path="res://Resources/Graphics/UI/Textbox.png" type="Texture" id=2]
+[ext_resource path="res://Resources/Graphics/Menu/Textbox.png" type="Texture" id=2]
 [ext_resource path="res://Resources/Fonts/dialog.tres" type="DynamicFont" id=3]
 [ext_resource path="res://Resources/Shaders/OneBitBlack.tres" type="Shader" id=4]
 
