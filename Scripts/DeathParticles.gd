@@ -3,6 +3,9 @@ extends Particles2D
 func _ready():
 	emitting = true
 
+func playSound():
+	$EnemyDeathPlayer.play()
+
 func _process(_delta):
 	var timeLeft = $Timer.time_left / $Timer.wait_time
 	if timeLeft < 0.5:

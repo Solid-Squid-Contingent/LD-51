@@ -33,6 +33,7 @@ func shoot():
 		# warning-ignore:return_value_discarded
 		get_tree().create_timer(type.burstDistance * burst).connect("timeout", self, "shoot_burst")
 	shoot_burst()
+	$AttackPlayer.play()
 
 func shoot_burst():
 	var direction = Vector2(0,-1).rotated(rotation)
@@ -63,7 +64,8 @@ func impact(object):
 	if livesLeft > 0:
 		$Health.reduce()
 		emit_signal("hit", self)
-		Base.spawnDeathParticles(self)
+		Base.spawnDeathParticles(self).playSound()
+		$HitPlayer.play()
 	else:
 		if not type.nextForm.empty():
 			if not instantKill:

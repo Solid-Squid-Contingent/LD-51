@@ -16,6 +16,8 @@ func move():
 		speed = target.position.length() / moveTimer.wait_time
 		target.visible = false
 		updateRadii()
+		$MovePlayer.play()
 	else:
 		targetPosition = Vector2(0,0)
 		speed = 0
+		$MovePlayer.stop()

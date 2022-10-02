@@ -30,6 +30,9 @@ func setSprite():
 		collision_layer = 8
 		collision_mask = 1+16+32
 		
+	if type.sprite == 'energyBig':
+		rotation = rand_range(0, 2*PI)
+		
 
 func lifeTime(): #in seconds
 	return (Time.get_ticks_usec() - birthTime) / 1000000.0
@@ -42,7 +45,8 @@ func _process(delta):
 	if type.homing:
 		direction = Base.directionToClosest(self, 'player')
 	
-	rotation = direction.angle() + PI/2
+	if type.sprite != 'energyBig':
+		rotation = direction.angle() + PI/2
 	
 	direction = direction.rotated(deg2rad(type.curve) * delta)
 	realPosition += direction * type.speed * delta

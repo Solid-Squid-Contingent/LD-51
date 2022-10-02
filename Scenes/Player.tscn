@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Graphics/Ships/Default/anim.tres" type="SpriteFrames" id=2]
@@ -9,6 +9,10 @@
 [ext_resource path="res://Scenes/Heart.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Resources/Graphics/Misc/orb.png" type="Texture" id=8]
 [ext_resource path="res://Resources/Shaders/Disintegrate.tres" type="Shader" id=9]
+[ext_resource path="res://Resources/Sounds/PlayerDied.wav" type="AudioStream" id=10]
+[ext_resource path="res://Resources/Sounds/PlayerHit.wav" type="AudioStream" id=11]
+[ext_resource path="res://Resources/Sounds/Teleport.wav" type="AudioStream" id=12]
+[ext_resource path="res://Resources/Sounds/LockIn.wav" type="AudioStream" id=13]
 
 [sub_resource type="ShaderMaterial" id=4]
 shader = ExtResource( 6 )
@@ -137,6 +141,22 @@ scale = Vector2( 2, 2 )
 [node name="IFrameTimer" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
+
+[node name="TeleportPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
+bus = "SoundEffects"
+
+[node name="DeathPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+bus = "SoundEffects"
+
+[node name="HitPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+bus = "SoundEffects"
+
+[node name="LockInPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 13 )
+volume_db = -20.0
 
 [connection signal="area_entered" from="." to="." method="_on_Player_area_entered"]
 [connection signal="tween_all_completed" from="UpTween" to="." method="_on_UpTween_tween_all_completed"]

@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scripts/MenuButtonSoundPlayer.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Root.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/DeleteScreen.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/CreditsScreen.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Resources/Sounds/MenuButton.wav" type="AudioStream" id=5]
 [ext_resource path="res://Scenes/StartMenuScreen.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/MenuScreen.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scripts/MusicLoopPlayer.gd" type="Script" id=8]
@@ -37,6 +38,7 @@ visible = false
 visible = false
 
 [node name="MenuButtonSoundPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
 bus = "SoundEffects"
 script = ExtResource( 1 )
 

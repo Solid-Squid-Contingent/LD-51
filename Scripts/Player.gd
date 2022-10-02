@@ -46,6 +46,8 @@ func _ready():
 	upTween()
 	showHearts()
 	updateRadii()
+	yield(get_tree().create_timer(0.01), "timeout")
+	updateRadii()
 
 func upTween():
 	$UpTween.interpolate_property(collisionShape, "position",
@@ -63,14 +65,13 @@ func _input(event):
 	if lives <= 0:
 		return
 		
-	if event.is_action_pressed('move') or (event is InputEventMouseMotion and Input.is_action_pressed('move')):
+	if event.is_action_pressed('move'):
+		$LockInPlayer.play()
 		moveTargetTo(event.position)
-	
-	if event.is_action_pressed('show_hitbox'):
+	elif (event is InputEventMouseMotion and Input.is_action_pressed('move')):
+		moveTargetTo(event.position)
+	elif event.is_action_pressed('show_hitbox'):
 		orb.visible = true
-		
-	if event.is_action_released('show_hitbox'):
-		orb.visible = false
 
 func _process(_delta):
 	chargeProgressBar.value = 1 - moveTimer.time_left / moveTimer.wait_time
@@ -107,6 +108,7 @@ func updateRadii():
 func move():
 	if target.visible:
 		spawnRift()
+		$TeleportPlayer.play()
 		position += target.position - spriteOffsets[spriteName]
 		target.visible = false
 		spawnRift()
@@ -134,6 +136,7 @@ func loseLife():
 		emit_signal("hit", self)
 		spawnLocalClear()
 		$IFrameTimer.start()
+		$HitPlayer.play()
 	else:
 		sprite.visible = false
 		chargeProgressBar.visible = false
@@ -142,6 +145,7 @@ func loseLife():
 		updateRadii()
 		Base.spawnHalfSprites(self, spriteName, halfSpriteDirection, spriteScale)
 		emit_signal("died", self)
+		$DeathPlayer.play()
 	
 	Base.spawnDeathParticles(self)
 	

@@ -40,6 +40,8 @@ func _input(event):
 			textbox.show_all_text()
 		else:
 			printNextDialogLine()
+		if textbox.visible:
+			$TextProceedPlayer.play()
 	elif !inMenu and event.is_action_pressed("skip_dialog"):
 		textbox.show_all_text()
 		dialogProgress = dialog.size()
@@ -137,7 +139,8 @@ func _on_HUD_timeUp():
 	var swipe = swipeScene.instance()
 	playerParent.add_child(swipe)
 	swipe.connect("done", self, "swipeDone")
-	screenShaker.start(2, 40)
+	screenShaker.start(1, 40)
+	$TimeUpPlayer.play()
 
 func playerDied(player):
 	Engine.time_scale = 0.5

@@ -39,6 +39,7 @@ func all_text_appeared():
 		
 
 func show_all_text():
+	$ProceedPlayer.play()
 	label.set_visible_characters(text_length())
 	timer.stop()
 	emit_signal("all_text_appeared")

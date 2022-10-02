@@ -98,6 +98,7 @@ func _on_StartMenuScreen_start_game():
 	if tutorialProgress == 0:
 		tutorialProgress += 1
 		saveProgress()
+		restartLevel()
 		unpauseGame()
 	else:
 		unpauseGame()

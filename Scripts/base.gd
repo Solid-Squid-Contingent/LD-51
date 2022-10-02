@@ -16,6 +16,7 @@ static func spawnDeathParticles(caller):
 	var particles = deathParticleScene.instance()
 	particles.position = caller.position
 	caller.get_parent().add_child(particles)
+	return particles
 
 static func spawnHalfSprites(caller, spriteName, halfSpriteDirection, scale=1):
 	var extraAngle = halfSpriteDirection.angle_to(Vector2(0, 1))

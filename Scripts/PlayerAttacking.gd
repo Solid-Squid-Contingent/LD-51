@@ -13,6 +13,7 @@ func shoot():
 		bullet.direction = direction
 		bullet.type = bulletType
 		get_parent().add_child(bullet)
+		$AttackPlayer.play()
 	
 func move():
 	.move()

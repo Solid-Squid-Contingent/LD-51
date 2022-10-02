@@ -11,7 +11,7 @@ const zeroTexture = preload("res://Resources/Graphics/Misc/number_0.png")
 const oneTexture = preload("res://Resources/Graphics/Misc/number_1.png")
 
 func _ready():
-	setTime(16)
+	setTime(15)
 
 func updateText():
 	for sprite in sprites:

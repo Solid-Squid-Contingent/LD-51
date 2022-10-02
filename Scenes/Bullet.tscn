@@ -1,7 +1,7 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Scripts/Bullet.gd" type="Script" id=1]
-[ext_resource path="res://Resources/Graphics/Bullets/bullet_large.png" type="Texture" id=2]
+[ext_resource path="res://Resources/Graphics/Bullets/bullet_big.png" type="Texture" id=2]
 [ext_resource path="res://Resources/Graphics/Bullets/bullet_small_black.png" type="Texture" id=3]
 [ext_resource path="res://Resources/Graphics/Bullets/bullet_homing.png" type="Texture" id=4]
 [ext_resource path="res://Resources/Graphics/Bullets/bullet_small.png" type="Texture" id=5]
@@ -26,6 +26,26 @@ radius = 6.0
 
 [sub_resource type="CircleShape2D" id=3]
 radius = 14.0
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 96, 96 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 96, 96, 96 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 192, 96, 96 )
+
+[sub_resource type="SpriteFrames" id=12]
+animations = [ {
+"frames": [ SubResource( 9 ), SubResource( 10 ), SubResource( 11 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
 
 [sub_resource type="Curve" id=4]
 _data = [ Vector2( 0, 0.994318 ), 0.0, 0.0269697, 0, 0, Vector2( 1, 0 ), -2.70034, 0.0, 0, 0 ]
@@ -96,10 +116,10 @@ scale = Vector2( 3, 3 )
 shape = SubResource( 3 )
 disabled = true
 
-[node name="SpriteBig" type="Sprite" parent="ShapeBig"]
-use_parent_material = true
-texture = ExtResource( 2 )
-offset = Vector2( 0.5, 0.5 )
+[node name="SpriteBig" type="AnimatedSprite" parent="ShapeBig"]
+frames = SubResource( 12 )
+playing = true
+offset = Vector2( -0.5, 4.5 )
 
 [node name="TrailParticles" type="Particles2D" parent="."]
 z_index = -1
