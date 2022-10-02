@@ -8,6 +8,10 @@ const bulletScene = preload("res://Scenes/Bullet.tscn")
 
 func _ready():
 	call_deferred('shoot')
+	$Sprite.texture = load("res://Resources/Graphics/Ships/" + type.spriteName + "/ship.png")
+	$Sprite.scale = Vector2(type.spriteScale, type.spriteScale)
+	$BulletTimer.wait_time = type.bulletWaveTime
+	$BulletTimer.start()
 
 func _process(delta):
 	position += Base.directionToClosest(self, 'player') * type.speed * delta
@@ -46,6 +50,7 @@ func impact(object):
 	queue_free()
 	emit_signal("died", self)
 	Base.spawnDeathParticles(self)
+	Base.spawnHalfSprites(self, type.spriteName, type.halfSpriteDirection, type.spriteScale)
 
 
 func _on_Enemy_area_entered(area):

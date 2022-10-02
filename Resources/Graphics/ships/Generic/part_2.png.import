@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Spider.png-5af3d535eb8f108e7eb2d01a9d634c23.stex"
+path="res://.import/part_2.png-ee4a9ba53f2e3ae56244346f564c4cb7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/Graphics/Ships/Spider.png"
-dest_files=[ "res://.import/Spider.png-5af3d535eb8f108e7eb2d01a9d634c23.stex" ]
+source_file="res://Resources/Graphics/Ships/Generic/part_2.png"
+dest_files=[ "res://.import/part_2.png-ee4a9ba53f2e3ae56244346f564c4cb7.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/JunkShip2.png-b0ac77452be521b7807a8dd98fcdfade.stex"
+path="res://.import/part_2.png-fcf14a3e56610c172f08fbe62c6aedd3.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/Graphics/Ships/JunkShip2.png"
-dest_files=[ "res://.import/JunkShip2.png-b0ac77452be521b7807a8dd98fcdfade.stex" ]
+source_file="res://Resources/Graphics/Ships/Junk1/part_2.png"
+dest_files=[ "res://.import/part_2.png-fcf14a3e56610c172f08fbe62c6aedd3.stex" ]
 
 [params]
 

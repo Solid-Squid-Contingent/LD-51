@@ -1,13 +1,11 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
-[ext_resource path="res://Resources/Graphics/Ships/JunkShip2.png" type="Texture" id=2]
+[ext_resource path="res://Resources/Graphics/Ships/Default/ship.png" type="Texture" id=2]
 [ext_resource path="res://Resources/Graphics/Target.png" type="Texture" id=3]
 [ext_resource path="res://Scripts/ChargeProgress.gd" type="Script" id=4]
 [ext_resource path="res://Resources/Graphics/Misc/Charge.png" type="Texture" id=5]
 [ext_resource path="res://Resources/Shaders/Radius.tres" type="Shader" id=6]
-[ext_resource path="res://Resources/Graphics/PlayerHalf1.png" type="Texture" id=7]
-[ext_resource path="res://Resources/Graphics/PlayerHalf2.png" type="Texture" id=8]
 [ext_resource path="res://Resources/Shaders/Disintegrate.tres" type="Shader" id=9]
 
 [sub_resource type="ShaderMaterial" id=4]
@@ -39,15 +37,15 @@ position = Vector2( 500, 500 )
 z_index = 1
 collision_mask = 12
 script = ExtResource( 1 )
-halfSprite1 = ExtResource( 7 )
-halfSprite2 = ExtResource( 8 )
+spriteName = "Default"
+spriteScale = 2.0
+halfSpriteDirection = Vector2( 1, 0 )
 
 [node name="Radius" type="MeshInstance2D" parent="."]
 material = SubResource( 4 )
 mesh = SubResource( 5 )
 
 [node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 2, 2 )
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

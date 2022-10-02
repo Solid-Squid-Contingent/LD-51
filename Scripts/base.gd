@@ -17,16 +17,22 @@ static func spawnDeathParticles(caller):
 	particles.position = caller.position
 	caller.get_parent().add_child(particles)
 
-static func spawnHalfSprites(caller, halfTexture1, halfTexture2):
-	var half1 = corpseSpriteScene.instance()
-	half1.texture = halfTexture1
-	half1.position = caller.position
-	caller.get_parent().add_child(half1)
+static func spawnHalfSprites(caller, spriteName, halfSpriteDirection, scale=1):
+	var extraAngle = halfSpriteDirection.angle_to(Vector2(0, 1))
+	
 	var half2 = corpseSpriteScene.instance()
-	half2.texture = halfTexture2
+	half2.texture = load("res://Resources/Graphics/Ships/" + spriteName + "/part_2.png")
 	half2.position = caller.position
+	half2.scale = Vector2(scale, scale)
 	caller.get_parent().add_child(half2)
-	half2.velocity = half2.velocity.rotated(PI)
+	half2.velocity = half2.velocity.rotated(-extraAngle + PI)
+	
+	var half1 = corpseSpriteScene.instance()
+	half1.texture = load("res://Resources/Graphics/Ships/" + spriteName + "/part_1.png")
+	half1.position = caller.position
+	half1.scale = Vector2(scale, scale)
+	caller.get_parent().add_child(half1)
+	half1.velocity = half1.velocity.rotated(-extraAngle)
 
 static func getClosest(caller, group):
 	var closest = null

@@ -8,8 +8,9 @@ onready var moveTimer = $MoveTimer
 onready var chargeProgressBar = $ChargeProgress
 onready var moveRadiusSprite = $Radius
 
-export var halfSprite1: Texture
-export var halfSprite2: Texture
+export var spriteName: String
+export var spriteScale: float
+export var halfSpriteDirection: Vector2
 
 const riftScene = preload("res://Scenes/Rift.tscn")
 const grazeScene = preload("res://Scenes/GrazeParticles.tscn")
@@ -19,6 +20,8 @@ const movementRange = 200
 func _ready():
 	moveRadiusSprite.material.set_shader_param("movementRange", movementRange)
 	moveRadiusSprite.material.set_shader_param("instanceRandom", Color(randf(), randf(), randf(), randf()))
+	$Sprite.texture = load("res://Resources/Graphics/Ships/" + spriteName + "/ship.png")
+	$Sprite.scale = Vector2(spriteScale, spriteScale)
 	self.get_tree().call_group('player', 'playerMoved')
 
 func _input(event):
@@ -76,7 +79,7 @@ func _on_Player_area_entered(area):
 		emit_signal("died", self)
 		updateRadii()
 		Base.spawnDeathParticles(self)
-		Base.spawnHalfSprites(self, halfSprite1, halfSprite2)
+		Base.spawnHalfSprites(self, spriteName, halfSpriteDirection, spriteScale)
 
 
 func _on_GrazeArea_area_entered(area):

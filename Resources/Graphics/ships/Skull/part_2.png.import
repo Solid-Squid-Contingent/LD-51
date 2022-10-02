@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/UFO.png-1e95c74f24c52313cca654f59b49bf2a.stex"
+path="res://.import/part_2.png-f858831928a8241f2c3e1d2f3628b980.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/Graphics/Ships/UFO.png"
-dest_files=[ "res://.import/UFO.png-1e95c74f24c52313cca654f59b49bf2a.stex" ]
+source_file="res://Resources/Graphics/Ships/Skull/part_2.png"
+dest_files=[ "res://.import/part_2.png-f858831928a8241f2c3e1d2f3628b980.stex" ]
 
 [params]
 

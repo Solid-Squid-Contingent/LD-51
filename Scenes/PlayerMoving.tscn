@@ -1,7 +1,7 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Resources/Graphics/Ships/JunkShip1.png" type="Texture" id=2]
+[ext_resource path="res://Resources/Shaders/Disintegrate.tres" type="Shader" id=2]
 [ext_resource path="res://Scripts/PlayerMoving.gd" type="Script" id=3]
 [ext_resource path="res://Resources/Shaders/Radius.tres" type="Shader" id=4]
 
@@ -13,12 +13,21 @@ shader_param/otherPlayerAlive1 = null
 shader_param/otherPlayerCenter2 = null
 shader_param/otherPlayerAlive2 = null
 shader_param/movementRange = null
+shader_param/instanceRandom = null
+
+[sub_resource type="ShaderMaterial" id=2]
+resource_local_to_scene = true
+shader = ExtResource( 2 )
+shader_param/disintegrationProgress = 0.0
+shader_param/pixelSize = 1.0
 
 [node name="Player" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
+spriteName = "Spider"
+halfSpriteDirection = Vector2( 0, 1 )
 
 [node name="Radius" parent="." index="0"]
 material = SubResource( 1 )
 
-[node name="Sprite" parent="." index="1"]
-texture = ExtResource( 2 )
+[node name="ChargeProgress" parent="." index="5"]
+material = SubResource( 2 )

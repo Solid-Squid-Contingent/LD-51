@@ -1,6 +1,6 @@
 extends Sprite
 
-onready var velocity = Vector2(0, 100).rotated(randf() * PI)
+onready var velocity = Vector2(0, 100).rotated(rand_range(-PI/4, PI/4))
 
 func _ready():
 	material.set_shader_param("pixelSize", 4.0)

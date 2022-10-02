@@ -17,9 +17,11 @@ func start(duration = 0.3, frequency = 20, newAmplitude = 25):
 	new_shake()
 
 func new_shake():
-	if camera.zoom.length() <= 0.99:
+	if camera.zooming:
 		$Duration.stop()
 		$Frequency.stop()
+		amplitude = 0
+		$Frequency.wait_time = 1
 		return
 		
 	var randomOffset = Vector2(rand_range(amplitude, -amplitude),

@@ -33,9 +33,27 @@ class EnemyType extends Reference:
 	var spreadNumber = 3
 	var burstNumber = 1
 	var burstDistance = 0.2
+	var bulletWaveTime = 0.5
 	var aimAtPlayer = false
 	var rotationPerSecond = 180
 	var bulletType = BulletType.new()
+	var spriteName = ""
+	var spriteScale : float
+	var halfSpriteDirection: Vector2
+	
+	const halfSpriteDirectionDict = {
+		"Junk1" : Vector2(-1,0),
+		"Junk2" : Vector2(1,0),
+		"Generic" : Vector2(-1,0),
+		"Skull" : Vector2(-1,-1),
+	}
+	
+	const spriteScaleDict = {
+		"Junk1" : 2,
+		"Junk2" : 2,
+		"Generic" : 1,
+		"Skull" : 1,
+	}
 	
 	static func fromDict(dict):
 		var type = EnemyType.new()
@@ -44,9 +62,13 @@ class EnemyType extends Reference:
 		type.spreadNumber = dict['spreadNumber']
 		type.burstNumber = dict['burstNumber']
 		type.burstDistance = dict['burstDistance']
+		type.bulletWaveTime = dict['bulletWaveTime']		
 		type.aimAtPlayer = dict['aimAtPlayer']
 		type.rotationPerSecond = dict['rotationPerSecond']
 		type.bulletType = BulletType.fromJSON(dict['bulletType'])
+		type.spriteName = dict['sprite']
+		type.spriteScale = spriteScaleDict[type.spriteName]
+		type.halfSpriteDirection = halfSpriteDirectionDict[type.spriteName]
 		return type
 	
 	static func fromJSON(path):
