@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Graze.png-c3af1c4f32bbcb0b0aaf09c37508aee6.stex"
+path="res://.import/Graze.png-6713b3ef8d83bfa5b2fa31158baa676b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/Graphics/Graze.png"
-dest_files=[ "res://.import/Graze.png-c3af1c4f32bbcb0b0aaf09c37508aee6.stex" ]
+source_file="res://Resources/Graphics/Particles/Graze.png"
+dest_files=[ "res://.import/Graze.png-6713b3ef8d83bfa5b2fa31158baa676b.stex" ]
 
 [params]
 

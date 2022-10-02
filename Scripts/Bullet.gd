@@ -1,32 +1,27 @@
 extends Area2D
 
-var type = DataTypes.BulletType.new()
+var type: DataTypes.BulletType
 
 var direction: Vector2
 onready var realPosition = position
 
-onready var sprites = {
-	'energy' : $SpriteEnergy,
-	'energyBig' : $SpriteEnergyBig,
-	'player' : $SpritePlayer,
-	'homing' : $SpriteHoming,
-	'straight' : $SpriteStraight,
+onready var shapes = {
+	'energy' : $ShapeEnergy,
+	'energyBig' : $ShapeBig,
+	'player' : $ShapePlayer,
+	'homing' : $ShapeHoming
 }
 
 onready var birthTime = Time.get_ticks_usec()
 
 func _ready():
 	material.set_shader_param("pixelSize", 2.0)
+	$TrailParticles.emitting = type.trail
 	setSprite()
 
 func setSprite():
-	sprites[type.sprite].visible = true
-	if type.sprite == 'energyBig':
-		$CollisionShape.disabled = true
-		$CollisionShapeBig.disabled = false
-	else:
-		$CollisionShape.disabled = false
-		$CollisionShapeBig.disabled = true
+	shapes[type.sprite].visible = true
+	shapes[type.sprite].disabled = false
 	
 	if type.sprite == 'player':
 		collision_layer = 2
@@ -38,6 +33,9 @@ func setSprite():
 
 func lifeTime(): #in seconds
 	return (Time.get_ticks_usec() - birthTime) / 1000000.0
+
+func impact():
+	queue_free()
 
 func _process(delta):
 	if type.homing:
@@ -57,3 +55,7 @@ func _process(delta):
 		if timeLeft < 0.5:
 			self.monitorable = false
 			self.monitoring = false
+
+
+func _on_Bullet_body_entered(_body):
+	queue_free()

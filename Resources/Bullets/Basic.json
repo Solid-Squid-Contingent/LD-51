@@ -4,6 +4,7 @@
 	"sinFrequency" : 0,
 	"curve" : 10,
 	"totalLifeTime" : 10,
+	"trail" : false,
 	"homing" : false,
-	"sprite" : "straight",
+	"sprite" : "energy",
 }

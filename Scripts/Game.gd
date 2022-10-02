@@ -4,6 +4,7 @@ extends Node2D
 signal restartGame()
 
 const enemyScene = preload("res://Scenes/Enemy.tscn")
+const swipeScene = preload("res://Scenes/ClearSwipe.tscn")
 
 onready var textbox = $"HUD/TextBox"
 
@@ -20,6 +21,8 @@ onready var playerPositions = {
 }
 
 onready var playerParent = $Players
+onready var enemyParent = $Enemies
+onready var screenShaker = $Camera/ScreenShaker
 
 var dialogProgress = 0
 var tutorialProgress = 0
@@ -90,18 +93,27 @@ func showDialog(line):
 	textbox.visible = true
 	get_tree().paused = true
 
+func enemyDied():
+	screenShaker.start()
+
 func spawn_enemy(type):
 	var pos = $SpawnPath.curve.interpolate_baked(randf() * $SpawnPath.curve.get_baked_length(), false)
 	var enemy = enemyScene.instance()
 	enemy.position = pos
 	enemy.type = type
-	.add_child(enemy)
+	enemyParent.add_child(enemy)
+	enemy.connect("died", self, "enemyDied")
 
 func loadLevel():
 	var level = DataTypes.LevelType.fromJSON("Level1")
 	$HUD.setTime(level.duration)
+	$Background.texture = level.background
+	
 	for child in playerParent.get_children():
 		child.queue_free()
+	for child in enemyParent.get_children():
+		child.queue_free()
+		
 	for playerName in level.players:
 		var player = playerScenes[playerName].instance()
 		player.position = playerPositions[playerName].position
@@ -112,3 +124,10 @@ func loadLevel():
 			# warning-ignore:return_value_discarded
 			get_tree().create_timer(delay).connect("timeout", self, "spawn_enemy", [spawnType.enemyType])
 		
+func swipeDone():
+	loadLevel()
+
+func _on_HUD_timeUp():
+	var swipe = swipeScene.instance()
+	add_child(swipe)
+	swipe.connect("done", self, "swipeDone")

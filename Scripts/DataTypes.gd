@@ -9,6 +9,7 @@ class BulletType extends Reference:
 	var curve = 0
 	var totalLifeTime = 10
 	var homing = false
+	var trail = true
 	var sprite = 'energy'
 	
 	static func fromDict(dict):
@@ -19,6 +20,7 @@ class BulletType extends Reference:
 		type.curve = dict['curve']
 		type.totalLifeTime = dict['totalLifeTime']
 		type.homing = dict['homing']
+		type.trail = dict['trail']
 		type.sprite = dict['sprite']
 		return type
 	
@@ -68,11 +70,13 @@ class LevelType extends Reference:
 	var spawn = []
 	var players = ["teleporting"]
 	var duration = 16
+	var background : Texture
 	
 	static func fromDict(dict):
 		var type = LevelType.new()
 		type.players = dict['players']
 		type.duration = dict['duration']
+		type.background = load("res://Resources/Graphics/Backgrounds/" + dict['background'] + ".png")
 		for s in dict['spawn']:
 			type.spawn.append(SpawnType.fromDict(s))
 		return type

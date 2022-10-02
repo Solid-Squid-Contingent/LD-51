@@ -1,5 +1,7 @@
 extends Area2D
 
+signal died
+
 var type = DataTypes.EnemyType.new()
 
 const bulletScene = preload("res://Scenes/Bullet.tscn")
@@ -39,8 +41,15 @@ func shoot_burst():
 			
 			get_parent().add_child(bullet)
 
+func impact(object):
+	object.impact()
+	queue_free()
+	emit_signal("died")
+	Base.spawnDeathParticles(self)	
+
 
 func _on_Enemy_area_entered(area):
-	area.queue_free()
-	queue_free()
-	Base.spawnDeathParticles(self)
+	impact(area)
+
+func _on_Enemy_body_entered(body):
+	impact(body)

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Standard.png-165a2a1ebc2fe59e7a556163592ca960.stex"
+path="res://.import/Belt.png-8749e1a67f79a1adceb1b452ea2997ef.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/Graphics/Ships/Standard.png"
-dest_files=[ "res://.import/Standard.png-165a2a1ebc2fe59e7a556163592ca960.stex" ]
+source_file="res://Resources/Graphics/Backgrounds/Belt.png"
+dest_files=[ "res://.import/Belt.png-8749e1a67f79a1adceb1b452ea2997ef.stex" ]
 
 [params]
 

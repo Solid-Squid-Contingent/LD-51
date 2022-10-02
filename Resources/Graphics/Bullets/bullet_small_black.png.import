@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Charge.png-903f6ee2ad0033bad0232e02ad898cd9.stex"
+path="res://.import/bullet_small_black.png-fe48481300b27f8f5bb43957f69c0843.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/Graphics/Charge.png"
-dest_files=[ "res://.import/Charge.png-903f6ee2ad0033bad0232e02ad898cd9.stex" ]
+source_file="res://Resources/Graphics/Bullets/bullet_small_black.png"
+dest_files=[ "res://.import/bullet_small_black.png-fe48481300b27f8f5bb43957f69c0843.stex" ]
 
 [params]
 

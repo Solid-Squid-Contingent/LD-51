@@ -17,6 +17,7 @@ const movementRange = 200
 
 func _ready():
 	moveRadiusSprite.material.set_shader_param("movementRange", movementRange)
+	moveRadiusSprite.material.set_shader_param("instanceRandom", Color(randf(), randf(), randf(), randf()))
 	self.get_tree().call_group('player', 'playerMoved')
 
 func _input(event):
@@ -31,7 +32,7 @@ func moveTargetTo(targetPos):
 	if dist < movementRange:
 		for player in self.get_tree().get_nodes_in_group('player'):
 			var d = (targetPos - player.moveRadiusSprite.global_position).length()
-			if d < dist:
+			if player != self && d < dist + 70:
 				return
 		target.visible = true
 		target.position = to_local(targetPos)

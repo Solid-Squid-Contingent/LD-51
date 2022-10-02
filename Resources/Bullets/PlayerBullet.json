@@ -4,6 +4,7 @@
 	"sinFrequency" : 0,
 	"curve" : 0,
 	"totalLifeTime" : 30,
+	"trail" : true,
 	"homing" : false,
 	"sprite" : "player",
 }

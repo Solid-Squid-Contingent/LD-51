@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/BulletHoming.png-90d9b0aaafab9c4409b620635a88c546.stex"
+path="res://.import/Charge.png-45d1804b929bd179754807219b40ab8d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/Graphics/BulletHoming.png"
-dest_files=[ "res://.import/BulletHoming.png-90d9b0aaafab9c4409b620635a88c546.stex" ]
+source_file="res://Resources/Graphics/Misc/Charge.png"
+dest_files=[ "res://.import/Charge.png-45d1804b929bd179754807219b40ab8d.stex" ]
 
 [params]
 

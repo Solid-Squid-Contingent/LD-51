@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Standard.png-165a2a1ebc2fe59e7a556163592ca960.stex"
+path="res://.import/bullet_large.png-77d97390ca33de8553b221d9e5f3b155.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/Graphics/Ships/Standard.png"
-dest_files=[ "res://.import/Standard.png-165a2a1ebc2fe59e7a556163592ca960.stex" ]
+source_file="res://Resources/Graphics/Bullets/bullet_large.png"
+dest_files=[ "res://.import/bullet_large.png-77d97390ca33de8553b221d9e5f3b155.stex" ]
 
 [params]
 
