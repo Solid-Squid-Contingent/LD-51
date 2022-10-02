@@ -7,12 +7,11 @@ export(String, FILE) var optionsFileName = "user://Options.save"
 
 var resolutions = [
 	Vector2(960, 540),
-	Vector2(1200, 675),
-	Vector2(1440, 810),
+	Vector2(1280, 720),
 	Vector2(1920, 1080),
 	Vector2(3840, 2160)
 ]
-var numberOfDefaultResolutions = 5
+var numberOfDefaultResolutions = resolutions.size()
 
 onready var resolutionButton = $VBoxContainer/SettingsContainer/GridContainer/ResolutionButton
 onready var fullscreenToggle = $VBoxContainer/SettingsContainer/GridContainer/FullscreenToggle
@@ -44,6 +43,7 @@ func _input(event):
 func initialze_resolution_setting():
 	resolutionButton.select(start_resolution)
 	OS.set_window_size(resolutions[start_resolution])
+	OS.set_window_fullscreen(true)
 
 func set_resolution_button_to_current_resolution():
 	var resolutionIndex = resolutions.find(OS.get_window_size())

@@ -26,10 +26,7 @@ onready var screenShaker = $Camera/ScreenShaker
 var dialogProgress = 0
 var tutorialProgress = 0
 var dialog = []
-var inMenu = false #TODO
-
-func _ready():
-	call_deferred("loadLevel") #TODO
+var inMenu = true
 
 func _input(event):
 	if !inMenu and event.is_action_pressed("advance"):

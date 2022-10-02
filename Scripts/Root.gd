@@ -37,10 +37,9 @@ func restartLevel():
 	Engine.time_scale = 1
 	game = gameScene.instance()
 	add_child(game)
-	game.setTutorialProgress(tutorialProgress)
-	game.print_next_dialog_line()
 	game.connect("restartGame", self, "_on_Game_restartGame")
 	game.inMenu = false
+	game.call_deferred("setTutorialProgress", tutorialProgress)
 
 func restartGame():
 	saveProgress()

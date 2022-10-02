@@ -9,6 +9,8 @@ func _ready():
 	popup()
 	if OS.get_name() == "HTML5":
 		$MarginContainer/VBoxContainer/QuitButton.set_disabled(true)
+	
+	call_deferred("_on_StartButton_pressed") #TODO
 
 func setButtonFocus():
 	$MarginContainer/VBoxContainer/StartButton.grab_focus()
