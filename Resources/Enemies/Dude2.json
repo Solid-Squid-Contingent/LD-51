@@ -7,8 +7,8 @@
 	"bulletWaveTime" : 2,
 	"aimAtPlayer" : true,
 	"rotationPerSecond" : 0,
-	"lives" : 1,
-	"bulletType" : "Basic",
-	"nextForm" : "Dude2",
-	"sprite" : "SkullPhase1"
+	"lives" : 2,
+	"bulletType" : "Big",
+	"nextForm" : "",
+	"sprite" : "SkullPhase2"
 }

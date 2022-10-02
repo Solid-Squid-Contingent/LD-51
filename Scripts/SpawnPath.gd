@@ -16,5 +16,7 @@ func spawnEnemy(type):
 	var enemy = enemyScene.instance()
 	enemy.position = pos
 	enemy.type = type
+	enemy.game = game
 	game.enemyParent.add_child(enemy)
 	enemy.connect("died", game, "enemyDied")
+	enemy.connect("hit", game, "enemyHit")

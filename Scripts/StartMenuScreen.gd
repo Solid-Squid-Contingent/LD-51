@@ -4,7 +4,6 @@ signal start_game()
 signal quit_game()
 signal button_pressed()
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	popup()
 	if OS.get_name() == "HTML5":

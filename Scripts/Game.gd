@@ -90,7 +90,10 @@ func showDialog(line):
 	get_tree().paused = true
 
 func enemyDied(_enemy):
-	screenShaker.start()
+	screenShaker.start(0.5)
+	
+func enemyHit(_enemy):
+	screenShaker.start(0.2, 20, 15)
 
 func loadLevel():
 	var level = DataTypes.LevelType.fromJSON("Level1")
@@ -119,7 +122,7 @@ func swipeDone():
 
 func _on_HUD_timeUp():
 	var swipe = swipeScene.instance()
-	add_child(swipe)
+	playerParent.add_child(swipe)
 	swipe.connect("done", self, "swipeDone")
 	screenShaker.start(2, 40)
 
@@ -127,7 +130,7 @@ func playerDied(player):
 	Engine.time_scale = 0.5
 	var time = 2 * Engine.time_scale
 	$Camera.zoomOnto(player, 0.2, time)
-	for _i in range(80):
+	for _i in range(75):
 		Engine.time_scale *= 0.9
 		yield(get_tree().create_timer(time * 0.3), "timeout")
 		time *= 0.7

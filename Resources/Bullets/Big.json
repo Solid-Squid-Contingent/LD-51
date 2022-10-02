@@ -1,10 +1,10 @@
 {
-	"speed" : 120,
+	"speed" : 80,
 	"sinAmplitude" : 0,
 	"sinFrequency" : 0,
-	"curve" : 10,
-	"totalLifeTime" : 10,
+	"curve" : 0,
+	"totalLifeTime" : 20,
 	"trail" : false,
 	"homing" : false,
-	"sprite" : "energy",
+	"sprite" : "energyBig",
 }

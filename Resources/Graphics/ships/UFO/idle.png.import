@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/part_2.png-f858831928a8241f2c3e1d2f3628b980.stex"
+path="res://.import/idle.png-5a5942293fd66a81e2fbe07e1c7b3104.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/Graphics/Ships/Skull/part_2.png"
-dest_files=[ "res://.import/part_2.png-f858831928a8241f2c3e1d2f3628b980.stex" ]
+source_file="res://Resources/Graphics/Ships/UFO/idle.png"
+dest_files=[ "res://.import/idle.png-5a5942293fd66a81e2fbe07e1c7b3104.stex" ]
 
 [params]
 

@@ -7,6 +7,7 @@ onready var target = $Target
 onready var moveTimer = $MoveTimer
 onready var chargeProgressBar = $ChargeProgress
 onready var moveRadiusSprite = $Radius
+onready var sprite = $Sprite
 
 export var spriteName: String
 export var spriteScale: float
@@ -17,12 +18,24 @@ const grazeScene = preload("res://Scenes/GrazeParticles.tscn")
 
 const movementRange = 200
 
+const TRANS = Tween.TRANS_SINE
+const EASE = Tween.EASE_IN_OUT
+
 func _ready():
 	moveRadiusSprite.material.set_shader_param("movementRange", movementRange)
 	moveRadiusSprite.material.set_shader_param("instanceRandom", Color(randf(), randf(), randf(), randf()))
-	$Sprite.texture = load("res://Resources/Graphics/Ships/" + spriteName + "/ship.png")
+	$Sprite.frames = load("res://Resources/Graphics/Ships/" + spriteName + "/anim.tres")
 	$Sprite.scale = Vector2(spriteScale, spriteScale)
 	self.get_tree().call_group('player', 'playerMoved')
+	upTween()
+
+func upTween():
+	$UpTween.interpolate_property(sprite, "position", Vector2(0,3), Vector2(0,-3), rand_range(1, 2), TRANS, EASE)
+	$UpTween.start()
+	
+func downTween():
+	$DownTween.interpolate_property(sprite, "position", Vector2(0,-3), Vector2(0,3), rand_range(1, 2), TRANS, EASE)
+	$DownTween.start()
 
 func _input(event):
 	if event.is_action_pressed('move') or (event is InputEventMouseMotion and Input.is_action_pressed('move')):
@@ -36,7 +49,7 @@ func moveTargetTo(targetPos):
 	if dist < movementRange:
 		for player in self.get_tree().get_nodes_in_group('player'):
 			var d = (targetPos - player.moveRadiusSprite.global_position).length()
-			if player != self && d < dist + 70:
+			if player != self && d < dist + 50:
 				return
 		target.visible = true
 		target.position = to_local(targetPos)
@@ -91,3 +104,11 @@ func _on_GrazeArea_area_entered(area):
 
 func _on_GrazeArea_area_exited(area):
 	emit_signal('stopGraze', area)
+
+
+func _on_UpTween_tween_all_completed():
+	downTween()
+
+
+func _on_DownTween_tween_all_completed():
+	upTween()

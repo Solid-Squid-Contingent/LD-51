@@ -12,21 +12,22 @@ uniform bool otherPlayerAlive2;
 uniform float movementRange;
 uniform vec4 instanceRandom;
 
-varying smooth vec2 local_position;
+varying smooth vec2 localPosition;
 
 const float lThickness = 2.0;
 const float pThickness = 2.0 * sqrt(2);
 
 void vertex(){
-    local_position = VERTEX;
+    localPosition = VERTEX;
 }
 
 void fragment(){
-	float l = length(local_position)
-		+ sin(atan(local_position.y, local_position.x) * 10.0 + TIME * (5.0 + instanceRandom.x) + instanceRandom.z) * 5.0
-		+ sin(atan(local_position.y, local_position.x) * 17.0 - TIME * (3.0 + instanceRandom.y) + instanceRandom.w) * 5.0;
-	float p1 = otherPlayerAlive1 ? l - length(local_position - otherPlayerCenter1) : -movementRange;
-	float p2 = otherPlayerAlive2 ? l - length(local_position - otherPlayerCenter2) : -movementRange;
+	float angle = atan(localPosition.y, localPosition.x);
+	float l = length(localPosition)
+		+ sin(angle * 10.0 + TIME * (5.0 + instanceRandom.x) + instanceRandom.z) * 5.0
+		+ sin(angle * 17.0 - TIME * (3.0 + instanceRandom.y) + instanceRandom.w) * 5.0;
+	float p1 = otherPlayerAlive1 ? l - length(localPosition - otherPlayerCenter1) : -movementRange;
+	float p2 = otherPlayerAlive2 ? l - length(localPosition - otherPlayerCenter2) : -movementRange;
 	float li = l - movementRange;
 	
 	if (

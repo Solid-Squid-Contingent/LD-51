@@ -1,10 +1,15 @@
 extends Area2D
 
 signal died
+signal hit
 
 var type = DataTypes.EnemyType.new()
+var livesLeft = 1
+
+var game
 
 const bulletScene = preload("res://Scenes/Bullet.tscn")
+var enemyScene = load("res://Scenes/Enemy.tscn")
 
 func _ready():
 	call_deferred('shoot')
@@ -12,6 +17,10 @@ func _ready():
 	$Sprite.scale = Vector2(type.spriteScale, type.spriteScale)
 	$BulletTimer.wait_time = type.bulletWaveTime
 	$BulletTimer.start()
+	
+	livesLeft = type.lives
+	if type.lives > 1:
+		$Health.visible = true
 
 func _process(delta):
 	position += Base.directionToClosest(self, 'player') * type.speed * delta
@@ -46,11 +55,30 @@ func shoot_burst():
 			get_parent().add_child(bullet)
 
 func impact(object):
+	if is_queued_for_deletion() or object.is_queued_for_deletion():
+		return
+		
 	object.impact()
-	queue_free()
-	emit_signal("died", self)
-	Base.spawnDeathParticles(self)
-	Base.spawnHalfSprites(self, type.spriteName, type.halfSpriteDirection, type.spriteScale)
+	livesLeft -= 1
+	if livesLeft >= 1:
+		$Health.value = float(livesLeft) / type.lives
+		emit_signal("hit", self)
+		Base.spawnDeathParticles(self)
+	else:
+		if not type.nextForm.empty():
+			var enemy = enemyScene.instance()
+			enemy.position = position
+			enemy.type = DataTypes.EnemyType.fromJSON(type.nextForm)
+			enemy.game = game
+			get_parent().call_deferred("add_child", enemy)
+			enemy.connect("died", game, "enemyDied")
+			enemy.connect("hit", game, "enemyHit")
+		else:
+			Base.spawnHalfSprites(self, type.spriteName, type.halfSpriteDirection, type.spriteScale)
+			
+		queue_free()
+		emit_signal("died", self)
+		Base.spawnDeathParticles(self)
 
 
 func _on_Enemy_area_entered(area):

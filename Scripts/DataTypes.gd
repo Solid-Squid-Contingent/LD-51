@@ -36,23 +36,27 @@ class EnemyType extends Reference:
 	var bulletWaveTime = 0.5
 	var aimAtPlayer = false
 	var rotationPerSecond = 180
+	var lives = 1
 	var bulletType = BulletType.new()
 	var spriteName = ""
 	var spriteScale : float
 	var halfSpriteDirection: Vector2
+	var nextForm = ""
 	
 	const halfSpriteDirectionDict = {
 		"Junk1" : Vector2(-1,0),
 		"Junk2" : Vector2(1,0),
 		"Generic" : Vector2(-1,0),
-		"Skull" : Vector2(-1,-1),
+		"SkullPhase1" : Vector2(),
+		"SkullPhase2" : Vector2(-1,-1),
 	}
 	
 	const spriteScaleDict = {
 		"Junk1" : 2,
 		"Junk2" : 2,
 		"Generic" : 1,
-		"Skull" : 1,
+		"SkullPhase1" : 2,
+		"SkullPhase2" : 2,
 	}
 	
 	static func fromDict(dict):
@@ -62,13 +66,15 @@ class EnemyType extends Reference:
 		type.spreadNumber = dict['spreadNumber']
 		type.burstNumber = dict['burstNumber']
 		type.burstDistance = dict['burstDistance']
-		type.bulletWaveTime = dict['bulletWaveTime']		
+		type.bulletWaveTime = dict['bulletWaveTime']
 		type.aimAtPlayer = dict['aimAtPlayer']
 		type.rotationPerSecond = dict['rotationPerSecond']
+		type.lives = dict['lives']
 		type.bulletType = BulletType.fromJSON(dict['bulletType'])
 		type.spriteName = dict['sprite']
 		type.spriteScale = spriteScaleDict[type.spriteName]
 		type.halfSpriteDirection = halfSpriteDirectionDict[type.spriteName]
+		type.nextForm = dict['nextForm']
 		return type
 	
 	static func fromJSON(path):
