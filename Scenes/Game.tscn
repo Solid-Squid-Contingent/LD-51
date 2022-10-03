@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Scenes/Camera.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Resources/Graphics/Backgrounds/Space/Space.png" type="Texture" id=2]
@@ -13,6 +13,10 @@
 [ext_resource path="res://Resources/Graphics/Backgrounds/Belt/Belt_bg.png" type="Texture" id=11]
 [ext_resource path="res://Resources/Sounds/Clear.wav" type="AudioStream" id=12]
 [ext_resource path="res://Resources/Sounds/TextboxProceed.wav" type="AudioStream" id=13]
+[ext_resource path="res://Resources/Graphics/Backgrounds/Station/Station1.png" type="Texture" id=14]
+[ext_resource path="res://Resources/Graphics/Backgrounds/Station/Station2.png" type="Texture" id=15]
+[ext_resource path="res://Resources/Graphics/Backgrounds/Station/Station_bg.png" type="Texture" id=16]
+[ext_resource path="res://Resources/Graphics/Backgrounds/Station/Station3.png" type="Texture" id=17]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -65,6 +69,45 @@ motion_offset = Vector2( -384, -216 )
 position = Vector2( 960, 540 )
 scale = Vector2( 2.667, 2.667 )
 texture = ExtResource( 9 )
+
+[node name="Station" type="ParallaxBackground" parent="Backgrounds"]
+visible = false
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Backgrounds/Station"]
+motion_scale = Vector2( 0.1, 0.1 )
+motion_offset = Vector2( -864, -486 )
+
+[node name="Sprite" type="Sprite" parent="Backgrounds/Station/ParallaxLayer"]
+position = Vector2( 960, 540 )
+scale = Vector2( 2.667, 2.667 )
+texture = ExtResource( 16 )
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="Backgrounds/Station"]
+motion_scale = Vector2( 0.8, 0.8 )
+motion_offset = Vector2( -192, -108 )
+
+[node name="Sprite" type="Sprite" parent="Backgrounds/Station/ParallaxLayer2"]
+position = Vector2( 960, 540 )
+scale = Vector2( 2.667, 2.667 )
+texture = ExtResource( 17 )
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="Backgrounds/Station"]
+motion_scale = Vector2( 0.5, 0.5 )
+motion_offset = Vector2( -480, -270 )
+
+[node name="Sprite" type="Sprite" parent="Backgrounds/Station/ParallaxLayer3"]
+position = Vector2( 960, 540 )
+scale = Vector2( 2.667, 2.667 )
+texture = ExtResource( 14 )
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="Backgrounds/Station"]
+motion_scale = Vector2( 0.6, 0.6 )
+motion_offset = Vector2( -384, -216 )
+
+[node name="Sprite" type="Sprite" parent="Backgrounds/Station/ParallaxLayer4"]
+position = Vector2( 960, 540 )
+scale = Vector2( 2.667, 2.667 )
+texture = ExtResource( 15 )
 
 [node name="Belt" type="ParallaxBackground" parent="Backgrounds"]
 visible = false

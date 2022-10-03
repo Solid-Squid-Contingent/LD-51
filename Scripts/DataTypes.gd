@@ -49,6 +49,7 @@ class EnemyType extends Reference:
 		"Generic" : Vector2(-1,0),
 		"SkullPhase1" : Vector2(),
 		"SkullPhase2" : Vector2(-1,-1),
+		"Crab" : Vector2(-1,1),
 	}
 	
 	const spriteScaleDict = {
@@ -57,6 +58,7 @@ class EnemyType extends Reference:
 		"Generic" : 1,
 		"SkullPhase1" : 2,
 		"SkullPhase2" : 2,
+		"Crab" : 3,
 	}
 	
 	static func fromDict(dict):

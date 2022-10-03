@@ -22,7 +22,8 @@ onready var playerPositions = {
 onready var backgrounds = {
 	'Belt' : 	$Backgrounds/Belt,
 	'Planets' : $Backgrounds/Planets,
-	'Space' : 	$Backgrounds/Space
+	'Space' : 	$Backgrounds/Space,
+	'Station' : 	$Backgrounds/Space
 }
 
 onready var playerParent = $Players

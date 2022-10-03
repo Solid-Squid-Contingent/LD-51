@@ -7,7 +7,7 @@
 	"bulletWaveTime" : 1.5,
 	"aimAtPlayer" : true,
 	"rotationPerSecond" : 0,
-	"lives" : 4,
+	"lives" : 2,
 	"bulletType" : "Big",
 	"nextForm" : "",
 	"sprite" : "SkullPhase2"

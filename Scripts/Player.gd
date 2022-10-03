@@ -64,7 +64,7 @@ func downTween():
 	$DownTween.start()
 
 func _input(event):
-	if lives <= 0:
+	if gameOver:
 		return
 	
 	if event.is_action_pressed('move') and !gameOver:
@@ -146,10 +146,10 @@ func loseLife():
 		chargeProgressBar.visible = false
 		target.visible = false
 		moveRadiusSprite.visible = false
-		remove_from_group('player')
-		updateRadii()
 		Base.spawnHalfSprites(self, spriteName, halfSpriteDirection, spriteScale)
 		emit_signal("died", self)
+		remove_from_group('player')
+		updateRadii()
 		$DeathPlayer.play()
 	
 	Base.spawnDeathParticles(self)
@@ -161,7 +161,7 @@ func impact():
 	return true
 
 func _on_Player_area_entered(area):
-	if lives <= 0 or area.is_queued_for_deletion() or not $IFrameTimer.is_stopped():
+	if gameOver or area.is_queued_for_deletion() or not $IFrameTimer.is_stopped():
 		return
 		
 	loseLife()
