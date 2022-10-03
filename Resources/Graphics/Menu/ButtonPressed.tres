@@ -1,0 +1,14 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=2]
+
+[ext_resource path="res://Resources/Graphics/Menu/menu_button_pressed.png" type="Texture" id=1]
+
+[resource]
+content_margin_top = 62.0
+texture = ExtResource( 1 )
+region_rect = Rect2( 0, 0, 820, 170 )
+margin_left = 90.0
+margin_right = 90.0
+margin_top = 88.0
+margin_bottom = 62.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2

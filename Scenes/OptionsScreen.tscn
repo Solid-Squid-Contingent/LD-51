@@ -38,10 +38,10 @@ stretch_mode = 7
 script = ExtResource( 3 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-margin_left = 176.0
-margin_top = 20.0
-margin_right = 1744.0
-margin_bottom = 1060.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 5
+size_flags_vertical = 5
 custom_constants/separation = 29
 __meta__ = {
 "_edit_lock_": true,
@@ -49,13 +49,13 @@ __meta__ = {
 }
 
 [node name="TitleContainer" type="MarginContainer" parent="VBoxContainer"]
-margin_right = 1568.0
+margin_right = 1920.0
 margin_bottom = 117.0
 mouse_filter = 1
 
 [node name="Label" type="Label" parent="VBoxContainer/TitleContainer"]
 material = SubResource( 1 )
-margin_right = 1568.0
+margin_right = 1920.0
 margin_bottom = 117.0
 mouse_filter = 1
 custom_fonts/font = ExtResource( 2 )
@@ -65,8 +65,8 @@ valign = 1
 
 [node name="SettingsContainer" type="MarginContainer" parent="VBoxContainer"]
 margin_top = 146.0
-margin_right = 1568.0
-margin_bottom = 811.0
+margin_right = 1920.0
+margin_bottom = 785.0
 grow_horizontal = 0
 grow_vertical = 0
 mouse_filter = 1
@@ -77,44 +77,46 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="GridContainer" type="VBoxContainer" parent="VBoxContainer/SettingsContainer"]
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/SettingsContainer"]
 margin_left = 400.0
-margin_right = 1168.0
-margin_bottom = 665.0
-size_flags_vertical = 3
+margin_right = 1520.0
+margin_bottom = 639.0
+custom_constants/hseparation = 100
+columns = 2
 
 [node name="Label" type="Label" parent="VBoxContainer/SettingsContainer/GridContainer"]
 material = SubResource( 2 )
-margin_right = 768.0
-margin_bottom = 59.0
+margin_right = 502.0
+margin_bottom = 165.0
 size_flags_vertical = 1
 custom_fonts/font = ExtResource( 4 )
 text = "Music Volume:"
 valign = 1
 
 [node name="MusicSlider" type="HSlider" parent="VBoxContainer/SettingsContainer/GridContainer"]
-margin_top = 63.0
-margin_right = 768.0
-margin_bottom = 163.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
+margin_left = 602.0
+margin_right = 1120.0
+margin_bottom = 165.0
+size_flags_horizontal = 7
+size_flags_vertical = 7
 theme = ExtResource( 7 )
 value = 100.0
 
 [node name="Soundeffects" type="Label" parent="VBoxContainer/SettingsContainer/GridContainer"]
 material = SubResource( 3 )
-margin_top = 167.0
-margin_right = 768.0
-margin_bottom = 226.0
+margin_top = 169.0
+margin_right = 502.0
+margin_bottom = 334.0
 size_flags_vertical = 1
 custom_fonts/font = ExtResource( 4 )
 text = "Sound Effect Volume:"
 valign = 1
 
 [node name="SoundeffectsSlider" type="HSlider" parent="VBoxContainer/SettingsContainer/GridContainer"]
-margin_top = 230.0
-margin_right = 768.0
-margin_bottom = 330.0
+margin_left = 602.0
+margin_top = 169.0
+margin_right = 1120.0
+margin_bottom = 334.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 7 )
@@ -125,9 +127,9 @@ __meta__ = {
 
 [node name="Label2" type="Label" parent="VBoxContainer/SettingsContainer/GridContainer"]
 material = SubResource( 4 )
-margin_top = 334.0
-margin_right = 768.0
-margin_bottom = 393.0
+margin_top = 338.0
+margin_right = 502.0
+margin_bottom = 471.0
 size_flags_vertical = 1
 custom_fonts/font = ExtResource( 4 )
 text = "Resolution:"
@@ -135,20 +137,19 @@ valign = 1
 
 [node name="ResolutionButton" type="OptionButton" parent="VBoxContainer/SettingsContainer/GridContainer"]
 material = SubResource( 5 )
-margin_top = 397.0
-margin_right = 768.0
-margin_bottom = 497.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
+margin_left = 602.0
+margin_top = 338.0
+margin_right = 1120.0
+margin_bottom = 471.0
 theme = ExtResource( 7 )
 text = "1200x600"
 align = 1
 
 [node name="Label3" type="Label" parent="VBoxContainer/SettingsContainer/GridContainer"]
 material = SubResource( 6 )
-margin_top = 501.0
-margin_right = 768.0
-margin_bottom = 560.0
+margin_top = 475.0
+margin_right = 502.0
+margin_bottom = 639.0
 size_flags_vertical = 1
 custom_fonts/font = ExtResource( 4 )
 text = "Fullscreen:"
@@ -158,16 +159,17 @@ __meta__ = {
 }
 
 [node name="FullscreenToggle" type="CheckButton" parent="VBoxContainer/SettingsContainer/GridContainer"]
-margin_top = 564.0
-margin_right = 768.0
-margin_bottom = 665.0
+margin_left = 602.0
+margin_top = 475.0
+margin_right = 1120.0
+margin_bottom = 639.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="BackContainer" type="MarginContainer" parent="VBoxContainer"]
-margin_top = 840.0
-margin_right = 1568.0
-margin_bottom = 1040.0
+margin_top = 814.0
+margin_right = 1920.0
+margin_bottom = 1080.0
 rect_min_size = Vector2( 0, 200 )
 mouse_filter = 1
 custom_constants/margin_top = 83
@@ -176,9 +178,14 @@ custom_constants/margin_bottom = 0
 [node name="BackButton" type="Button" parent="VBoxContainer/BackContainer"]
 material = SubResource( 7 )
 margin_top = 83.0
-margin_right = 1568.0
-margin_bottom = 200.0
+margin_right = 1920.0
+margin_bottom = 266.0
 text = "Go Back"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+custom_constants/margin_bottom = 0
 
 [connection signal="value_changed" from="VBoxContainer/SettingsContainer/GridContainer/MusicSlider" to="." method="_on_MusicSlider_value_changed"]
 [connection signal="value_changed" from="VBoxContainer/SettingsContainer/GridContainer/SoundeffectsSlider" to="." method="_on_SoundeffectsSlider_value_changed"]
