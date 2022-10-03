@@ -4,5 +4,7 @@
 code = "shader_type canvas_item;
 
 void fragment(){
-	COLOR = vec4(1.0, 1.0, 1.0, texture(TEXTURE, UV).a < 0.3 ? 0.0 : 1.0);
+	COLOR *= texture(TEXTURE, UV);
+	float g = step(0.5, (COLOR.r + COLOR.g + COLOR.b)/3.0);
+	COLOR = vec4(g, g, g, step(0.3, COLOR.a));
 }"

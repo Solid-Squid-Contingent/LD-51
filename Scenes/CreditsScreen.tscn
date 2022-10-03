@@ -1,9 +1,31 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Resources/Graphics/Menu/Menu_Background.png" type="Texture" id=1]
 [ext_resource path="res://theme.tres" type="Theme" id=2]
 [ext_resource path="res://Scripts/CreditsScreen.gd" type="Script" id=3]
 [ext_resource path="res://Resources/Fonts/menuBig.tres" type="DynamicFont" id=4]
+[ext_resource path="res://Resources/Shaders/OneBit.tres" type="Shader" id=5]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 5 )
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 5 )
+
+[sub_resource type="ShaderMaterial" id=3]
+shader = ExtResource( 5 )
+
+[sub_resource type="ShaderMaterial" id=4]
+shader = ExtResource( 5 )
+
+[sub_resource type="ShaderMaterial" id=5]
+shader = ExtResource( 5 )
+
+[sub_resource type="ShaderMaterial" id=6]
+shader = ExtResource( 5 )
+
+[sub_resource type="ShaderMaterial" id=7]
+shader = ExtResource( 5 )
 
 [node name="CreditsScreen" type="TextureRect"]
 margin_right = 1920.0
@@ -36,15 +58,15 @@ align = 1
 valign = 1
 
 [node name="MarginContainer3" type="GridContainer" parent="."]
-margin_left = 600.0
-margin_top = 300.0
-margin_right = 1904.0
-margin_bottom = 695.0
-custom_constants/vseparation = 50
+margin_left = 400.0
+margin_top = 250.0
+margin_right = 1520.0
+custom_constants/vseparation = 150
 custom_constants/hseparation = 400
 columns = 2
 
 [node name="Label" type="Label" parent="MarginContainer3"]
+material = SubResource( 1 )
 margin_right = 315.0
 margin_bottom = 59.0
 theme = ExtResource( 2 )
@@ -53,6 +75,7 @@ align = 1
 valign = 1
 
 [node name="Label2" type="Label" parent="MarginContainer3"]
+material = SubResource( 2 )
 margin_left = 715.0
 margin_right = 1032.0
 margin_bottom = 59.0
@@ -62,59 +85,44 @@ align = 1
 valign = 1
 
 [node name="Label5" type="Label" parent="MarginContainer3"]
-margin_top = 109.0
+material = SubResource( 3 )
+margin_top = 209.0
 margin_right = 315.0
-margin_bottom = 168.0
+margin_bottom = 268.0
 theme = ExtResource( 2 )
 text = "Sturo"
 align = 1
 valign = 1
 
 [node name="Label6" type="Label" parent="MarginContainer3"]
+material = SubResource( 4 )
 margin_left = 715.0
-margin_top = 109.0
+margin_top = 209.0
 margin_right = 1032.0
-margin_bottom = 168.0
+margin_bottom = 268.0
 theme = ExtResource( 2 )
 text = "Art"
 align = 1
 valign = 1
 
 [node name="Label7" type="Label" parent="MarginContainer3"]
-margin_top = 218.0
+material = SubResource( 5 )
+margin_top = 418.0
 margin_right = 315.0
-margin_bottom = 277.0
+margin_bottom = 477.0
 theme = ExtResource( 2 )
 text = "Steamdr4gon"
 align = 1
 valign = 1
 
 [node name="Label8" type="Label" parent="MarginContainer3"]
+material = SubResource( 6 )
 margin_left = 715.0
-margin_top = 218.0
+margin_top = 418.0
 margin_right = 1032.0
-margin_bottom = 277.0
+margin_bottom = 477.0
 theme = ExtResource( 2 )
 text = "Music"
-align = 1
-valign = 1
-
-[node name="Label9" type="Label" parent="MarginContainer3"]
-margin_top = 327.0
-margin_right = 315.0
-margin_bottom = 386.0
-theme = ExtResource( 2 )
-text = "NonSans"
-align = 1
-valign = 1
-
-[node name="Label10" type="Label" parent="MarginContainer3"]
-margin_left = 715.0
-margin_top = 327.0
-margin_right = 1032.0
-margin_bottom = 386.0
-theme = ExtResource( 2 )
-text = "Writing"
 align = 1
 valign = 1
 
@@ -128,18 +136,16 @@ margin_top = 360.0
 margin_right = 2880.0
 margin_bottom = 660.0
 rect_scale = Vector2( 0.5, 0.5 )
-custom_constants/margin_right = 20
+custom_constants/margin_right = 800
 custom_constants/margin_top = 20
-custom_constants/margin_left = 20
+custom_constants/margin_left = 800
 custom_constants/margin_bottom = 20
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="YesButton" type="Button" parent="MarginContainer"]
-margin_left = 20.0
+material = SubResource( 7 )
+margin_left = 800.0
 margin_top = 20.0
-margin_right = 3820.0
+margin_right = 3040.0
 margin_bottom = 280.0
 size_flags_horizontal = 3
 size_flags_vertical = 3

@@ -42,5 +42,6 @@ autostart = true
 
 [node name="EnemyDeathPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
+bus = "SoundEffects"
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

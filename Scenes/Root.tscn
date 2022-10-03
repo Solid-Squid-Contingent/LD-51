@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scripts/MenuButtonSoundPlayer.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Root.gd" type="Script" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Scenes/StartMenuScreen.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/MenuScreen.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scripts/MusicLoopPlayer.gd" type="Script" id=8]
+[ext_resource path="res://Scenes/ChapterScreen.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Scenes/OptionsScreen.tscn" type="PackedScene" id=15]
 
 [node name="Root" type="Node2D"]
@@ -35,6 +36,9 @@ visible = false
 visible = false
 
 [node name="CreditsScreen" parent="MenuScreenLayer" instance=ExtResource( 4 )]
+visible = false
+
+[node name="ChapterScreen" parent="MenuScreenLayer" instance=ExtResource( 9 )]
 visible = false
 
 [node name="MenuButtonSoundPlayer" type="AudioStreamPlayer" parent="."]
@@ -66,5 +70,8 @@ script = ExtResource( 8 )
 [connection signal="screenClosed" from="MenuScreenLayer/DeleteScreen" to="MenuScreenLayer/StartMenuScreen" method="_on_DeleteScreen_screenClosed"]
 [connection signal="button_pressed" from="MenuScreenLayer/CreditsScreen" to="MenuButtonSoundPlayer" method="_on_CreditsScreen_button_pressed"]
 [connection signal="screenClosed" from="MenuScreenLayer/CreditsScreen" to="MenuScreenLayer/StartMenuScreen" method="_on_CreditsScreen_screenClosed"]
+[connection signal="button_pressed" from="MenuScreenLayer/ChapterScreen" to="MenuButtonSoundPlayer" method="_on_ChapterScreen_button_pressed"]
+[connection signal="screenClosed" from="MenuScreenLayer/ChapterScreen" to="MenuScreenLayer/StartMenuScreen" method="_on_ChapterScreen_screenClosed"]
+[connection signal="selectChapter" from="MenuScreenLayer/ChapterScreen" to="." method="_on_ChapterScreen_selectChapter"]
 [connection signal="finished" from="MusicIntroPlayer" to="MusicLoopPlayer" method="_on_MusicIntroPlayer_finished"]
 [connection signal="finished" from="MusicLoopPlayer" to="MusicLoopPlayer" method="_on_MusicLoopPlayer_finished"]

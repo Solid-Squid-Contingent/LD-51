@@ -119,8 +119,10 @@ position = Vector2( 1115, 574 )
 
 [node name="TimeUpPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 12 )
+bus = "SoundEffects"
 
 [node name="TextProceedPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 13 )
+bus = "SoundEffects"
 
 [connection signal="timeUp" from="HUD" to="." method="_on_HUD_timeUp"]

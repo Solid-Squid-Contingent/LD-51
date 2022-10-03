@@ -1,10 +1,32 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Resources/Graphics/Menu/Menu_Background.png" type="Texture" id=1]
 [ext_resource path="res://Resources/Fonts/menuBig.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Scripts/OptionsScreen.gd" type="Script" id=3]
 [ext_resource path="res://Resources/Fonts/menu.tres" type="DynamicFont" id=4]
+[ext_resource path="res://Resources/Shaders/OneBit.tres" type="Shader" id=5]
 [ext_resource path="res://theme.tres" type="Theme" id=7]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 5 )
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 5 )
+
+[sub_resource type="ShaderMaterial" id=3]
+shader = ExtResource( 5 )
+
+[sub_resource type="ShaderMaterial" id=4]
+shader = ExtResource( 5 )
+
+[sub_resource type="ShaderMaterial" id=5]
+shader = ExtResource( 5 )
+
+[sub_resource type="ShaderMaterial" id=6]
+shader = ExtResource( 5 )
+
+[sub_resource type="ShaderMaterial" id=7]
+shader = ExtResource( 5 )
 
 [node name="OptionsScreen" type="TextureRect"]
 margin_right = 1920.0
@@ -32,6 +54,7 @@ margin_bottom = 117.0
 mouse_filter = 1
 
 [node name="Label" type="Label" parent="VBoxContainer/TitleContainer"]
+material = SubResource( 1 )
 margin_right = 1568.0
 margin_bottom = 117.0
 mouse_filter = 1
@@ -61,10 +84,10 @@ margin_bottom = 665.0
 size_flags_vertical = 3
 
 [node name="Label" type="Label" parent="VBoxContainer/SettingsContainer/GridContainer"]
+material = SubResource( 2 )
 margin_right = 768.0
 margin_bottom = 59.0
 size_flags_vertical = 1
-custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 4 )
 text = "Music Volume:"
 valign = 1
@@ -79,11 +102,11 @@ theme = ExtResource( 7 )
 value = 100.0
 
 [node name="Soundeffects" type="Label" parent="VBoxContainer/SettingsContainer/GridContainer"]
+material = SubResource( 3 )
 margin_top = 167.0
 margin_right = 768.0
 margin_bottom = 226.0
 size_flags_vertical = 1
-custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 4 )
 text = "Sound Effect Volume:"
 valign = 1
@@ -101,16 +124,17 @@ __meta__ = {
 }
 
 [node name="Label2" type="Label" parent="VBoxContainer/SettingsContainer/GridContainer"]
+material = SubResource( 4 )
 margin_top = 334.0
 margin_right = 768.0
 margin_bottom = 393.0
 size_flags_vertical = 1
-custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 4 )
 text = "Resolution:"
 valign = 1
 
 [node name="ResolutionButton" type="OptionButton" parent="VBoxContainer/SettingsContainer/GridContainer"]
+material = SubResource( 5 )
 margin_top = 397.0
 margin_right = 768.0
 margin_bottom = 497.0
@@ -121,11 +145,11 @@ text = "1200x600"
 align = 1
 
 [node name="Label3" type="Label" parent="VBoxContainer/SettingsContainer/GridContainer"]
+material = SubResource( 6 )
 margin_top = 501.0
 margin_right = 768.0
 margin_bottom = 560.0
 size_flags_vertical = 1
-custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 4 )
 text = "Fullscreen:"
 valign = 1
@@ -150,6 +174,7 @@ custom_constants/margin_top = 83
 custom_constants/margin_bottom = 0
 
 [node name="BackButton" type="Button" parent="VBoxContainer/BackContainer"]
+material = SubResource( 7 )
 margin_top = 83.0
 margin_right = 1568.0
 margin_bottom = 200.0

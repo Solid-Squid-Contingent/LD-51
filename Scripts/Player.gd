@@ -26,6 +26,8 @@ const localClearScene = preload("res://Scenes/LocalClear.tscn")
 
 const movementRange = 200
 
+var gameOver = false
+
 const spriteOffsets = {
 	"Default" : Vector2(-2, -20),
 	"UFO" : Vector2(-4, -10),
@@ -64,14 +66,16 @@ func downTween():
 func _input(event):
 	if lives <= 0:
 		return
-		
-	if event.is_action_pressed('move'):
+	
+	if event.is_action_pressed('move') and !gameOver:
 		$LockInPlayer.play()
 		moveTargetTo(event.position)
-	elif (event is InputEventMouseMotion and Input.is_action_pressed('move')):
+	elif (event is InputEventMouseMotion and Input.is_action_pressed('move')) and !gameOver:
 		moveTargetTo(event.position)
 	elif event.is_action_pressed('show_hitbox'):
 		orb.visible = true
+	elif event.is_action_released('show_hitbox'):
+		orb.visible = false
 
 func _process(_delta):
 	chargeProgressBar.value = 1 - moveTimer.time_left / moveTimer.wait_time
@@ -141,6 +145,7 @@ func loseLife():
 		sprite.visible = false
 		chargeProgressBar.visible = false
 		target.visible = false
+		moveRadiusSprite.visible = false
 		remove_from_group('player')
 		updateRadii()
 		Base.spawnHalfSprites(self, spriteName, halfSpriteDirection, spriteScale)

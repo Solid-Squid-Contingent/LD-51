@@ -112,4 +112,15 @@ func _on_DeleteScreen_deleteSaveData():
 
 func _on_Game_restartGame():
 	restartLevel()
-	
+
+const tutorialProgressPerChapter = {
+	1: 1,
+	2: 10,
+	3: 20
+}
+
+func _on_ChapterScreen_selectChapter(chapter):
+	tutorialProgress = tutorialProgressPerChapter[chapter]
+	saveProgress()
+	restartLevel()
+	unpauseGame()

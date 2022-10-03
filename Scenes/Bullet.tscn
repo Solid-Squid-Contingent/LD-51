@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Scripts/Bullet.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Graphics/Bullets/bullet_big.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Resources/Graphics/Bullets/bullet_small.png" type="Texture" id=5]
 [ext_resource path="res://Resources/Shaders/Disintegrate.tres" type="Shader" id=6]
 [ext_resource path="res://Resources/Graphics/Particles/BulletParticle.png" type="Texture" id=7]
+[ext_resource path="res://Resources/Graphics/Bullets/bullet_large.png" type="Texture" id=8]
 
 [sub_resource type="ShaderMaterial" id=2]
 resource_local_to_scene = true
@@ -116,10 +117,15 @@ scale = Vector2( 3, 3 )
 shape = SubResource( 3 )
 disabled = true
 
-[node name="SpriteBig" type="AnimatedSprite" parent="ShapeBig"]
+[node name="SpriteAlternative" type="AnimatedSprite" parent="ShapeBig"]
+visible = false
 frames = SubResource( 12 )
-playing = true
+frame = 1
 offset = Vector2( -0.5, 4.5 )
+
+[node name="Sprite" type="Sprite" parent="ShapeBig"]
+texture = ExtResource( 8 )
+offset = Vector2( 0.5, 0.5 )
 
 [node name="TrailParticles" type="Particles2D" parent="."]
 z_index = -1

@@ -143,6 +143,7 @@ func _on_HUD_timeUp():
 	$TimeUpPlayer.play()
 
 func playerDied(player):
+	self.get_tree().set_group('player', 'gameOver', true)
 	Engine.time_scale = 0.5
 	var time = 2 * Engine.time_scale
 	$Camera.zoomOnto(player, 0.2, time)

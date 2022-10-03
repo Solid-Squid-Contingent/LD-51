@@ -3,13 +3,13 @@
 [ext_resource path="res://Scripts/TextBox.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Graphics/Menu/Textbox.png" type="Texture" id=2]
 [ext_resource path="res://Resources/Fonts/dialog.tres" type="DynamicFont" id=3]
-[ext_resource path="res://Resources/Shaders/OneBitBlack.tres" type="Shader" id=4]
+[ext_resource path="res://Resources/Shaders/OneBit.tres" type="Shader" id=5]
 
-[sub_resource type="ShaderMaterial" id=1]
-shader = ExtResource( 4 )
+[sub_resource type="ShaderMaterial" id=3]
+shader = ExtResource( 5 )
 
-[sub_resource type="ShaderMaterial" id=2]
-shader = ExtResource( 4 )
+[sub_resource type="ShaderMaterial" id=4]
+shader = ExtResource( 5 )
 
 [node name="TextBox" type="Node2D"]
 script = ExtResource( 1 )
@@ -23,7 +23,7 @@ mouse_filter = 2
 texture = ExtResource( 2 )
 
 [node name="Label" type="RichTextLabel" parent="TextBox"]
-material = SubResource( 1 )
+material = SubResource( 3 )
 margin_left = 100.388
 margin_top = 200.0
 margin_right = 3050.39
@@ -36,7 +36,7 @@ bbcode_text = "Test"
 text = "Test"
 
 [node name="NameLabel" type="RichTextLabel" parent="TextBox"]
-material = SubResource( 2 )
+material = SubResource( 4 )
 margin_left = 100.0
 margin_top = 110.0
 margin_right = 2585.0

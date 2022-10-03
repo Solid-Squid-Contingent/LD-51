@@ -4,6 +4,7 @@ var rotationSpeed
 
 func _ready():
 	rotationSpeed = rand_range(0.5, 1)
+	rotation = rand_range(0, 2*PI)
 	material.set_shader_param("offsets", Color(randf(), randf(), randf()))
 
 func _on_LifeTimer_timeout():

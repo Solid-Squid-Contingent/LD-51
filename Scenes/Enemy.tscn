@@ -61,9 +61,11 @@ one_shot = true
 [node name="AttackPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
 volume_db = -10.0
+bus = "SoundEffects"
 
 [node name="HitPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
+bus = "SoundEffects"
 
 [connection signal="area_entered" from="." to="." method="_on_Enemy_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_Enemy_body_entered"]

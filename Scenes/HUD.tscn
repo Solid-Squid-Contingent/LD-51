@@ -21,6 +21,7 @@ texture = ExtResource( 5 )
 centered = false
 
 [node name="TimeLeftLabel" type="Node2D" parent="."]
+pause_mode = 1
 position = Vector2( 20, 80 )
 scale = Vector2( 2, 2 )
 script = ExtResource( 1 )

@@ -126,17 +126,14 @@ script = ExtResource( 4 )
 [node name="Heart1" parent="." instance=ExtResource( 7 )]
 visible = false
 position = Vector2( -50, -140 )
-scale = Vector2( 2, 2 )
 
 [node name="Heart2" parent="." instance=ExtResource( 7 )]
 visible = false
 position = Vector2( 0, -140 )
-scale = Vector2( 2, 2 )
 
 [node name="Heart3" parent="." instance=ExtResource( 7 )]
 visible = false
 position = Vector2( 50, -140 )
-scale = Vector2( 2, 2 )
 
 [node name="IFrameTimer" type="Timer" parent="."]
 wait_time = 0.5
@@ -157,6 +154,7 @@ bus = "SoundEffects"
 [node name="LockInPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 13 )
 volume_db = -20.0
+bus = "SoundEffects"
 
 [connection signal="area_entered" from="." to="." method="_on_Player_area_entered"]
 [connection signal="tween_all_completed" from="UpTween" to="." method="_on_UpTween_tween_all_completed"]

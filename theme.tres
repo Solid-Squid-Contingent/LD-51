@@ -1,27 +1,22 @@
-[gd_resource type="Theme" load_steps=35 format=2]
+[gd_resource type="Theme" load_steps=37 format=2]
 
-[ext_resource path="res://Resources/Graphics/Menu/toggle_off.png" type="Texture" id=1]
-[ext_resource path="res://Resources/Graphics/Menu/slider.png" type="Texture" id=2]
-[ext_resource path="res://Resources/Graphics/Menu/knob.png" type="Texture" id=3]
+[ext_resource path="res://Resources/Graphics/Menu/menu_button_pressed.png" type="Texture" id=1]
+[ext_resource path="res://Resources/Graphics/Menu/toggle_on.png" type="Texture" id=2]
+[ext_resource path="res://Resources/Graphics/Menu/menu_button.png" type="Texture" id=3]
+[ext_resource path="res://Resources/Graphics/Menu/slider.png" type="Texture" id=4]
 [ext_resource path="res://Resources/Graphics/Menu/menu_button_disabled.png" type="Texture" id=5]
-[ext_resource path="res://Resources/Graphics/Menu/toggle_on.png" type="Texture" id=6]
-[ext_resource path="res://Resources/Graphics/Menu/menu_button.png" type="Texture" id=7]
-[ext_resource path="res://Resources/Graphics/Menu/menu_button_pressed.png" type="Texture" id=8]
+[ext_resource path="res://Resources/Graphics/Menu/knob.png" type="Texture" id=6]
+[ext_resource path="res://Resources/Graphics/Menu/toggle_off.png" type="Texture" id=7]
 [ext_resource path="res://Resources/Fonts/menu.tres" type="DynamicFont" id=10]
 [ext_resource path="res://Resources/Fonts/Jacmax.ttf" type="DynamicFontData" id=11]
 
 [sub_resource type="StyleBoxTexture" id=1]
-content_margin_left = 30.0
-content_margin_right = 10.0
-content_margin_top = 0.0
-content_margin_bottom = 60.0
 texture = ExtResource( 5 )
-region_rect = Rect2( 0, 0, 168, 25 )
 
 [sub_resource type="StyleBoxEmpty" id=2]
 
 [sub_resource type="StyleBoxTexture" id=25]
-texture = ExtResource( 8 )
+texture = ExtResource( 1 )
 region_rect = Rect2( 0, 0, 164, 34 )
 
 [sub_resource type="StyleBoxEmpty" id=3]
@@ -41,7 +36,7 @@ region_rect = Rect2( 0, 0, 164, 34 )
 [sub_resource type="StyleBoxEmpty" id=31]
 
 [sub_resource type="StyleBoxTexture" id=10]
-texture = ExtResource( 2 )
+texture = ExtResource( 4 )
 
 [sub_resource type="ImageTexture" id=14]
 
@@ -49,12 +44,16 @@ texture = ExtResource( 2 )
 texture = ExtResource( 5 )
 region_rect = Rect2( 0, 0, 164, 34 )
 
+[sub_resource type="StyleBoxEmpty" id=32]
+
+[sub_resource type="StyleBoxEmpty" id=33]
+
 [sub_resource type="StyleBoxTexture" id=27]
-texture = ExtResource( 7 )
+texture = ExtResource( 3 )
 region_rect = Rect2( 0, 0, 164, 34 )
 
 [sub_resource type="StyleBoxTexture" id=28]
-texture = ExtResource( 8 )
+texture = ExtResource( 1 )
 region_rect = Rect2( 0, 0, 164, 34 )
 
 [sub_resource type="ImageTexture" id=15]
@@ -104,9 +103,9 @@ CheckButton/colors/font_color_pressed = Color( 1, 1, 1, 1 )
 CheckButton/constants/check_vadjust = 12
 CheckButton/constants/hseparation = 4
 CheckButton/fonts/font = ExtResource( 10 )
-CheckButton/icons/off = ExtResource( 1 )
+CheckButton/icons/off = ExtResource( 7 )
 CheckButton/icons/off_disabled = null
-CheckButton/icons/on = ExtResource( 6 )
+CheckButton/icons/on = ExtResource( 2 )
 CheckButton/icons/on_disabled = null
 CheckButton/styles/disabled = SubResource( 3 )
 CheckButton/styles/focus = SubResource( 4 )
@@ -114,9 +113,9 @@ CheckButton/styles/hover = SubResource( 5 )
 CheckButton/styles/hover_pressed = SubResource( 6 )
 CheckButton/styles/normal = SubResource( 7 )
 CheckButton/styles/pressed = SubResource( 8 )
-HSlider/icons/grabber = ExtResource( 3 )
-HSlider/icons/grabber_disabled = ExtResource( 3 )
-HSlider/icons/grabber_highlight = ExtResource( 3 )
+HSlider/icons/grabber = ExtResource( 6 )
+HSlider/icons/grabber_disabled = ExtResource( 6 )
+HSlider/icons/grabber_highlight = ExtResource( 6 )
 HSlider/icons/tick = null
 HSlider/styles/grabber_area = SubResource( 30 )
 HSlider/styles/grabber_area_highlight = SubResource( 31 )
@@ -130,8 +129,8 @@ OptionButton/constants/hseparation = 2
 OptionButton/fonts/font = ExtResource( 10 )
 OptionButton/icons/arrow = SubResource( 14 )
 OptionButton/styles/disabled = SubResource( 26 )
-OptionButton/styles/focus = SubResource( 27 )
-OptionButton/styles/hover = SubResource( 27 )
+OptionButton/styles/focus = SubResource( 32 )
+OptionButton/styles/hover = SubResource( 33 )
 OptionButton/styles/normal = SubResource( 27 )
 OptionButton/styles/pressed = SubResource( 28 )
 PopupMenu/colors/font_color = Color( 0, 0, 0, 1 )

@@ -36,3 +36,4 @@ material = SubResource( 2 )
 [node name="MovePlayer" type="AudioStreamPlayer" parent="." index="14"]
 stream = ExtResource( 5 )
 volume_db = -10.0
+bus = "SoundEffects"

@@ -54,3 +54,12 @@ func _on_DeleteScreen_screenClosed():
 func _on_CreditsScreen_screenClosed():
 	if visible:
 		setButtonFocus()
+
+func _on_ChapterScreen_screenClosed():
+	if visible:
+		setButtonFocus()
+
+func _on_ChapterButton_pressed():
+	$"../ChapterScreen".popup()
+	emit_signal("button_pressed")
+
