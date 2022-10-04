@@ -3,6 +3,7 @@
 	"sinAmplitude" : 0,
 	"sinFrequency" : 0,
 	"curve" : 0,
+	"curveSpread" : 0,
 	"totalLifeTime" : 20,
 	"trail" : false,
 	"homing" : false,

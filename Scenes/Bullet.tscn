@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Scripts/Bullet.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Graphics/Bullets/bullet_big.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Resources/Shaders/Disintegrate.tres" type="Shader" id=6]
 [ext_resource path="res://Resources/Graphics/Particles/BulletParticle.png" type="Texture" id=7]
 [ext_resource path="res://Resources/Graphics/Bullets/bullet_large.png" type="Texture" id=8]
+[ext_resource path="res://Resources/Graphics/Bullets/bullet_directed.png" type="Texture" id=9]
 
 [sub_resource type="ShaderMaterial" id=2]
 resource_local_to_scene = true
@@ -86,10 +87,22 @@ use_parent_material = true
 texture = ExtResource( 5 )
 offset = Vector2( -0.5, 0.5 )
 
-[node name="ShapeHoming" type="CollisionShape2D" parent="."]
+[node name="ShapeDirected" type="CollisionShape2D" parent="."]
 visible = false
 use_parent_material = true
 scale = Vector2( 3, 3 )
+shape = SubResource( 1 )
+disabled = true
+
+[node name="SpriteEnergy" type="Sprite" parent="ShapeDirected"]
+use_parent_material = true
+texture = ExtResource( 9 )
+offset = Vector2( -0.5, 0.5 )
+
+[node name="ShapeHoming" type="CollisionShape2D" parent="."]
+visible = false
+use_parent_material = true
+scale = Vector2( 4, 4 )
 shape = SubResource( 7 )
 disabled = true
 

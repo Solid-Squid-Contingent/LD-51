@@ -10,9 +10,6 @@ var sprites = []
 const zeroTexture = preload("res://Resources/Graphics/Misc/number_0.png")
 const oneTexture = preload("res://Resources/Graphics/Misc/number_1.png")
 
-func _ready():
-	setTime(15)
-
 func updateText():
 	for sprite in sprites:
 		sprite.queue_free()
@@ -34,13 +31,18 @@ func updateText():
 		sprites.append(sprite)
 	
 func setTime(time):
-	timeLeft = time
-	minLength = Base.toBinaryString(timeLeft, 0).length()
-	$Timer.start()
-	updateText()
+	if time == 0:
+		visible = false
+	else:
+		visible = true
+		timeLeft = time
+		minLength = Base.toBinaryString(timeLeft, 0).length()
+		$Timer.start()
+		updateText()
 
 func _on_Timer_timeout():
-	timeLeft -= 1
-	if timeLeft == 0:
-		emit_signal('timeUp')
-	updateText()
+	if visible:
+		timeLeft -= 1
+		if timeLeft == 0:
+			emit_signal('timeUp')
+		updateText()

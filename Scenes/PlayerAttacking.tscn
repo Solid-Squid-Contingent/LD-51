@@ -4,7 +4,7 @@
 [ext_resource path="res://Scripts/PlayerAttacking.gd" type="Script" id=2]
 [ext_resource path="res://Resources/Shaders/Radius.tres" type="Shader" id=3]
 [ext_resource path="res://Resources/Shaders/Disintegrate.tres" type="Shader" id=4]
-[ext_resource path="res://Resources/Sounds/PlayerShot.wav" type="AudioStream" id=5]
+[ext_resource path="res://Resources/Sounds/PlayerShot.ogg" type="AudioStream" id=5]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -31,10 +31,10 @@ maxLives = 1
 material = SubResource( 1 )
 
 [node name="Sprite" parent="CollisionShape" index="0"]
-frame = 2
+frame = 0
 
 [node name="Orb" parent="CollisionShape" index="2"]
-frame = 0
+frame = 1
 
 [node name="ChargeProgress" parent="." index="6"]
 material = SubResource( 2 )

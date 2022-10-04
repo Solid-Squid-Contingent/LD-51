@@ -1,0 +1,22 @@
+{
+	"spawn" : [
+		{
+			"enemyType" : "Star",
+			"number" : 7,
+			"delay" : 4,
+			"startDelay" : 0,
+		},
+		{
+			"enemyType" : "Homer",
+			"number" : 3,
+			"delay" : 12,
+			"startDelay" : 0,
+		}
+	],
+	"players" : ["teleport", "attack", "move"],
+	"duration" : 31,
+	"background" : "Space",
+	"introDialog" : ""
+}
+
+

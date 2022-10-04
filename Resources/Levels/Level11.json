@@ -1,0 +1,16 @@
+{
+	"spawn" : [
+		{
+			"enemyType" : "Circler",
+			"number" : 7,
+			"delay" : 3,
+			"startDelay" : 0,
+		}
+	],
+	"players" : ["teleport", "attack"],
+	"duration" : 31,
+	"background" : "Belt",
+	"introDialog" : ""
+}
+
+

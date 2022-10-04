@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Scenes/Camera.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Resources/Graphics/Backgrounds/Space/Space.png" type="Texture" id=2]
@@ -11,12 +11,18 @@
 [ext_resource path="res://Resources/Graphics/Backgrounds/Planets/Planets3.png" type="Texture" id=9]
 [ext_resource path="res://Scripts/Belt.gd" type="Script" id=10]
 [ext_resource path="res://Resources/Graphics/Backgrounds/Belt/Belt_bg.png" type="Texture" id=11]
-[ext_resource path="res://Resources/Sounds/Clear.wav" type="AudioStream" id=12]
-[ext_resource path="res://Resources/Sounds/TextboxProceed.wav" type="AudioStream" id=13]
+[ext_resource path="res://Resources/Sounds/Clear.ogg" type="AudioStream" id=12]
+[ext_resource path="res://Resources/Sounds/TextboxProceed.ogg" type="AudioStream" id=13]
 [ext_resource path="res://Resources/Graphics/Backgrounds/Station/Station1.png" type="Texture" id=14]
 [ext_resource path="res://Resources/Graphics/Backgrounds/Station/Station2.png" type="Texture" id=15]
 [ext_resource path="res://Resources/Graphics/Backgrounds/Station/Station_bg.png" type="Texture" id=16]
 [ext_resource path="res://Resources/Graphics/Backgrounds/Station/Station3.png" type="Texture" id=17]
+[ext_resource path="res://Resources/Music/Boss Fight.mp3" type="AudioStream" id=18]
+[ext_resource path="res://Resources/Music/music_Chapter1_32s.mp3" type="AudioStream" id=19]
+[ext_resource path="res://Resources/Music/music_Chapter3_32s.mp3" type="AudioStream" id=20]
+[ext_resource path="res://Resources/Music/music_Chapter2_32s.mp3" type="AudioStream" id=21]
+[ext_resource path="res://Resources/Sounds/EnemyShot.ogg" type="AudioStream" id=22]
+[ext_resource path="res://Resources/Sounds/EnemyShotBurst.ogg" type="AudioStream" id=23]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -30,6 +36,7 @@ script = ExtResource( 3 )
 [node name="HUD" parent="." instance=ExtResource( 6 )]
 
 [node name="Backgrounds" type="Node2D" parent="."]
+pause_mode = 1
 
 [node name="Planets" type="ParallaxBackground" parent="Backgrounds"]
 visible = false
@@ -70,6 +77,10 @@ position = Vector2( 960, 540 )
 scale = Vector2( 2.667, 2.667 )
 texture = ExtResource( 9 )
 
+[node name="Music" type="AudioStreamPlayer" parent="Backgrounds/Planets" groups=["musicPlayer"]]
+stream = ExtResource( 19 )
+bus = "Music"
+
 [node name="Station" type="ParallaxBackground" parent="Backgrounds"]
 visible = false
 
@@ -109,6 +120,10 @@ position = Vector2( 960, 540 )
 scale = Vector2( 2.667, 2.667 )
 texture = ExtResource( 15 )
 
+[node name="Music" type="AudioStreamPlayer" parent="Backgrounds/Station" groups=["musicPlayer"]]
+stream = ExtResource( 18 )
+bus = "Music"
+
 [node name="Belt" type="ParallaxBackground" parent="Backgrounds"]
 visible = false
 script = ExtResource( 10 )
@@ -122,6 +137,10 @@ position = Vector2( 960, 540 )
 scale = Vector2( 2.667, 2.667 )
 texture = ExtResource( 11 )
 
+[node name="Music" type="AudioStreamPlayer" parent="Backgrounds/Belt" groups=["musicPlayer"]]
+stream = ExtResource( 21 )
+bus = "Music"
+
 [node name="Space" type="ParallaxBackground" parent="Backgrounds"]
 visible = false
 
@@ -133,6 +152,10 @@ motion_offset = Vector2( -864, -486 )
 position = Vector2( 960, 540 )
 scale = Vector2( 2.667, 2.667 )
 texture = ExtResource( 2 )
+
+[node name="Music" type="AudioStreamPlayer" parent="Backgrounds/Space" groups=["musicPlayer"]]
+stream = ExtResource( 20 )
+bus = "Music"
 
 [node name="SpawnPath" type="Path2D" parent="."]
 pause_mode = 1
@@ -162,10 +185,19 @@ position = Vector2( 1115, 574 )
 
 [node name="TimeUpPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 12 )
+volume_db = 2.0
 bus = "SoundEffects"
 
 [node name="TextProceedPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 13 )
+bus = "SoundEffects"
+
+[node name="EnemyAttackPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 22 )
+bus = "SoundEffects"
+
+[node name="EnemyBurstAttackPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 23 )
 bus = "SoundEffects"
 
 [connection signal="timeUp" from="HUD" to="." method="_on_HUD_timeUp"]

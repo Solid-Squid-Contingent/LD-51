@@ -9,17 +9,6 @@
 pause_mode = 2
 script = ExtResource( 3 )
 
-[node name="TextBox" parent="." instance=ExtResource( 9 )]
-visible = false
-position = Vector2( 260, 165 )
-scale = Vector2( 10, 10 )
-
-[node name="TimeSprite" type="Sprite" parent="."]
-position = Vector2( 10, 10 )
-scale = Vector2( 3, 3 )
-texture = ExtResource( 5 )
-centered = false
-
 [node name="TimeLeftLabel" type="Node2D" parent="."]
 pause_mode = 1
 position = Vector2( 20, 80 )
@@ -27,6 +16,16 @@ scale = Vector2( 2, 2 )
 script = ExtResource( 1 )
 
 [node name="Timer" type="Timer" parent="TimeLeftLabel"]
+
+[node name="TimeSprite" type="Sprite" parent="TimeLeftLabel"]
+position = Vector2( -5, -35 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 5 )
+centered = false
+
+[node name="TextBox" parent="." instance=ExtResource( 9 )]
+visible = false
+scale = Vector2( 10, 10 )
 
 [connection signal="timeUp" from="TimeLeftLabel" to="." method="_on_TimeLeftLabel_timeUp"]
 [connection signal="timeout" from="TimeLeftLabel/Timer" to="TimeLeftLabel" method="_on_Timer_timeout"]

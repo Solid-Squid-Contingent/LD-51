@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Text Box.mp3-ce91dc505ba0c7c97a5294fda0a74d68.mp3str"
+
+[deps]
+
+source_file="res://Resources/Music/Text Box.mp3"
+dest_files=[ "res://.import/Text Box.mp3-ce91dc505ba0c7c97a5294fda0a74d68.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

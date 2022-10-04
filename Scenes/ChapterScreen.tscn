@@ -74,7 +74,7 @@ __meta__ = {
 margin_left = 20.0
 margin_top = 20.0
 margin_right = 972.0
-margin_bottom = 1143.0
+margin_bottom = 1185.0
 custom_constants/separation = 50
 __meta__ = {
 "_edit_use_anchors_": false
@@ -83,47 +83,62 @@ __meta__ = {
 [node name="Chapter1Button" type="Button" parent="MarginContainer/VBoxContainer"]
 material = SubResource( 2 )
 margin_right = 952.0
-margin_bottom = 230.0
+margin_bottom = 183.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 2 )
-text = "Chapter 1"
+text = "Chapter 001"
 expand_icon = true
 
 [node name="Chapter2Button" type="Button" parent="MarginContainer/VBoxContainer"]
 material = SubResource( 3 )
-margin_top = 280.0
+margin_top = 233.0
 margin_right = 952.0
-margin_bottom = 511.0
+margin_bottom = 416.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 2 )
-text = "Chapter 2"
+text = "Chapter 010"
 expand_icon = true
 
 [node name="Chapter3Button" type="Button" parent="MarginContainer/VBoxContainer"]
 material = SubResource( 4 )
-margin_top = 561.0
+margin_top = 466.0
 margin_right = 952.0
-margin_bottom = 792.0
+margin_bottom = 649.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 2 )
-text = "Chapter 3"
+text = "Chapter 011"
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="Chapter4Button" type="Button" parent="MarginContainer/VBoxContainer"]
+material = SubResource( 4 )
+margin_top = 699.0
+margin_right = 952.0
+margin_bottom = 882.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 2 )
+text = "Chapter 100"
 __meta__ = {
 "_edit_use_anchors_": false,
 "_editor_description_": ""
 }
 
 [node name="Control" type="Control" parent="MarginContainer/VBoxContainer"]
-margin_top = 842.0
-margin_bottom = 842.0
+margin_top = 932.0
+margin_right = 952.0
+margin_bottom = 932.0
 
 [node name="BackButton" type="Button" parent="MarginContainer/VBoxContainer"]
 material = SubResource( 5 )
-margin_top = 892.0
+margin_top = 982.0
 margin_right = 952.0
-margin_bottom = 1123.0
+margin_bottom = 1165.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 2 )
@@ -136,4 +151,5 @@ __meta__ = {
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Chapter1Button" to="." method="_on_Chapter1Button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Chapter2Button" to="." method="_on_Chapter2Button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Chapter3Button" to="." method="_on_Chapter3Button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Chapter4Button" to="." method="_on_Chapter4Button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/BackButton" to="." method="_on_BackButton_pressed"]

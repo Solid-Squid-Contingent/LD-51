@@ -1,0 +1,16 @@
+{
+	"spawn" : [
+		{
+			"enemyType" : "Crabus",
+			"number" : 4,
+			"delay" : 6,
+			"startDelay" : 0,
+		}
+	],
+	"players" : ["teleport", "attack"],
+	"duration" : 31,
+	"background" : "Belt",
+	"introDialog" : ""
+}
+
+

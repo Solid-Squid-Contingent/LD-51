@@ -12,7 +12,7 @@ func show():
 func disappear(moreLeft):
 	disappearTimer.start()
 	if moreLeft:
-		Engine.time_scale = 0.2
+		Base.setTimeScale(get_tree(), 0.2)
 		timeScaled = true
 
 func _process(_delta):
@@ -27,9 +27,12 @@ func _on_ShowTimer_timeout():
 const TRANS = Tween.TRANS_QUAD
 const EASE = Tween.EASE_OUT
 
+func setTimeScale(scale):
+	Base.setTimeScale(get_tree(), scale)
+
 func _on_DisappearTimer_timeout():
 	if timeScaled:
-		Engine.time_scale = 1
-		$Tween.interpolate_property(Engine, "time_scale", Engine.time_scale, 1, 1, TRANS, EASE)
+		Base.setTimeScale(get_tree(), 1)
+		$Tween.interpolate_method(self, "setTimeScale", Engine.time_scale, 1, 1, TRANS, EASE)
 		$Tween.start()
 	$Full.material.set_shader_param("disintegrationProgress", 1.0)

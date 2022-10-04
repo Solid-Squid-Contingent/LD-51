@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/TextboxProceed.ogg-df26e046128013605083bfb3b2f44db2.oggstr"
+
+[deps]
+
+source_file="res://Resources/Sounds/TextboxProceed.ogg"
+dest_files=[ "res://.import/TextboxProceed.ogg-df26e046128013605083bfb3b2f44db2.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

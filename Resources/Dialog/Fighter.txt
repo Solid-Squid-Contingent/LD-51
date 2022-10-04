@@ -1,0 +1,18 @@
+Entry: 10000010001 [1041].
+Year: 111111001101 [4045].
+Location: Kuiper-Belt
+Transmission: Binary Collective Mission Control, Combat Directive 10
+
+Hello Captain,
+
+Our victory at the battle of Saturn has given us momentum.
+We have to press the advantage and take the fight to our human enemies.
+You will arrive shortly at the Kuiper-Belt where the rebel reserve contingent is holed up.
+The asteroids provide a strategic advantage to them and an Armada Strike is rendered impossible.
+This is where you come in: Bait them out so we can smoke them out. 
+They will be more formidable this time around so we have assigned you with a cutting edge Fighter Ship.
+It will provide firing support until we arrive. 
+But since it's loaded up with all kinds of volatile weapons you have to keep it safe from nemy fire.
+
+Over and out.
+-Operator 1000101

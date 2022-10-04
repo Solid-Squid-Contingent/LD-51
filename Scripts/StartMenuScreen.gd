@@ -3,13 +3,12 @@ extends TextureRect
 signal start_game()
 signal quit_game()
 signal button_pressed()
+signal back_button_pressed()
 
 func _ready():
 	popup()
 	if OS.get_name() == "HTML5":
 		$MarginContainer/VBoxContainer/QuitButton.set_disabled(true)
-	
-	call_deferred("_on_StartButton_pressed") #TODO
 
 func setButtonFocus():
 	$MarginContainer/VBoxContainer/StartButton.grab_focus()
@@ -40,7 +39,7 @@ func _on_DeleteButton_pressed():
 
 func _on_CreditsButton_pressed():
 	$"../CreditsScreen".popup()
-	emit_signal("button_pressed")
+	emit_signal("back_button_pressed")
 
 
 func _on_OptionsScreen_screenClosed():

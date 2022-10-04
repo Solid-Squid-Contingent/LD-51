@@ -1,0 +1,22 @@
+{
+	"spawn" : [
+		{
+			"enemyType" : "Rotater",
+			"number" : 7,
+			"delay" : 4,
+			"startDelay" : 0,
+		},
+		{
+			"enemyType" : "Rotater",
+			"number" : 3,
+			"delay" : 12,
+			"startDelay" : 2,
+		}
+	],
+	"players" : ["teleport", "attack"],
+	"duration" : 31,
+	"background" : "Belt",
+	"introDialog" : ""
+}
+
+

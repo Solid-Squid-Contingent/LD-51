@@ -1,6 +1,7 @@
 extends TextureRect
 
 signal button_pressed()
+signal back_button_pressed()
 signal deleteSaveData()
 signal screenClosed()
 
@@ -18,4 +19,4 @@ func _on_YesButton_pressed():
 func _on_NoButton_pressed():
 	visible = false
 	emit_signal("screenClosed")
-	emit_signal("button_pressed")
+	emit_signal("back_button_pressed")

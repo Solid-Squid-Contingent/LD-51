@@ -63,12 +63,12 @@ __meta__ = {
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 margin_top = 160.0
 margin_right = 992.0
-margin_bottom = 1100.0
+margin_bottom = 1254.0
 
 [node name="StartButton" type="Button" parent="MarginContainer/VBoxContainer"]
 material = SubResource( 1 )
 margin_right = 992.0
-margin_bottom = 153.0
+margin_bottom = 179.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 2 )
@@ -77,9 +77,9 @@ expand_icon = true
 
 [node name="DeleteButton" type="Button" parent="MarginContainer/VBoxContainer"]
 material = SubResource( 2 )
-margin_top = 157.0
+margin_top = 183.0
 margin_right = 992.0
-margin_bottom = 310.0
+margin_bottom = 362.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 2 )
@@ -89,9 +89,9 @@ expand_icon = true
 
 [node name="ChapterButton" type="Button" parent="MarginContainer/VBoxContainer"]
 material = SubResource( 3 )
-margin_top = 314.0
+margin_top = 366.0
 margin_right = 992.0
-margin_bottom = 467.0
+margin_bottom = 545.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 2 )
@@ -100,9 +100,9 @@ expand_icon = true
 
 [node name="CreditsButton" type="Button" parent="MarginContainer/VBoxContainer"]
 material = SubResource( 4 )
-margin_top = 471.0
+margin_top = 549.0
 margin_right = 992.0
-margin_bottom = 625.0
+margin_bottom = 728.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 2 )
@@ -111,9 +111,9 @@ expand_icon = true
 
 [node name="OptionsButton" type="Button" parent="MarginContainer/VBoxContainer"]
 material = SubResource( 5 )
-margin_top = 629.0
+margin_top = 732.0
 margin_right = 992.0
-margin_bottom = 782.0
+margin_bottom = 911.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 2 )
@@ -125,9 +125,9 @@ __meta__ = {
 
 [node name="QuitButton" type="Button" parent="MarginContainer/VBoxContainer"]
 material = SubResource( 6 )
-margin_top = 786.0
+margin_top = 915.0
 margin_right = 992.0
-margin_bottom = 940.0
+margin_bottom = 1094.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 2 )

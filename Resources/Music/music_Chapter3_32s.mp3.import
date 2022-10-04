@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/music_Chapter3_32s.mp3-67d5f6162ab5e92190f9e9d4a46882ed.mp3str"
+
+[deps]
+
+source_file="res://Resources/Music/music_Chapter3_32s.mp3"
+dest_files=[ "res://.import/music_Chapter3_32s.mp3-67d5f6162ab5e92190f9e9d4a46882ed.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -4,7 +4,7 @@
 [ext_resource path="res://Resources/Shaders/Disintegrate.tres" type="Shader" id=2]
 [ext_resource path="res://Scripts/PlayerMoving.gd" type="Script" id=3]
 [ext_resource path="res://Resources/Shaders/Radius.tres" type="Shader" id=4]
-[ext_resource path="res://Resources/Sounds/Move.wav" type="AudioStream" id=5]
+[ext_resource path="res://Resources/Sounds/Move.ogg" type="AudioStream" id=5]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -30,10 +30,16 @@ halfSpriteDirection = Vector2( 0, 1 )
 [node name="Radius" parent="." index="0"]
 material = SubResource( 1 )
 
+[node name="Sprite" parent="CollisionShape" index="0"]
+frame = 0
+
+[node name="Orb" parent="CollisionShape" index="2"]
+frame = 1
+
 [node name="ChargeProgress" parent="." index="6"]
 material = SubResource( 2 )
 
 [node name="MovePlayer" type="AudioStreamPlayer" parent="." index="14"]
 stream = ExtResource( 5 )
-volume_db = -10.0
+volume_db = 12.0
 bus = "SoundEffects"

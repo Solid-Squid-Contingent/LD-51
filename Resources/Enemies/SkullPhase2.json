@@ -1,0 +1,14 @@
+{
+	"speed" : 5,
+	"spreadAngle" : 180,
+	"spreadNumber" : 3,
+	"burstNumber" : 1,
+	"burstDistance" : 0.2,
+	"bulletWaveTime" : 0.5,
+	"aimAtPlayer" : true,
+	"rotationPerSecond" : 0,
+	"lives" : 15,
+	"bulletType" : "SkullPhase2",
+	"nextForm" : "",
+	"sprite" : "SkullPhase2"
+}

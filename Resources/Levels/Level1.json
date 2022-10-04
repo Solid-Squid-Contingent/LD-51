@@ -1,16 +1,16 @@
 {
 	"spawn" : [
 		{
-			"enemyType" : "Dude2",
-			"number" : 3,
-			"delay" : 5,
+			"enemyType" : "StraightJunk",
+			"number" : 4,
+			"delay" : 6,
 			"startDelay" : 0,
 		},
 	],
-	"players" : ["teleport", "move", "attack"],
-	"duration" : 15,
-	"background" : "Belt",
-	"introDialog" : ""
+	"players" : ["teleport"],
+	"duration" : 31,
+	"background" : "Planets",
+	"introDialog" : "Intro"
 }
 
 

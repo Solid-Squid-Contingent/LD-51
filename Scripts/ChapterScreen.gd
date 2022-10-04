@@ -1,6 +1,7 @@
 extends TextureRect
 
 signal button_pressed()
+signal back_button_pressed()
 signal screenClosed()
 signal selectChapter()
 
@@ -20,22 +21,25 @@ func go_away():
 	visible = false
 	emit_signal("screenClosed")
 
+func selectChapter(chapter):
+	go_away()
+	emit_signal("button_pressed")
+	emit_signal("selectChapter",chapter)	
+	
+
 func _on_BackButton_pressed():
 	go_away()
-	emit_signal("button_pressed")
-
+	emit_signal("back_button_pressed")
 
 func _on_Chapter1Button_pressed():
-	go_away()
-	emit_signal("button_pressed")
-	emit_signal("selectChapter",1)
+	selectChapter(1)
 
 func _on_Chapter2Button_pressed():
-	go_away()
-	emit_signal("button_pressed")
-	emit_signal("selectChapter",2)
+	selectChapter(2)
 
 func _on_Chapter3Button_pressed():
-	go_away()
-	emit_signal("button_pressed")
-	emit_signal("selectChapter",3)
+	selectChapter(3)
+
+func _on_Chapter4Button_pressed():
+	selectChapter(4)
+

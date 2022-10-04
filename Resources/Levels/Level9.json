@@ -1,0 +1,22 @@
+{
+	"spawn" : [
+		{
+			"enemyType" : "CurveJunk",
+			"number" : 5,
+			"delay" : 6,
+			"startDelay" : 0,
+		},
+		{
+			"enemyType" : "Homer",
+			"number" : 2,
+			"delay" : 16,
+			"startDelay" : 0,
+		}
+	],
+	"players" : ["teleport", "attack"],
+	"duration" : 31,
+	"background" : "Belt",
+	"introDialog" : ""
+}
+
+

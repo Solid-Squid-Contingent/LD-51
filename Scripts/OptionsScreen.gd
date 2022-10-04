@@ -1,6 +1,7 @@
 extends TextureRect
 
 signal button_pressed()
+signal back_button_pressed()
 signal screenClosed()
 
 export(String, FILE) var optionsFileName = "user://Options.save"
@@ -127,7 +128,7 @@ func load_options():
 
 func _on_BackButton_pressed():
 	go_away()
-	emit_signal("button_pressed")
+	emit_signal("back_button_pressed")
 
 func _on_FullscreenToggle_toggled(button_pressed):
 	OS.set_window_fullscreen(button_pressed)

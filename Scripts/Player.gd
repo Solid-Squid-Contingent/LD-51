@@ -10,7 +10,9 @@ onready var chargeProgressBar = $ChargeProgress
 onready var moveRadiusSprite = $Radius
 onready var sprite = $CollisionShape/Sprite
 onready var collisionShape = $CollisionShape
-onready var hearts = [$Heart1, $Heart2, $Heart3]
+onready var hearts3 = [$Heart1, $Heart2, $Heart3]
+onready var hearts1 = [$Heart2]
+var hearts = []
 onready var orb = $CollisionShape/Orb
 
 export var spriteName: String
@@ -45,10 +47,13 @@ func _ready():
 	target.texture = load("res://Resources/Graphics/Ships/" + spriteName + "/outline.png")
 	target.scale = Vector2(spriteScale, spriteScale)
 	sprite.position = spriteOffsets[spriteName]
+	if maxLives == 1:
+		hearts = hearts1
+	else:
+		hearts = hearts3
 	upTween()
 	showHearts()
 	updateRadii()
-	yield(get_tree().create_timer(0.01), "timeout")
 	updateRadii()
 
 func upTween():
@@ -68,8 +73,7 @@ func _input(event):
 		return
 	
 	if event.is_action_pressed('move') and !gameOver:
-		$LockInPlayer.play()
-		moveTargetTo(event.position)
+		moveTargetTo(event.position, true)
 	elif (event is InputEventMouseMotion and Input.is_action_pressed('move')) and !gameOver:
 		moveTargetTo(event.position)
 	elif event.is_action_pressed('show_hitbox'):
@@ -80,7 +84,7 @@ func _input(event):
 func _process(_delta):
 	chargeProgressBar.value = 1 - moveTimer.time_left / moveTimer.wait_time
 
-func moveTargetTo(targetPos):
+func moveTargetTo(targetPos, sound = false):
 	var dist = (targetPos - moveRadiusSprite.global_position).length()
 	if dist < movementRange:
 		for player in self.get_tree().get_nodes_in_group('player'):
@@ -89,6 +93,8 @@ func moveTargetTo(targetPos):
 				return
 		target.visible = true
 		target.position = to_local(targetPos) + spriteOffsets[spriteName]
+		if sound:
+			$LockInPlayer.play()
 
 func playerMoved():
 	var index = 1
@@ -132,6 +138,9 @@ func spawnLocalClear():
 	
 	
 func loseLife():
+	if gameOver:
+		return
+		
 	lives -= 1
 	showHearts()
 	hearts[lives].disappear(lives > 0)
@@ -165,7 +174,7 @@ func _on_Player_area_entered(area):
 		return
 		
 	loseLife()
-	area.queue_free()
+	area.impact()
 
 
 func _on_GrazeArea_area_entered(area):

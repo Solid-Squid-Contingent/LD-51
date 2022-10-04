@@ -9,10 +9,10 @@
 [ext_resource path="res://Scenes/Heart.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Resources/Graphics/Misc/orb.png" type="Texture" id=8]
 [ext_resource path="res://Resources/Shaders/Disintegrate.tres" type="Shader" id=9]
-[ext_resource path="res://Resources/Sounds/PlayerDied.wav" type="AudioStream" id=10]
-[ext_resource path="res://Resources/Sounds/PlayerHit.wav" type="AudioStream" id=11]
-[ext_resource path="res://Resources/Sounds/Teleport.wav" type="AudioStream" id=12]
-[ext_resource path="res://Resources/Sounds/LockIn.wav" type="AudioStream" id=13]
+[ext_resource path="res://Resources/Sounds/PlayerDied.ogg" type="AudioStream" id=10]
+[ext_resource path="res://Resources/Sounds/PlayerHit.ogg" type="AudioStream" id=11]
+[ext_resource path="res://Resources/Sounds/Teleport.ogg" type="AudioStream" id=12]
+[ext_resource path="res://Resources/Sounds/LockIn.ogg" type="AudioStream" id=13]
 
 [sub_resource type="ShaderMaterial" id=4]
 shader = ExtResource( 6 )
@@ -83,6 +83,7 @@ shape = SubResource( 1 )
 position = Vector2( -2, -20 )
 scale = Vector2( 2, 2 )
 frames = ExtResource( 2 )
+frame = 2
 playing = true
 
 [node name="GrazeArea" type="Area2D" parent="CollisionShape"]
@@ -97,7 +98,6 @@ visible = false
 position = Vector2( -4, 0 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 10 )
-frame = 1
 playing = true
 
 [node name="Target" type="Sprite" parent="."]
@@ -141,6 +141,7 @@ one_shot = true
 
 [node name="TeleportPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 12 )
+volume_db = 4.0
 bus = "SoundEffects"
 
 [node name="DeathPlayer" type="AudioStreamPlayer" parent="."]
@@ -153,7 +154,6 @@ bus = "SoundEffects"
 
 [node name="LockInPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 13 )
-volume_db = -20.0
 bus = "SoundEffects"
 
 [connection signal="area_entered" from="." to="." method="_on_Player_area_entered"]

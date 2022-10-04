@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/LockIn.ogg-09a82a4185be2c23631463885fc090ff.oggstr"
+
+[deps]
+
+source_file="res://Resources/Sounds/LockIn.ogg"
+dest_files=[ "res://.import/LockIn.ogg-09a82a4185be2c23631463885fc090ff.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

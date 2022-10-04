@@ -7,6 +7,7 @@ class BulletType extends Reference:
 	var sinAmplitude = 0#50
 	var sinFrequency = 0#2
 	var curve = 0
+	var curveSpread = 0
 	var totalLifeTime = 10
 	var homing = false
 	var trail = true
@@ -18,6 +19,7 @@ class BulletType extends Reference:
 		type.sinAmplitude = dict['sinAmplitude']
 		type.sinFrequency = dict['sinFrequency']
 		type.curve = dict['curve']
+		type.curveSpread = dict['curveSpread']
 		type.totalLifeTime = dict['totalLifeTime']
 		type.homing = dict['homing']
 		type.trail = dict['trail']
@@ -55,7 +57,7 @@ class EnemyType extends Reference:
 	const spriteScaleDict = {
 		"Junk1" : 2,
 		"Junk2" : 2,
-		"Generic" : 1,
+		"Generic" : 2,
 		"SkullPhase1" : 2,
 		"SkullPhase2" : 2,
 		"Crab" : 3,

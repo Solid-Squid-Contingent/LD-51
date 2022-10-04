@@ -1,0 +1,22 @@
+{
+	"spawn" : [
+		{
+			"enemyType" : "StraightJunk33",
+			"number" : 11,
+			"delay" : 6,
+			"startDelay" : 0,
+		},
+		{
+			"enemyType" : "StraightJunk33",
+			"number" : 5,
+			"delay" : 12,
+			"startDelay" : 2,
+		}
+	],
+	"players" : ["teleport", "attack", "move"],
+	"duration" : 63,
+	"background" : "Space",
+	"introDialog" : ""
+}
+
+

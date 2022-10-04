@@ -1,0 +1,16 @@
+{
+	"spawn" : [
+		{
+			"enemyType" : "SkullPhase1",
+			"number" : 1,
+			"delay" : 0,
+			"startDelay" : 0,
+		},
+	],
+	"players" : ["teleport", "move", "attack"],
+	"duration" : 0,
+	"background" : "Station",
+	"introDialog" : "Boss"
+}
+
+

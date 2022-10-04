@@ -1,0 +1,14 @@
+{
+	"speed" : 10,
+	"spreadAngle" : 40,
+	"spreadNumber" : 3,
+	"burstNumber" : 1,
+	"burstDistance" : 0.2,
+	"bulletWaveTime" : 2,
+	"aimAtPlayer" : true,
+	"rotationPerSecond" : 0,
+	"lives" : 4,
+	"bulletType" : "Big",
+	"nextForm" : "",
+	"sprite" : "Crab"
+}

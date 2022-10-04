@@ -1,0 +1,11 @@
+{
+	"speed" : 60,
+	"sinAmplitude" : 0,
+	"sinFrequency" : 0,
+	"curve" : 0,
+	"curveSpread" : 0,
+	"totalLifeTime" : 15,
+	"trail" : false,
+	"homing" : true,
+	"sprite" : "homing",
+}

@@ -3,7 +3,7 @@
 [ext_resource path="res://Resources/Graphics/Particles/Debris.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/DeathParticles.gd" type="Script" id=2]
 [ext_resource path="res://Resources/Shaders/Disintegrate.tres" type="Shader" id=3]
-[ext_resource path="res://Resources/Sounds/EnemyDied.wav" type="AudioStream" id=4]
+[ext_resource path="res://Resources/Sounds/EnemyDied.ogg" type="AudioStream" id=4]
 
 [sub_resource type="ShaderMaterial" id=2]
 resource_local_to_scene = true
@@ -42,6 +42,7 @@ autostart = true
 
 [node name="EnemyDeathPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
+volume_db = 8.0
 bus = "SoundEffects"
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

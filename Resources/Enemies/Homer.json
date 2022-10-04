@@ -1,0 +1,14 @@
+{
+	"speed" : 20,
+	"spreadAngle" : 0,
+	"spreadNumber" : 1,
+	"burstNumber" : 2,
+	"burstDistance" : 1,
+	"bulletWaveTime" : 4,
+	"aimAtPlayer" : true,
+	"rotationPerSecond" : 0,
+	"lives" : 2,
+	"bulletType" : "Homing",
+	"nextForm" : "",
+	"sprite" : "Generic"
+}

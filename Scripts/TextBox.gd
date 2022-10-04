@@ -12,10 +12,18 @@ var textLengthUpperLimit = 0
 func _ready():
 	label.set_visible_characters(label.get_total_character_count())
 
+func hide():
+	visible = false
+	$Music.stop()
+	
+func show():
+	visible = true
+	$Music.play()
+
 
 func set_text(text):
-	label.set_bbcode(text)
-	label.set_visible_characters(0)
+	label.text = text
+	label.visible_characters = 0
 	timer.start()
 	
 	textLengthUpperLimit = text.length()
@@ -39,13 +47,15 @@ func all_text_appeared():
 		
 
 func show_all_text():
-	$ProceedPlayer.play()
 	label.set_visible_characters(text_length())
 	timer.stop()
 	emit_signal("all_text_appeared")
 
 func _on_ShowTextTimer_timeout():
-	label.set_visible_characters(label.get_visible_characters() + 1)
+	var pos = label.text.find(' ', label.get_visible_characters() + 1)
+	label.set_visible_characters(pos)
+	$AppearPlayer.play()
+	$AppearPlayer.pitch_scale = rand_range(0.9, 1.1)
 	if all_text_appeared():
 		timer.stop()
 		emit_signal("all_text_appeared")

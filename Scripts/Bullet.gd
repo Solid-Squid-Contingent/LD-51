@@ -3,16 +3,18 @@ extends Area2D
 var type: DataTypes.BulletType
 
 var direction: Vector2
+var offsetAngle = 0.0
 onready var realPosition = position
 
 onready var shapes = {
 	'energy' : $ShapeEnergy,
+	'energyDirected' : $ShapeDirected,
 	'energyBig' : $ShapeBig,
 	'player' : $ShapePlayer,
 	'homing' : $ShapeHoming
 }
 
-onready var birthTime = Time.get_ticks_usec()
+var lifeTime = 0.0
 
 func _ready():
 	material.set_shader_param("pixelSize", 2.0)
@@ -32,32 +34,28 @@ func setSprite():
 		
 	if type.sprite == 'energyBig':
 		rotation = rand_range(0, 2*PI)
-		
-
-func lifeTime(): #in seconds
-	return (Time.get_ticks_usec() - birthTime) / 1000000.0
 
 func impact():
 	queue_free()
 	return false
 
 func _process(delta):
+	lifeTime += delta
 	if type.homing:
 		direction = Base.directionToClosest(self, 'player')
 	
-	if type.sprite != 'energyBig':
-		rotation = direction.angle() + PI/2
+	rotation = direction.angle() + PI/2
 	
-	direction = direction.rotated(deg2rad(type.curve) * delta)
+	direction = direction.rotated(deg2rad(type.curve + offsetAngle * type.curveSpread) * delta)
 	realPosition += direction * type.speed * delta
-	position = realPosition + type.sinAmplitude * sin(lifeTime() * type.sinFrequency) * direction.rotated(PI/2)
+	position = realPosition + type.sinAmplitude * sin(lifeTime * type.sinFrequency) * direction.rotated(PI/2)
 	
-	var timeLeft = type.totalLifeTime - lifeTime() 
+	var timeLeft = type.totalLifeTime - lifeTime
 	if timeLeft < 0:
 		queue_free()
-	elif timeLeft < 1:
-		material.set_shader_param("disintegrationProgress", 1 - timeLeft)
-		if timeLeft < 0.5:
+	elif timeLeft < 2:
+		material.set_shader_param("disintegrationProgress", 1 - timeLeft/2)
+		if timeLeft < 1.8:
 			self.monitorable = false
 			self.monitoring = false
 

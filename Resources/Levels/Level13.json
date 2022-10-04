@@ -1,0 +1,28 @@
+{
+	"spawn" : [
+		{
+			"enemyType" : "WeakCrabus",
+			"number" : 3,
+			"delay" : 12,
+			"startDelay" : 4,
+		},
+		{
+			"enemyType" : "Homer",
+			"number" : 3,
+			"delay" : 12,
+			"startDelay" : 0,
+		},
+		{
+			"enemyType" : "WaveJunk",
+			"number" : 3,
+			"delay" : 12,
+			"startDelay" : 8,
+		},
+	],
+	"players" : ["teleport", "attack"],
+	"duration" : 31,
+	"background" : "Belt",
+	"introDialog" : ""
+}
+
+

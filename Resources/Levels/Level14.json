@@ -1,0 +1,16 @@
+{
+	"spawn" : [
+		{
+			"enemyType" : "StraightJunk",
+			"number" : 16,
+			"delay" : 2,
+			"startDelay" : 0,
+		}
+	],
+	"players" : ["teleport", "attack", "move"],
+	"duration" : 31,
+	"background" : "Space",
+	"introDialog" : "Fuel"
+}
+
+

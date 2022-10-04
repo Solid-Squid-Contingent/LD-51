@@ -1,7 +1,9 @@
 extends Node2D
 
 # warning-ignore:unused_signal
-signal restartGame()
+signal gameFinished()
+signal dramaticZoomDone()
+signal hideDialog()
 
 const swipeScene = preload("res://Scenes/ClearSwipe.tscn")
 
@@ -23,12 +25,15 @@ onready var backgrounds = {
 	'Belt' : 	$Backgrounds/Belt,
 	'Planets' : $Backgrounds/Planets,
 	'Space' : 	$Backgrounds/Space,
-	'Station' : 	$Backgrounds/Space
+	'Station' : $Backgrounds/Station
 }
 
 onready var playerParent = $Players
 onready var enemyParent = $Enemies
 onready var screenShaker = $Camera/ScreenShaker
+
+var bossFight = false
+var gameOver = false
 
 var dialogProgress = 0
 var tutorialProgress = 0
@@ -37,12 +42,12 @@ var inMenu = true
 
 func _input(event):
 	if !inMenu and event.is_action_pressed("advance"):
+		if textbox.visible:
+			$TextProceedPlayer.play()
 		if not textbox.all_text_appeared():
 			textbox.show_all_text()
 		else:
 			printNextDialogLine()
-		if textbox.visible:
-			$TextProceedPlayer.play()
 	elif !inMenu and event.is_action_pressed("skip_dialog"):
 		textbox.show_all_text()
 		dialogProgress = dialog.size()
@@ -54,18 +59,20 @@ func setTutorialProgress(newTutorialProgress):
 	get_parent().tutorialProgress = newTutorialProgress
 	get_parent().saveProgress()
 	
-	loadLevel()
-	loadTutorialSpecificNodes()
+	if tutorialProgress >= 19:
+		emit_signal("gameFinished")
+	else:
+		loadLevel()
 
 func progressInTutorial():
 	setTutorialProgress(tutorialProgress + 1)
 
 
-func loadTutorialSpecificNodes():
-	pass
-
 func loadDialog(filename):
 	dialog = []
+	
+	if filename == "":
+		return
 	
 	var dialogFile = File.new()
 	var fullFilename = "res://Resources/Dialog/"+filename+".txt"
@@ -75,9 +82,10 @@ func loadDialog(filename):
 		return
 	
 	dialogFile.open(fullFilename, File.READ)
-	while !dialogFile.eof_reached():
-		var line = dialogFile.get_line()
-		dialog.append(line)
+	dialog = [dialogFile.get_as_text()]
+#	while !dialogFile.eof_reached():
+#		var line = dialogFile.get_line()
+#		dialog.append(line)
 	dialogFile.close()
 
 func printNextDialogLine():
@@ -88,27 +96,46 @@ func printNextDialogLine():
 		dialogProgress += 1
 
 func hideDialog():
-	textbox.visible = false
+	textbox.hide()
 	get_tree().paused = false
+	emit_signal("hideDialog")
 	
 
 func showDialog(line):
 	textbox.set_text(line)
-	textbox.set_name("Mysterious Voice")
-	textbox.visible = true
+	textbox.set_name("Captain's Log")
+	textbox.show()
 	get_tree().paused = true
 
-func enemyDied(_enemy):
+func enemyDied(enemy):
 	screenShaker.start(0.5)
+	if bossFight and !gameOver and enemy.type.nextForm.empty():
+		dramaticZoom(enemy)
+		yield(self, "dramaticZoomDone")
+		loadDialog("End")
+		dialogProgress = 0
+		printNextDialogLine()
+		yield(self, "hideDialog")
+		progressInTutorial()
 	
 func enemyHit(_enemy):
 	screenShaker.start(0.2, 20, 15)
 
 func loadLevel():
-	var level = DataTypes.LevelType.fromJSON("Level1")
+	gameOver = false
+	if tutorialProgress == 0:
+		return
+	
+	var level = DataTypes.LevelType.fromJSON("Level" + str(tutorialProgress))
 	$HUD.setTime(level.duration)
+	bossFight = (level.duration == 0)
 	for bg in backgrounds:
-		backgrounds[bg].visible = (bg == level.background)
+		if bg == level.background:
+			backgrounds[bg].visible = true
+			backgrounds[bg].get_node("Music").play()
+		else:
+			backgrounds[bg].visible = false
+			backgrounds[bg].get_node("Music").stop()
 	
 	for child in playerParent.get_children():
 		child.queue_free()
@@ -124,17 +151,24 @@ func loadLevel():
 		
 	$SpawnPath.loadSpawns(level)
 	
-	if not level.introDialog.empty():
-		loadDialog(level.introDialog)
-		printNextDialogLine()
+	loadDialog(level.introDialog)
+	printNextDialogLine()
 
 func connectEnemy(enemy):
 	enemy.game = self
 	enemy.connect("died", self, "enemyDied")
 	enemy.connect("hit", self, "enemyHit")
+	enemy.connect("attack", self, "enemyAttack")
+	enemy.connect("burstAttack", self, "enemyBurstAttack")
+
+func enemyAttack():
+	$EnemyAttackPlayer.play()
+
+func enemyBurstAttack():
+	$EnemyBurstAttackPlayer.play()
 	
 func swipeDone():
-	loadLevel()
+	progressInTutorial()
 
 func _on_HUD_timeUp():
 	var swipe = swipeScene.instance()
@@ -143,19 +177,25 @@ func _on_HUD_timeUp():
 	screenShaker.start(1, 40)
 	$TimeUpPlayer.play()
 
-func playerDied(player):
-	self.get_tree().set_group('player', 'gameOver', true)
-	Engine.time_scale = 0.5
+func dramaticZoom(object):
+	Base.setTimeScale(get_tree(), 0.5)
 	var time = 2 * Engine.time_scale
-	$Camera.zoomOnto(player, 0.2, time)
+	$Camera.zoomOnto(object, 0.2, time)
 	for _i in range(75):
-		Engine.time_scale *= 0.9
+		Base.setTimeScale(get_tree(), Engine.time_scale * 0.9)
 		yield(get_tree().create_timer(time * 0.3), "timeout")
 		time *= 0.7
 	yield(get_tree().create_timer(time), "timeout")
-	Engine.time_scale = 1
-	$Camera.reset(0.1)
-	yield(get_tree().create_timer(0.1), "timeout")
+	emit_signal("dramaticZoomDone")
+	$Camera.reset(0.1* Engine.time_scale)
+	yield(get_tree().create_timer(0.1* Engine.time_scale), "timeout")
+	Base.setTimeScale(get_tree(), 1)
+
+func playerDied(player):
+	self.get_tree().set_group_flags(SceneTree.GROUP_CALL_REALTIME, 'player', 'gameOver', true)
+	gameOver = true
+	dramaticZoom(player)
+	yield(self, "dramaticZoomDone")
 	loadLevel()
 	
 func playerHit(_player):

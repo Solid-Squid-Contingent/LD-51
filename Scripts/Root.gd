@@ -20,12 +20,15 @@ func _notification(what):
 
 func pauseGame():
 	previousPauseState = get_tree().paused
-	game.inMenu = true
+	if game:
+		game.inMenu = true
 	get_tree().paused = true
+	$MusicLoopPlayer.play()
 	
 func unpauseGame():
 	get_tree().paused = previousPauseState
 	game.inMenu = false
+	$MusicLoopPlayer.stop()
 
 func quitGame():
 	saveProgress()
@@ -34,10 +37,10 @@ func quitGame():
 func restartLevel():
 	if game:
 		game.queue_free()
-	Engine.time_scale = 1
+	Base.setTimeScale(get_tree(), 1)
 	game = gameScene.instance()
 	add_child(game)
-	game.connect("restartGame", self, "_on_Game_restartGame")
+	game.connect("gameFinished", self, "gameFinished")
 	game.inMenu = false
 	game.call_deferred("setTutorialProgress", tutorialProgress)
 
@@ -73,14 +76,15 @@ func loadProgress():
 	if optionsData.has("tutorialProgress"):
 		tutorialProgress = optionsData["tutorialProgress"]
 	
-	restartLevel()
+	#restartLevel()
 
 
 func _on_MenuScreen_restart_game():
 	restartGame()
 
 func _on_MenuScreen_restart_level():
-	restartLevel()
+	Base.setTimeScale(get_tree(), 1)
+	game.loadLevel()
 
 func _on_StartMenuScreen_quit_game():
 	quitGame()
@@ -98,10 +102,8 @@ func _on_StartMenuScreen_start_game():
 	if tutorialProgress == 0:
 		tutorialProgress += 1
 		saveProgress()
-		restartLevel()
-		unpauseGame()
-	else:
-		unpauseGame()
+	restartLevel()
+	unpauseGame()
 
 func _on_DeleteScreen_deleteSaveData():
 	tutorialProgress = 0
@@ -110,17 +112,24 @@ func _on_DeleteScreen_deleteSaveData():
 	saveProgress()
 	restartLevel()
 
-func _on_Game_restartGame():
-	restartLevel()
-
 const tutorialProgressPerChapter = {
 	1: 1,
-	2: 10,
-	3: 20
+	2: 4,
+	3: 14,
+	4: 18
 }
 
 func _on_ChapterScreen_selectChapter(chapter):
 	tutorialProgress = tutorialProgressPerChapter[chapter]
 	saveProgress()
 	restartLevel()
+	$MenuScreenLayer/StartMenuScreen.go_away()
 	unpauseGame()
+
+func gameFinished():
+	pauseGame()
+	tutorialProgress = 0
+	saveProgress()
+	$MenuScreenLayer/StartMenuScreen.popup()
+	$MenuScreenLayer/EndCreditsScreen.popup()
+	

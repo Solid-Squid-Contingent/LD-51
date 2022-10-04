@@ -26,7 +26,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Ludum Dare 51"
+config/name="Binary Blasterz"
 run/main_scene="res://Scenes/Root.tscn"
 config/icon="res://icon.png"
 

@@ -2,6 +2,8 @@ extends Area2D
 
 signal died
 signal hit
+signal attack
+signal burstAttack
 
 var type = DataTypes.EnemyType.new()
 var livesLeft = 1
@@ -33,7 +35,10 @@ func shoot():
 		# warning-ignore:return_value_discarded
 		get_tree().create_timer(type.burstDistance * burst).connect("timeout", self, "shoot_burst")
 	shoot_burst()
-	$AttackPlayer.play()
+	if type.burstNumber >= 3:
+		emit_signal("burstAttack")
+	else:
+		emit_signal("attack")
 
 func shoot_burst():
 	var direction = Vector2(0,-1).rotated(rotation)
@@ -50,6 +55,7 @@ func shoot_burst():
 				angle = -type.spreadAngle/2.0 + i * type.spreadAngle / float(type.spreadNumber - 1)
 			bullet.direction = direction.rotated(deg2rad(angle))
 			bullet.type = type.bulletType
+			bullet.offsetAngle = angle
 			
 			get_parent().add_child(bullet)
 
@@ -64,7 +70,7 @@ func impact(object):
 	if livesLeft > 0:
 		$Health.reduce()
 		emit_signal("hit", self)
-		Base.spawnDeathParticles(self).playSound()
+		Base.spawnDeathParticles(self)
 		$HitPlayer.play()
 	else:
 		if not type.nextForm.empty():
@@ -79,7 +85,7 @@ func impact(object):
 			
 		queue_free()
 		emit_signal("died", self)
-		Base.spawnDeathParticles(self)
+		Base.spawnDeathParticles(self).playSound()
 
 
 func _on_Enemy_area_entered(area):

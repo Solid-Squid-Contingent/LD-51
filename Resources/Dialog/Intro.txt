@@ -1,0 +1,19 @@
+Entry: 1111101111 [1007].
+Year: 111111001100 [4044].
+Location: Saturn's Orbit
+Transmission: Binary Collective Mission Control, Combat Directive 1
+
+Salutations Captain,
+
+Your reputation precedes you, Sir. It truly is an honor to work with you.
+Our enemies, the human rebels, have encroached into our solar system.
+It is your mission to bait them into one position so we can execute a swift and precise blow to their fleet.
+But of course they will shoot at you relentlessly so dodge whatever they throw at you and hold out till the cavalry arrives.
+Your ship is equipped with the "t-10 Teleport Drive" for extra maneuverability.
+t-10 of course is 2 seconds in the words of the non-binary folk.
+Click on the area around your ship to move there in t-10 intervals.
+Your ship will phase through most hostile projectiles except for the ship's weak point which you can display with CTRL.
+
+
+I am calculating with your success, Captain.
+-Operator 1000101

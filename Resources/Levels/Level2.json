@@ -1,0 +1,16 @@
+{
+	"spawn" : [
+		{
+			"enemyType" : "StraightJunk33",
+			"number" : 5,
+			"delay" : 5,
+			"startDelay" : 0,
+		},
+	],
+	"players" : ["teleport"],
+	"duration" : 31,
+	"background" : "Planets",
+	"introDialog" : ""
+}
+
+

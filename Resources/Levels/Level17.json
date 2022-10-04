@@ -1,0 +1,34 @@
+{
+	"spawn" : [
+		{
+			"enemyType" : "StrongRotater",
+			"number" : 3,
+			"delay" : 24,
+			"startDelay" : 12,
+		},
+		{
+			"enemyType" : "Circler",
+			"number" : 3,
+			"delay" : 24,
+			"startDelay" : 6,
+		},
+		{
+			"enemyType" : "WeakCrabus",
+			"number" : 3,
+			"delay" : 24,
+			"startDelay" : 0,
+		},
+		{
+			"enemyType" : "Homer",
+			"number" : 2,
+			"delay" : 24,
+			"startDelay" : 18,
+		}
+	],
+	"players" : ["teleport", "attack", "move"],
+	"duration" : 63,
+	"background" : "Space",
+	"introDialog" : ""
+}
+
+

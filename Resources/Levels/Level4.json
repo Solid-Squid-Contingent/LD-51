@@ -1,0 +1,16 @@
+{
+	"spawn" : [
+		{
+			"enemyType" : "StraightJunk",
+			"number" : 7,
+			"delay" : 4,
+			"startDelay" : 0,
+		}
+	],
+	"players" : ["teleport", "attack"],
+	"duration" : 31,
+	"background" : "Belt",
+	"introDialog" : "Fighter"
+}
+
+

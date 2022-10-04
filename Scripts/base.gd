@@ -5,6 +5,10 @@ class_name Base
 const deathParticleScene = preload("res://Scenes/DeathParticles.tscn")
 const corpseSpriteScene = preload("res://Scenes/CorpseSprite.tscn")
 
+static func setTimeScale(tree, scale):
+	Engine.time_scale = scale
+	tree.set_group("musicPlayer", "pitch_scale", scale)
+
 static func parseJSONFile(path):
 	var file = File.new()
 	file.open(path, File.READ)

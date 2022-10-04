@@ -1,0 +1,14 @@
+{
+	"speed" : 25,
+	"spreadAngle" : 90,
+	"spreadNumber" : 5,
+	"burstNumber" : 5,
+	"burstDistance" : 0.2,
+	"bulletWaveTime" : 3,
+	"aimAtPlayer" : true,
+	"rotationPerSecond" : 0,
+	"lives" : 1,
+	"bulletType" : "Curve",
+	"nextForm" : "",
+	"sprite" : "Junk2"
+}

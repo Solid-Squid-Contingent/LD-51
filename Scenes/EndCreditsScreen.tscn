@@ -1,0 +1,79 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Resources/Fonts/menu.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Scenes/CreditsScreen.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Resources/Shaders/OneBit.tres" type="Shader" id=3]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 3 )
+
+[node name="CreditsScreen" instance=ExtResource( 2 )]
+
+[node name="Label" parent="MarginContainer2" index="0"]
+text = "Thank you for playing!"
+
+[node name="Quote" type="Label" parent="." index="1"]
+material = SubResource( 1 )
+anchor_top = 0.08
+anchor_bottom = 0.081
+margin_top = 103.0
+margin_right = 1920.0
+margin_bottom = 117.0
+custom_fonts/font = ExtResource( 1 )
+text = "The ship is anchor’d safe and sound, its voyage closed and done;
+From fearful trip, the victor ship, comes in with object won."
+align = 1
+valign = 1
+
+[node name="MarginContainer3" parent="." index="2"]
+anchor_top = 0.32
+
+[node name="TextureRect" parent="MarginContainer3" index="0"]
+margin_bottom = 79.0
+
+[node name="Label" parent="MarginContainer3" index="1"]
+margin_top = 10.0
+margin_bottom = 69.0
+
+[node name="Label2" parent="MarginContainer3" index="2"]
+margin_top = 10.0
+margin_bottom = 69.0
+
+[node name="TextureRect2" parent="MarginContainer3" index="3"]
+margin_top = 129.0
+margin_bottom = 208.0
+
+[node name="Label5" parent="MarginContainer3" index="4"]
+margin_top = 139.0
+margin_bottom = 198.0
+
+[node name="Label6" parent="MarginContainer3" index="5"]
+margin_top = 139.0
+margin_bottom = 198.0
+
+[node name="TextureRect3" parent="MarginContainer3" index="6"]
+margin_top = 258.0
+margin_bottom = 336.0
+
+[node name="Label7" parent="MarginContainer3" index="7"]
+margin_top = 267.0
+margin_bottom = 326.0
+
+[node name="Label8" parent="MarginContainer3" index="8"]
+margin_top = 267.0
+margin_bottom = 326.0
+
+[node name="TextureRect4" parent="MarginContainer3" index="9"]
+margin_top = 386.0
+margin_bottom = 464.0
+
+[node name="Label9" parent="MarginContainer3" index="10"]
+margin_top = 395.0
+margin_bottom = 454.0
+
+[node name="Label10" parent="MarginContainer3" index="11"]
+margin_top = 395.0
+margin_bottom = 454.0
+
+[node name="YesButton" parent="MarginContainer" index="0"]
+text = "Back to Start Menu"

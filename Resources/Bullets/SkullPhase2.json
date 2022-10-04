@@ -1,0 +1,11 @@
+{
+	"speed" : 100,
+	"sinAmplitude" : 40,
+	"sinFrequency" : 2,
+	"curve" : 0,
+	"curveSpread" : -0.08,
+	"totalLifeTime" : 20,
+	"trail" : true,
+	"homing" : false,
+	"sprite" : "energyBig",
+}
